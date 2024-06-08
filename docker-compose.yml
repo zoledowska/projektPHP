@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+    apache:
+        build: .docker/apache
+        container_name: symfony_apache
+        ports:
+          - "8000:80"
+        volumes:
+          - .docker/config/vhosts:/etc/apache2/sites-enabled
+          - ./app:/home/wwwroot/app:Z
+        depends_on:
+          - php
+
+    mysql:
+        image: mysql:8.3
+        ports:
+          - "3306:3306"
+        command: "--default-authentication-plugin=mysql_native_password"
+        container_name: symfony_mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: symfony
+            MYSQL_USER: symfony
+            MYSQL_PASSWORD: symfony
+  #      volumes:
+  #       - ./app/21_zoledowska.sql:/docker-entrypoint-initdb.d/init.sql:Z
+
+    php:
+        build: .docker/php
+        container_name: symfony_php
+        volumes:
+          - ./app:/home/wwwroot/app:Z
+        environment:
+          - maildev_host=symfony_maildev
+          - DATABASE_URL=mysql://symfony:symfony@symfony_mysql:3306/symfony
+        depends_on:
+          - maildev
+          - mysql
+
+    maildev:
+        image: djfarrelly/maildev
+        container_name: symfony_maildev
+        ports:
+          - "8001:80"
+
+    phpmyadmin:
+        image: phpmyadmin:latest
+        container_name: phpmyadmin
+        ports:
+          - "8080:80"
+        depends_on:
+          - mysql
+        environment:
+          - PMA_HOST=mysql
+          - PMA_USER=symfony
+          - PMA_PASSWORD=symfony
+
