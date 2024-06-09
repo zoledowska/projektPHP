@@ -26,6 +26,14 @@
         <source>label.upload_date</source>
         <target>Uploaded</target>
       </trans-unit>
+      <trans-unit id="label.photoPath">
+        <source>label.photoPath</source>
+        <target>Photo</target>
+      </trans-unit>
+      <trans-unit id="label.uploadDate">
+         <source>label.uploadDate</source>
+         <target>Uploaded</target>
+      </trans-unit>
       <trans-unit id="message.empty_list">
         <source>message.empty_list</source>
         <target>List is empty.</target>
@@ -44,7 +52,19 @@
       </trans-unit>
       <trans-unit id="action.show">
         <source>action.show</source>
-        <target>Show</target>
+        <target>Show details</target>
+      </trans-unit>
+      <trans-unit id="action.back_to_list">
+         <source>action.back_to_list</source>
+         <target>Go back</target>
+      </trans-unit>
+      <trans-unit id="title.photos_list">
+        <source>title.photos_list</source>
+        <target>Photos list</target>
+      </trans-unit>
+      <trans-unit id="title.photos_details">
+        <source>title.photos_details</source>
+        <target>Photos details</target>
       </trans-unit>
    </body>
   </file>
