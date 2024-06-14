@@ -2,8 +2,14 @@
 
 namespace App\Repository;
 
+use App\Entity\Albums;
 use App\Entity\Photos;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -52,9 +58,9 @@ class PhotosRepository extends ServiceEntityRepository
         return $this->getOrCreateQueryBuilder()
             ->select(
                 'partial photos.{id, title, description, photo_path, upload_date}',
-//                'partial albums.{id, name}'
+                'partial album.{id, name, description, created_at}'
             )
-//            ->join('photos.albums', 'albums')
+            ->join('photos.album', 'album')
             ->orderBy('photos.upload_date', 'DESC');
     }
 
@@ -97,22 +103,22 @@ class PhotosRepository extends ServiceEntityRepository
     }
 
     /**
-     * Count photoss by albums.
+     * Count photoss by album.
      *
-     * @param Albums $albums Albums
+     * @param Albums $album Albums
      *
-     * @return int Number of photoss in albums
+     * @return int Number of photoss in album
      *
      * @throws NoResultException
      * @throws NonUniqueResultException
      */
-    public function countByAlbums(Albums $albums): int
+    public function countByAlbums(Albums $album): int
     {
         $qb = $this->getOrCreateQueryBuilder();
 
         return $qb->select($qb->expr()->countDistinct('photos.id'))
-            ->where('photos.albums = :albums')
-            ->setParameter(':albums', $albums)
+            ->where('photos.album = :album')
+            ->setParameter(':album', $album)
             ->getQuery()
             ->getSingleScalarResult();
     }

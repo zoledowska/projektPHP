@@ -1,20 +1,6 @@
-{% extends 'base.html.twig' %}
-
-{% block name %}
-    {{ 'name.albums_edit'|trans({'%id%': albums.id|default('')}) }}
-{% endblock %}
-
-{% block body %}
-    <h1>{{ 'name.albums_edit'|trans({'%id%': albums.id|default('')}) }}</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <div class="form-group row float-sm-right">
-        <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary"/>
-    </div>
-    <div class="form-group row float-sm-left">
-        <a href="{{ url('albums_index') }}" class="btn btn-link">
-            {{ 'action.back_to_list'|trans }}
-        </a>
-    </div>
-    {{ form_end(form) }}
-{% endblock %}
+{% include 'default/_form.html.twig' with {
+    page_title: 'name.albums_edit'|trans({'%id%': albums.id|default('')}),
+    form: form,
+    submit_label: 'action.save'|trans,
+    back_to_list_path: 'albums_index',
+} %}

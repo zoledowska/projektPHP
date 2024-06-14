@@ -11,7 +11,7 @@ use App\Entity\Albums;
  */
 class AlbumsFixtures extends AbstractBaseFixtures
 {
-    /**
+/**
      * Load data.
      *
      * @psalm-suppress PossiblyNullReference
@@ -23,6 +23,7 @@ class AlbumsFixtures extends AbstractBaseFixtures
             $albums = new Albums();
             $albums->setName($this->faker->unique()->word);
             $albums->setDescription($this->faker->sentence);
+            $albums->setCreatedAt(new \DateTime());
 
             return $albums;
         });

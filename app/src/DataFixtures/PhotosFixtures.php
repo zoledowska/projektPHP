@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Photos;
 use App\Entity\Albums;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Generator;
 
@@ -14,6 +15,7 @@ class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInt
      * Faker.
      */
     protected ?Generator $faker;
+
 
     /**
      * Persistence object manager.
@@ -40,7 +42,7 @@ class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInt
             $photos->setPhotoPath(0);
             //$photos->setAlbum($album);
             $photos->setAlbum($this->getRandomReference('albums'));
-
+            # dump($photos->getAlbum()->getName());
             return $photos;
         });
 

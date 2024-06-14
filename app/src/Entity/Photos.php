@@ -32,8 +32,8 @@ class Photos
     private ?\DateTimeInterface $upload_date = null;
 
     #[ORM\ManyToOne(targetEntity: Albums::class, fetch: 'EXTRA_LAZY')]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?Albums $albums = null;
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Albums $album = null;
 
     public function getId(): ?int
     {

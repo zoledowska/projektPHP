@@ -5,7 +5,27 @@
 {% endblock %}
 
 {% block body %}
+    <a style="float: right; margin-top: 10px;" type="button" class="btn btn-primary" title="{{ 'action.login' | trans}}" href="/login">{{ 'action.login' | trans }}</a>
     <h1>{{ 'title.photos_list'|trans }}</h1>
+    <nav class="nav">
+        <a href="{{ url('albums_index') }}" title="{{ 'action.albums_list'|trans }}" class="nav-link">
+            {{ 'action.albums_list'|trans }}
+        </a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ url('photos_create') }}" title="{{ 'action.photos_create'|trans }}" class="nav-link">
+                {{ 'action.photos_create'|trans }}
+            </a>
+            <a href="{{ url('albums_create') }}" title="{{ 'action.albums_create'|trans }}" class="nav-link">
+                {{ 'action.albums_create'|trans }}
+            </a>
+ {#           <a href="{{ url('users_index') }}" title="{{ 'action.users_list'|trans }}" class="nav-link">
+                {{ 'action.users_list'|trans }}
+            </a>#}
+        {% endif %}
+{#        <a href="{{ url('comments_index') }}" title="{{ 'action.comments_list'|trans }}" class="nav-link">
+            {{ 'action.comments_list'|trans }}
+        </a>#}
+    </nav>
     {% if pagination is defined and pagination.items|length %}
 
         <div class="navigation text-center">
@@ -20,6 +40,8 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.description'|trans, 'photos.description') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.photo_path'|trans, 'photos.photo_path') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.upload_date'|trans, 'photos.upload_date') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.album'|trans, 'albums.name') }}</th>
+
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -32,9 +54,34 @@
                     <td>{{ photos.photoPath }}</td>
                     <td>{{ photos.uploadDate|format_date('long') }}</td>
                     <td>
-                        <a href="{{ url('photos_show', {id: photos.id}) }}" title="{{ 'action.view'|trans }}">
+{#                    {% if is_granted('ROLE_ADMIN') %}
+                        <a type="button" class="btn btn-primary" title="{{ 'action.show' | trans}}" href="{{ url('photos_show', {id: photos.id}) }}">{{ 'action.show' | trans }}</a>
+{#                        <a type="button" class="btn btn-primary" title="{{ 'action.edit' | trans}}" href={{ url('photos_edit') }}>{{ 'action.edit' | trans }}></a>#}
+{#                        <a type="button" class="btn btn-primary" title="{{ 'action.edit' | trans}}" href={{ url('photos_edit') }}>{{ 'action.edit' | trans }}></a>#}
+{#                        {% else %}#}
+{#                       <a href="{{ url('photos_show', {id: photos.id}) }}" title="{{ 'action.view'|trans }}">
+                            {{ 'action.show'|trans }}
+                        </a>#}
+                        <a href="{{ url('photos_index', {'filters.albums_id' : photos.album.id}) }}" title="{{ photos.album.name }}">
+                            {{ photos.album.name }}
+                        </a>                      
+                    </td>
+                    <td>
+                        <a href="{{ url('photos_show', {id: photos.id}) }}" title="{{ 'action.show'|trans }}" class="btn btn-outline-secondary">
                             {{ 'action.show'|trans }}
                         </a>
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ url('photos_edit', {'id': photos.id}) }}" title="{{ 'action.edit'|trans }}" class="btn btn-outline-primary">
+                                {{ 'action.edit'|trans }}
+                            </a>
+                        {% endif %}
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ url('photos_delete', {'id': photos.id}) }}" title="{{ 'action.delete'|trans }}" class="btn btn-outline-danger">
+                                {{ 'action.delete'|trans }}
+                            </a>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}

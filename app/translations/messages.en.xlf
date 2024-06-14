@@ -34,6 +34,10 @@
          <source>label.uploadDate</source>
          <target>Uploaded</target>
       </trans-unit>
+     <trans-unit id="label.album">
+        <source>label.album</source>
+        <target>Album</target>
+      </trans-unit>
       <trans-unit id="message.empty_list">
         <source>message.empty_list</source>
         <target>List is empty.</target>
@@ -54,18 +58,42 @@
         <source>action.show</source>
         <target>Show details</target>
       </trans-unit>
+      <trans-unit id="action.edit">
+        <source>action.edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="action.delete">
+        <source>action.delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="action.albums_list">
+        <source>action.albums_list</source>
+        <target>Album list</target>
+      </trans-unit>
+      <trans-unit id="action.photos_create">
+        <source>action.photos_create</source>
+        <target>Add a new photo</target>
+      </trans-unit>
+      <trans-unit id="action.albums_create">
+        <source>action.albums_create</source>
+        <target>Create a new album</target>
+      </trans-unit>
       <trans-unit id="action.back_to_list">
          <source>action.back_to_list</source>
          <target>Go back</target>
       </trans-unit>
       <trans-unit id="title.photos_list">
         <source>title.photos_list</source>
-        <target>Photos list</target>
+        <target>Photo list</target>
       </trans-unit>
       <trans-unit id="title.photos_details">
         <source>title.photos_details</source>
         <target>Photos details</target>
       </trans-unit>
-   </body>
+      <trans-unit id="action.login">
+        <source>action.login</source>
+        <target>Login</target>
+      </trans-unit>
+      </body>
   </file>
 </xliff>

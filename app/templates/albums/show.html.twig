@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    {{ 'name.albums_details'|trans({'%id%': albums.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'name.albums_details'|trans({'%id%': albums.id|default('')}) }}</h1>
+    {% if albums is defined and albums|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'label.id'|trans }}</dt>
+            <dd>{{ albums.id }}</dd>
+            <dt>{{ 'label.name'|trans }}</dt>
+            <dd>{{  albums.name }}</dd>
+            <dt>{{ 'label.description'|trans }}</dt>
+            <dd>{{ albums.description }}</dd>
+            <dt>{{ 'label.created_at'|trans }}</dt>
+            <dd>{{ albums.created_at|format_date('long') }}</dd>
+
+        </dl>
+        <h3 class="mt-6">{{ 'name.albums_and_photos'|trans({'%id%': albums.id|default('')}) }}</h3>
+
+        {% if pagination is defined and pagination.items|length %}
+
+            <div class="navigation text-center">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'photos.title') }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for photos in pagination.items %}
+                    <tr>
+                        <td>{{ photos.title }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="navigation text-center">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+
+        {% else %}
+            <p>
+                {{ 'message.empty_list'|trans }}
+            </p>
+        {% endif %}
+
+
+    {% else %}
+        <p>
+            {{ 'message.empty_list'|trans }}
+        </p>
+    {% endif %}
+    <p>
+        <a href="{{ url('photos_index') }}" title="{{ 'action.back_to_list'|trans }}">
+            {{ 'action.back_to_list'|trans }}
+        </a>
+    </p>
+
+{% endblock %}

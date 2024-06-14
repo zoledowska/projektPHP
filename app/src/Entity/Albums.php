@@ -29,6 +29,9 @@ class Albums
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTime $created_at = null;
+
     /**
      * Slug.
      * @var string|null
@@ -39,6 +42,11 @@ class Albums
     #[Gedmo\Slug(fields: ['name'])]
     private ?string $slug;
 
+    // Dodanie konstruktora
+    public function __construct()
+    {
+        $this->created_at = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -65,6 +73,18 @@ class Albums
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTime
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTime $created_at): static
+    {
+        $this->created_at = $created_at;
 
         return $this;
     }
