@@ -59,7 +59,7 @@ class AlbumsService implements AlbumsServiceInterface
     public function save(Albums $albums): void
     {
         if (null == $albums->getId()) {
-            $albums->setCreatedAt(new \DateTimeImmutable());
+            $albums->setCreatedAt(new \DateTime());
         }
         $albums->setCreatedAt(new \DateTime());
 

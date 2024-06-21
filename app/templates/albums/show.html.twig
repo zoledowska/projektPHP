@@ -22,11 +22,6 @@
         <h3 class="mt-6">{{ 'title.albums_and_photos'|trans({'%id%': albums.id|default('')}) }}</h3>
 
         {% if pagination is defined and pagination.items|length %}
-
-            <div class="navigation text-center">
-                {{ knp_pagination_render(pagination) }}
-            </div>
-
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -59,7 +54,7 @@
         </p>
     {% endif %}
     <p>
-        <a href="{{ url('photos_index') }}" title="{{ 'action.back_to_list'|trans }}">
+        <a href="{{ url('albums_index') }}" title="{{ 'action.back_to_list'|trans }}">
             {{ 'action.back_to_list'|trans }}
         </a>
     </p>

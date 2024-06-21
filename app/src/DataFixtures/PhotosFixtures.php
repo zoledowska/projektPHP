@@ -46,7 +46,6 @@ class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInt
                 \DateTimeImmutable::createFromMutable($this->faker->dateTimeBetween('-100 days', '-1 days'))
             );
 
-            $photos->setPhotoPath(0);
             //$photos->setAlbum($album);
             $photos->setAlbum($this->getRandomReference('albums'));
             # dump($photos->getAlbum()->getName());

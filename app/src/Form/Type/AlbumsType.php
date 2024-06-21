@@ -37,7 +37,15 @@ class AlbumsType extends AbstractType
                 'required' => true,
                 'attr' => ['max_length' => 64],
             ]);
-    }
+
+        $builder->add(
+            'description',
+            TextType::class,
+            [
+                'label' => 'label.description',
+                'required' => true,
+                'attr' => ['max_length' => 64],
+            ]);    }
 
     /**
      * Configures the options for this type.

@@ -6,11 +6,15 @@
 namespace App\Controller;
 
 use App\Entity\Albums;
+use App\Form\Type\AlbumsType;
+use App\Repository\AlbumsRepository;
 use App\Service\AlbumsServiceInterface;
+use App\Service\PhotosService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class AlbumsController.
@@ -22,12 +26,12 @@ class AlbumsController extends AbstractController
 
     /**
      * Constructor.
-     *
+     * @param TranslatorInterface    $translator    Translator
      * @param AlbumsServiceInterface $albumsService Albums service
      */
-    public function __construct(private readonly AlbumsServiceInterface $albumsService)
+    public function __construct(TranslatorInterface $translator, private readonly AlbumsServiceInterface $albumsService)
     {
-
+        $this->translator = $translator;
     }//end __construct()
 
 
