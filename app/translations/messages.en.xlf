@@ -94,6 +94,10 @@
         <source>action.login</source>
         <target>Login</target>
       </trans-unit>
+      <trans-unit id="label.author">
+        <source>label.author</source>
+        <target>Author</target>
+      </trans-unit>
       </body>
   </file>
 </xliff>

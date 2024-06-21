@@ -2,24 +2,24 @@
 
 
 {% block title %}
-    {{ 'name.albums_details'|trans({'%id%': albums.id|default('')}) }}
+    {{ 'title.albums_details'|trans({'%id%': albums.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'name.albums_details'|trans({'%id%': albums.id|default('')}) }}</h1>
+    <h1>{{ 'title.albums_details'|trans({'%id%': albums.id|default('')}) }}</h1>
     {% if albums is defined and albums|length %}
         <dl class="dl-horizontal">
             <dt>{{ 'label.id'|trans }}</dt>
             <dd>{{ albums.id }}</dd>
-            <dt>{{ 'label.name'|trans }}</dt>
-            <dd>{{  albums.name }}</dd>
+            <dt>{{ 'label.title'|trans }}</dt>
+            <dd>{{  albums.title }}</dd>
             <dt>{{ 'label.description'|trans }}</dt>
             <dd>{{ albums.description }}</dd>
             <dt>{{ 'label.created_at'|trans }}</dt>
-            <dd>{{ albums.created_at|format_date('long') }}</dd>
+            <dd>{{ albums.CreatedAt|format_date('long') }}</dd>
 
         </dl>
-        <h3 class="mt-6">{{ 'name.albums_and_photos'|trans({'%id%': albums.id|default('')}) }}</h3>
+        <h3 class="mt-6">{{ 'title.albums_and_photos'|trans({'%id%': albums.id|default('')}) }}</h3>
 
         {% if pagination is defined and pagination.items|length %}
 

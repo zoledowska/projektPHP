@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block body %}
-    <a style="float: right; margin-top: 10px;" type="button" class="btn btn-primary" title="{{ 'action.login' | trans}}" href="/login">{{ 'action.login' | trans }}</a>
     <h1>{{ 'title.photos_list'|trans }}</h1>
     <nav class="nav">
         <a href="{{ url('albums_index') }}" title="{{ 'action.albums_list'|trans }}" class="nav-link">
@@ -38,9 +37,9 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'photos.id') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'photos.title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.description'|trans, 'photos.description') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.photo_path'|trans, 'photos.photo_path') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.photo_file'|trans, 'photos.photo_file') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.upload_date'|trans, 'photos.upload_date') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.album'|trans, 'albums.name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.album'|trans, 'albums.title') }}</th>
 
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
@@ -51,7 +50,7 @@
                     <td>{{ photos.id }}</td>
                     <td>{{ photos.title }}</td>
                     <td>{{ photos.description }}</td>
-                    <td>{{ photos.photoPath }}</td>
+                    <td>{{ photos.photoFile }}</td>
                     <td>{{ photos.uploadDate|format_date('long') }}</td>
                     <td>
 {#                    {% if is_granted('ROLE_ADMIN') %}
@@ -62,8 +61,8 @@
 {#                       <a href="{{ url('photos_show', {id: photos.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.show'|trans }}
                         </a>#}
-                        <a href="{{ url('photos_index', {'filters.albums_id' : photos.album.id}) }}" title="{{ photos.album.name }}">
-                            {{ photos.album.name }}
+                        <a href="{{ url('albums_index', {'filters.albums_id' : photos.album.id}) }}" title="{{ photos.album.title }}">
+                            {{ photos.album.title }}
                         </a>                      
                     </td>
                     <td>

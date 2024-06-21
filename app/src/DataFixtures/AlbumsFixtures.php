@@ -21,7 +21,7 @@ class AlbumsFixtures extends AbstractBaseFixtures
     {
         $this->createMany(20, 'albums', function (int $i) {
             $albums = new Albums();
-            $albums->setName($this->faker->unique()->word);
+            $albums->setTitle($this->faker->unique()->word);
             $albums->setDescription($this->faker->sentence);
             $albums->setCreatedAt(new \DateTime());
 

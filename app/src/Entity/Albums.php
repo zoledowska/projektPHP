@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AlbumsRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -12,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AlbumsRepository::class)]
 #[ORM\Table(name: 'albums')]
-#[UniqueEntity(fields: ['name'])]
+#[UniqueEntity(fields: ['title'])]
 class Albums
 {
     #[ORM\Id]
@@ -24,7 +25,7 @@ class Albums
     #[Assert\Type('string')]
     #[Assert\NotBlank]
     #[Assert\Length(min: 3, max: 64)]
-    private ?string $name = null;
+    private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -39,12 +40,12 @@ class Albums
     #[ORM\Column(type: 'string', length: 64)]
     #[Assert\Type('string')]
     #[Assert\Length(min: 3, max: 64)]
-    #[Gedmo\Slug(fields: ['name'])]
+    #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug;
 
-    // Dodanie konstruktora
     public function __construct()
     {
+        $this->photos = new ArrayCollection();
         $this->created_at = new \DateTime();
     }
 
@@ -53,14 +54,14 @@ class Albums
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(string $name): static
+    public function setTitle(string $title): static
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }

@@ -18,6 +18,8 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/album')]
 class AlbumsController extends AbstractController
 {
+    private $translator;
+
     /**
      * Constructor.
      *
@@ -47,21 +49,26 @@ class AlbumsController extends AbstractController
     /**
      * Show action.
      *
-     * @param Albums $albums Albums
+     * @param Request            $request            Request
+     * @param AlbumsRepository   $AlbumsRepository   Albums Repository
+     * @param PhotosService      $photosService      Photos Service
+     * @param int                $id                 Id
      *
      * @return Response HTTP response
      */
     #[Route(
         '/{id}',
-        name: 'album_show',
+        name: 'albums_show',
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET'
     )]
-    public function show(Albums $albums): Response
+    public function show(Request $request, AlbumsRepository $albumsRepository, PhotosService $photosService, int $id): Response
     {
-        return $this->render('albums/show.html.twig', ['albums' => $albums]);
+        $album = $albumsRepository->find($id);
+        $pagination = $photosService->getPaginatedList($request->query->getInt('page', 1), $album);
 
-    }//end show()
+        return $this->render('albums/show.html.twig', ['albums' => $album, 'pagination' => $pagination]);
+    }
 
 
     /**
@@ -92,12 +99,12 @@ class AlbumsController extends AbstractController
     )]
     public function create(Request $request): Response
     {
-        $albums = new Albums();
-        $form   = $this->createForm(AlbumsType::class, $albums);
+        $album = new Albums();
+        $form   = $this->createForm(AlbumsType::class, $album);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->albumsService->save($albums);
+            $this->albumsService->save($album);
 
             $this->addFlash(
                 'success',

@@ -4,10 +4,13 @@ namespace App\DataFixtures;
 
 use App\Entity\Photos;
 use App\Entity\Albums;
+use App\Entity\Users;
+use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Generator;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
@@ -23,11 +26,15 @@ class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInt
     //protected ?ObjectManager $manager;
 
     /**
-     * Load.
+     * Load data.
+     *
+     * @psalm-suppress PossiblyNullPropertyFetch
+     * @psalm-suppress PossiblyNullReference
+     * @psalm-suppress UnusedClosureParam
      */
     public function loadData(): void
     {
-        if (null === $this->manager || null === $this->faker) {
+        if (!$this->manager instanceof ObjectManager || !$this->faker instanceof Generator) {
             return;
         }
 
@@ -43,6 +50,11 @@ class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInt
             //$photos->setAlbum($album);
             $photos->setAlbum($this->getRandomReference('albums'));
             # dump($photos->getAlbum()->getName());
+
+            /** @var Users $author */
+            $author = $this->getRandomReference('users');
+            $photos->setAuthor($author);
+            
             return $photos;
         });
 
@@ -53,6 +65,6 @@ class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInt
 
     public function getDependencies()
     {
-        return [AlbumsFixtures::class];
+        return [AlbumsFixtures::class, UserFixtures::class];
     }
 }

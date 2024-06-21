@@ -12,6 +12,8 @@
             <dd>{{ photos.id }}</dd>
             <dt>{{ 'label.title'|trans }}</dt>
             <dd>{{  photos.title }}</dd>
+            <dt>{{ 'label.author'|trans }}</dt>
+            <dd>{{  photos.author.nick }}</dd>
             <dt>{{ 'label.description'|trans }}</dt>
             <dd>{{ photos.description }}</dd>
             <dt>{{ 'label.photoPath'|trans }}</dt>
@@ -19,6 +21,11 @@
             <dt>{{ 'label.uploadDate'|trans }}</dt>
             <dd>{{ photos.uploadDate|date('Y/m/d') }}</dd>
         </dl>
+
+        {% if app.user.photoFile.filename is defined and app.user.photoFile.filename|length %}
+            <img class="nav-profile-img" src="{{ asset(photoFiles_directory~app.user.photoFile.filename) }}">
+        {% endif %}
+        
         <p>
             <a href="{{ url('photos_index') }}" title="{{ 'action.back_to_list'|trans }}">
                 {{ 'action.back_to_list'|trans }}

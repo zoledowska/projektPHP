@@ -1,25 +1,21 @@
 <?php
 /**
- * Photos type.
+ * PhotoFile type.
  */
 
 namespace App\Form\Type;
 
-use App\Entity\Albums;
 use App\Entity\PhotoFile;
-use App\Entity\Photos;
-use App\Service\PhotosService;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 
 /**
- * Class PhotosType.
+ * Class PhotoFileType.
  */
-class PhotosType extends AbstractType
+class PhotoFileType extends AbstractType
 {
     /**
      * Builds the form.
@@ -35,43 +31,24 @@ class PhotosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'title',
-            TextType::class,
-            [
-                'label' => 'label.title',
-                'required' => true,
-                'attr' => ['max_length' => 64],
-            ]
-        );
-        $builder->add(
-            'album',
-            EntityType::class,
-            [
-                'class' => Albums::class,
-                'choice_label' => function ($album): string {
-                    return $album->getTitle();
-                },
-                'label' => 'label.album',
-                'placeholder' => 'label.none',
-                'required' => true,
-            ]
-        );
-        $builder->add(
-            'description',
-            TextType::class,
-            [
-                'label' => 'label.description',
-                'required' => true,
-                'attr' => ['max_length' => 64],
-            ]
-        );
-
-        $builder->add(
-            'photoFile',
+            'file',
             FileType::class,
             [
-                'label' => 'label.photoFile',
+                'mapped' => false,
+                'label' => 'label.PhotoFile',
                 'required' => true,
+                'constraints' => new Image(
+                    [
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpeg',
+                            'image/pjpeg',
+                            'image/jpeg',
+                            'image/pjpeg',
+                        ],
+                    ]
+                ),
             ]
         );
     }
@@ -83,7 +60,7 @@ class PhotosType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Photos::class]);
+        $resolver->setDefaults(['data_class' => PhotoFile::class]);
     }
 
     /**
@@ -96,6 +73,6 @@ class PhotosType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'photos';
+        return 'PhotoFile';
     }
 }

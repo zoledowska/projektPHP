@@ -61,7 +61,7 @@ class PhotosService implements PhotosServiceInterface
     public function save(Photos|\App\Service\Photos $photos): void
     {
         if (null == $photos->getId()) {
-            $photos->setupload_date(new \DateTimeImmutable());
+            $photos->setUploadDate(new \DateTimeImmutable());
         }
 
         $this->photosRepository->save($photos);

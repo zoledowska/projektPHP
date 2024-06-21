@@ -17,10 +17,21 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/Entity/'
+#            - '../src/Entity/'
             - '../src/Kernel.php'
 
     App\Entity\Photos:
         autowire: true
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\PhotoFileService:
+        arguments:
+            $targetDirectory: '%photoFile_directory%'
+
+    App\Service\FileUploadService:
+        arguments:
+            $targetDirectory: '%photoFile_directory%'
+
+parameters:
+    photoFile_directory: '%kernel.project_dir%/public/uploads/photoFile'

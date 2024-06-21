@@ -6,12 +6,20 @@
 namespace App\Controller;
 
 use App\Entity\Photos;
+use App\Entity\Users;
+use App\Repository\PhotosRepository;
+use App\Form\Type\PhotosType;
 use App\Service\PhotosServiceInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 //use Symfony\Component\Routing\Attribute\Route; tego importu nie chcemy
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * Class PhotosController.
@@ -19,20 +27,41 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/photos')]
 class PhotosController extends AbstractController
 {
+    /**
+     * Photos service.
+     */
+    private PhotosServiceInterface $photosService;
+
+    /**
+     * Translator.
+     */
+    private TranslatorInterface $translator;
+
+    /**
+     * Photos repository.
+     */
+    private PhotosRepository $photosRepository;
 
     /**
      * Constructor.
      *
      * @param PhotosServiceInterface $photosService Photos service
-     * @param TranslatorInterface      $translator      Translator
+     * @param TranslatorInterface    $translator      Translator
+     * @param PhotosRepository       $photosRepository Photos repository
      */
-    public function __construct(private readonly PhotosServiceInterface $photosService)
+    public function __construct(PhotosServiceInterface $photosService, TranslatorInterface $translator, PhotosRepository $photosRepository)
     {
+        $this->photosService = $photosService;
+        $this->translator = $translator;
+        $this->photosRepository = $photosRepository;
     }
 
     /**
      * Index action.
      *
+     * @param Request $request HTTP Request
+     * @param PhotosRepository $photosRepository Photos repository
+     * @param PaginatorInterface $paginator Paginator
      * @param int $page Page number
      * @return Response HTTP response
      */
@@ -76,7 +105,10 @@ class PhotosController extends AbstractController
     )]
     public function create(Request $request): Response
     {
+        /** @var Users $users */
+        $users = $this->getUser();
         $photos = new Photos();
+        $photos->setAuthor($users);
         $form = $this->createForm(PhotosType::class, $photos);
         $form->handleRequest($request);
 

@@ -1,6 +1,6 @@
 {% if is_granted('ROLE_ADMIN') %}
     {% include 'default/_form.html.twig' with {
-        page_title: 'name.albums_create'|trans,
+        page_title: 'title.albums_create'|trans,
         form: form,
         submit_label: 'action.save'|trans,
         back_to_list_path: 'albums_index',

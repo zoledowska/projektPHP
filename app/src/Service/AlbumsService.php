@@ -61,7 +61,7 @@ class AlbumsService implements AlbumsServiceInterface
         if (null == $albums->getId()) {
             $albums->setCreatedAt(new \DateTimeImmutable());
         }
-        $albums->setUpdatedAt(new \DateTimeImmutable());
+        $albums->setCreatedAt(new \DateTime());
 
         $this->albumsRepository->save($albums);
     }

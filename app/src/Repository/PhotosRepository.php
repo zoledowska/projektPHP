@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Albums;
 use App\Entity\Photos;
+use App\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NonUniqueResultException;
@@ -57,8 +58,8 @@ class PhotosRepository extends ServiceEntityRepository
     {
         return $this->getOrCreateQueryBuilder()
             ->select(
-                'partial photos.{id, title, description, photo_path, upload_date}',
-                'partial album.{id, name, description, created_at}'
+                'partial photos.{id, title, description, photoFile, upload_date}',
+                'partial album.{id, title, description, created_at}'
             )
             ->join('photos.album', 'album')
             ->orderBy('photos.upload_date', 'DESC');
@@ -107,7 +108,7 @@ class PhotosRepository extends ServiceEntityRepository
      *
      * @param Albums $album Albums
      *
-     * @return int Number of photoss in album
+     * @return int Number of photos in album
      *
      * @throws NoResultException
      * @throws NonUniqueResultException
@@ -121,5 +122,21 @@ class PhotosRepository extends ServiceEntityRepository
             ->setParameter(':album', $album)
             ->getQuery()
             ->getSingleScalarResult();
+    }
+    /**
+     * Query photoss by author.
+     *
+     * @param Users $user Users entity
+     *
+     * @return QueryBuilder Query builder
+     */
+    public function queryByAuthor(Users $user): QueryBuilder
+    {
+        $queryBuilder = $this->queryAll();
+
+        $queryBuilder->andWhere('photos.author = :author')
+            ->setParameter('author', $user);
+
+        return $queryBuilder;
     }
 }
