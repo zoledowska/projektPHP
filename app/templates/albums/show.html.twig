@@ -19,7 +19,7 @@
             <dd>{{ albums.CreatedAt|format_date('long') }}</dd>
 
         </dl>
-        <h3 class="mt-6">{{ 'title.albums_and_photos'|trans({'%id%': albums.id|default('')}) }}</h3>
+        <h3 class="mt-6">{{ 'label.albums_and_photos'|trans({'%id%': albums.id|default('')}) }}</h3>
 
         {% if pagination is defined and pagination.items|length %}
             <table class="table table-striped">

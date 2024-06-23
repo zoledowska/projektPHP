@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PhotosRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -44,6 +46,17 @@ class Photos
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
 //    #[ORM\JoinColumn(nullable: false)]
     private ?PhotoFile $photoFile = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photo_file_name = null;
+
+    #[ORM\OneToMany(mappedBy: 'photo', targetEntity: Comments::class, fetch: 'EAGER', orphanRemoval: true)]
+    private Collection $comments;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -116,6 +129,48 @@ class Photos
     public function setPhotoFile(photoFile $photoFile): static
     {
         $this->photoFile = $photoFile;
+
+        return $this;
+    }
+
+    public function getPhotoFileName(): ?string
+    {
+        return $this->photo_file_name;
+    }
+
+    public function setPhotoFileName(?string $photo_file_name): static
+    {
+        $this->photo_file_name = $photo_file_name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Comments>
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): static
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+            $comment->setPhoto($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): static
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getPhoto() === $this) {
+                $comment->setPhoto(null);
+            }
+        }
 
         return $this;
     }

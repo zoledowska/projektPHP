@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommentsRepository;
+use App\Entity\Photos;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,7 +25,11 @@ class Comments
     private ?string $content = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $post_date = null;
+    public ?\DateTimeInterface $post_date = null;
+
+    #[ORM\ManyToOne(targetEntity: Photos::class, inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    public ?photos $photo = null;
 
     public function getId(): ?int
     {
@@ -75,6 +80,18 @@ class Comments
     public function setPostDate(\DateTimeInterface $post_date): static
     {
         $this->post_date = $post_date;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?photos
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?photos $photo): static
+    {
+        $this->photo = $photo;
 
         return $this;
     }

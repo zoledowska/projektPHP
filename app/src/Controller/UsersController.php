@@ -1,35 +1,36 @@
 <?php
 /**
- * Albums controller.
+ * Users controller.
  */
 
 namespace App\Controller;
 
-use App\Entity\Albums;
-use App\Form\Type\AlbumsType;
-use App\Repository\AlbumsRepository;
-use App\Service\AlbumsServiceInterface;
+use App\Entity\Users;
+use App\Form\UsersType;
+use App\Repository\UsersRepository;
+use App\Service\UsersServiceInterface;
 use App\Service\PhotosService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class AlbumsController.
+ * Class UsersController.
  */
-#[Route('/album')]
-class AlbumsController extends AbstractController
+#[Route('/user')]
+class UsersController extends AbstractController
 {
     private $translator;
 
     /**
      * Constructor.
      * @param TranslatorInterface    $translator    Translator
-     * @param AlbumsServiceInterface $albumsService Albums service
+     * @param UsersServiceInterface $usersService Users service
      */
-    public function __construct(TranslatorInterface $translator, private readonly AlbumsServiceInterface $albumsService)
+    public function __construct(TranslatorInterface $translator, private readonly UsersServiceInterface $usersService)
     {
         $this->translator = $translator;
     }//end __construct()
@@ -40,12 +41,12 @@ class AlbumsController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route(name: 'albums_index', methods: 'GET')]
+    #[Route(name: 'users_index', methods: 'GET')]
     public function index(Request $request): Response
     {
-        $pagination = $this->albumsService->getPaginatedList($request->query->getInt('page', 1));
+        $pagination = $this->usersService->getPaginatedList($request->query->getInt('page', 1));
 
-        return $this->render('albums/index.html.twig', ['pagination' => $pagination]);
+        return $this->render('users/index.html.twig', ['pagination' => $pagination]);
     }//end index()
 
 
@@ -53,7 +54,7 @@ class AlbumsController extends AbstractController
      * Show action.
      *
      * @param Request            $request            Request
-     * @param AlbumsRepository   $AlbumsRepository   Albums Repository
+     * @param UsersRepository   $UsersRepository   Users Repository
      * @param PhotosService      $photosService      Photos Service
      * @param int                $id                 Id
      *
@@ -61,16 +62,16 @@ class AlbumsController extends AbstractController
      */
     #[Route(
         '/{id}',
-        name: 'albums_show',
+        name: 'users_show',
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET'
     )]
-    public function show(Request $request, AlbumsRepository $albumsRepository, PhotosService $photosService, int $id): Response
+    public function show(Request $request, UsersRepository $usersRepository, PhotosService $photosService, int $id): Response
     {
-        $album = $albumsRepository->find($id);
-        $pagination = $photosService->getPaginatedList($request->query->getInt('page', 1), $album);
+        $user = $usersRepository->find($id);
+        $pagination = $photosService->getPaginatedList($request->query->getInt('page', 1), $user);
 
-        return $this->render('albums/show.html.twig', ['albums' => $album, 'pagination' => $pagination]);
+        return $this->render('users/show.html.twig', ['users' => $user, 'pagination' => $pagination]);
     }
 
 
@@ -83,7 +84,7 @@ class AlbumsController extends AbstractController
      */
     #[Route(
         '/create',
-        name: 'albums_create',
+        name: 'users_create',
         methods: 'GET|POST',
     )]
 
@@ -97,28 +98,28 @@ class AlbumsController extends AbstractController
      */
     #[Route(
         '/create',
-        name: 'albums_create',
+        name: 'users_create',
         methods: 'GET|POST',
     )]
     public function create(Request $request): Response
     {
-        $album = new Albums();
-        $form   = $this->createForm(AlbumsType::class, $album);
+        $user = new Users();
+        $form   = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->albumsService->save($album);
+            $this->usersService->save($user);
 
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('albums_index');
+            return $this->redirectToRoute('users_index');
         }
 
         return $this->render(
-            'albums/create.html.twig',
+            'users/create.html.twig',
             ['form' => $form->createView()]
         );
     }//end create()
@@ -128,39 +129,39 @@ class AlbumsController extends AbstractController
      * Edit action.
      *
      * @param Request $request HTTP request
-     * @param Albums  $albums  Albums entity
+     * @param Users  $users  Users entity
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/edit', name: 'albums_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-    public function edit(Request $request, Albums $albums): Response
+    #[Route('/{id}/edit', name: 'users_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    public function edit(Request $request, Users $users): Response
     {
         $form = $this->createForm(
-            AlbumsType::class,
-            $albums,
+            UsersType::class,
+            $users,
             [
                 'method' => 'PUT',
-                'action' => $this->generateUrl('albums_edit', ['id' => $albums->getId()]),
+                'action' => $this->generateUrl('users_edit', ['id' => $users->getId()]),
             ]
         );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->albumsService->save($albums);
+            $this->usersService->save($users);
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('message.created_successfully')
+                $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('albums_index');
+            return $this->redirectToRoute('users_index');
         }
 
         return $this->render(
-            'albums/edit.html.twig',
+            'users/edit.html.twig',
             [
                 'form'   => $form->createView(),
-                'albums' => $albums,
+                'users' => $users,
             ]
         );
     }//end edit()
@@ -170,48 +171,48 @@ class AlbumsController extends AbstractController
      * Delete action.
      *
      * @param Request  $request  HTTP request
-     * @param Albums $albums Albums entity
+     * @param Users $users Users entity
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/delete', name: 'albums_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
-    public function delete(Request $request, Albums $albums): Response
+    #[Route('/{id}/delete', name: 'users_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
+    public function delete(Request $request, Users $users): Response
     {
-        if (!$this->albumsService->canBeDeleted($albums)) {
+        if (!$this->usersService->canBeDeleted($users)) {
             $this->addFlash(
                 'warning',
-                $this->translator->trans('message.albums_contains_tasks')
+                $this->translator->trans('message.user_has_photos')
             );
 
-            return $this->redirectToRoute('albums_index');
+            return $this->redirectToRoute('users_index');
         }
 
         $form = $this->createForm(
             FormType::class,
-            $albums,
+            $users,
             [
                 'method' => 'DELETE',
-                'action' => $this->generateUrl('albums_delete', ['id' => $albums->getId()]),
+                'action' => $this->generateUrl('users_delete', ['id' => $users->getId()]),
             ]
         );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->albumsService->delete($albums);
+            $this->usersService->delete($users);
 
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.deleted_successfully')
             );
 
-            return $this->redirectToRoute('albums_index');
+            return $this->redirectToRoute('users_index');
         }
 
         return $this->render(
-            'albums/delete.html.twig',
+            'users/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'albums' => $albums,
+                'users' => $users,
             ]
         );
     }

@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.comment_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.comment_list'|trans }}</h1>
+    <nav class="nav">
+        <a href="{{ url('photos_index') }}" title="{{ 'action.back_to_list'|trans }}" class="nav-link">
+            {{ 'action.back_to_list'|trans }}
+        </a>
+    </nav>
+    {% if pagination is defined and pagination.items|length %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'comment.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.content'|trans, 'comment.content') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.post_date'|trans, 'comment.post_date') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.photo'|trans, 'comment.photo') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.user'|trans, 'comment.user') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.nick'|trans, 'comment.user.nick') }}</th>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>{{ 'label.actions'|trans }}</th>
+                {% endif %}
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for comment in pagination.items %}
+                <tr>
+                    <td>{{ comment.id }}</td>
+                    <td>{{ comment.content }}</td>
+                    <td>{{ comment.postDate|format_date('long') }}</td>
+                    {% if comment.photo.title is defined %}
+                        <td>{{ comment.photo.title }}</td>
+                    {% else %} <td> null </td>
+                    {% endif %}
+                    {% if comment.nick is defined %}
+                        <td>{{ comment.email }}</td>
+                        <td>{{ comment.nick }}</td>
+                    {% else %} <td> null </td>
+                    {% endif %}
+                    <td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a type="button" class="btn btn-outline-danger" href="{{ url('comments_delete', {id: comment.id}) }}" title="{{ 'action.delete'|trans }}">
+                                {{ 'action.delete'|trans }}
+                            </a>
+                        {% endif %}
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    {% else %}
+        <p>
+            {{ 'message.empty_list'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

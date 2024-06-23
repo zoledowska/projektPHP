@@ -7,6 +7,7 @@ namespace App\Service;
 
 use App\Entity\Photos;
 use App\Repository\PhotosRepository;
+use Doctrine\ORM\EntityManager;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
@@ -70,15 +71,9 @@ class PhotosService implements PhotosServiceInterface
      * Delete entity.
      *
      * @param Photos $photos Photos entity
-     *
-     * @throws ORMException
-     * @throws OptimisticLockException
      */
     public function delete(Photos $photos): void
     {
-        assert($this->_em instanceof EntityManager);
-        $this->_em->remove($photos);
-        $this->_em->flush();
+        $this->photosRepository->delete($photos);
     }
-
 }

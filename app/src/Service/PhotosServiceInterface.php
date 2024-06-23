@@ -29,4 +29,10 @@ interface PhotosServiceInterface
      */
     public function save(Photos $photos): void;
 
+    /**
+     * Delete entity.
+     *
+     * @param Photos $photos Photos entity
+     */
+    public function delete(Photos $photos): void;
 }

@@ -5,10 +5,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Comments;
 use App\Entity\Photos;
 use App\Entity\Users;
+use App\Repository\CommentsRepository;
 use App\Repository\PhotosRepository;
 use App\Form\Type\PhotosType;
+use App\Service\CommentsService;
+use App\Service\PhotosService;
 use App\Service\PhotosServiceInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +24,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * Class PhotosController.
@@ -42,35 +47,38 @@ class PhotosController extends AbstractController
      */
     private PhotosRepository $photosRepository;
 
+    private string $photoFileDirectory;
+
+    private CommentsService $commentsService;
+
+
     /**
-     * Constructor.
-     *
-     * @param PhotosServiceInterface $photosService Photos service
-     * @param TranslatorInterface    $translator      Translator
-     * @param PhotosRepository       $photosRepository Photos repository
+     * @param PhotosServiceInterface $photosService
+     * @param TranslatorInterface $translator
+     * @param PhotosRepository $photosRepository
+     * @param string $photoFileDirectory
+     * @param CommentsService $commentsService
      */
-    public function __construct(PhotosServiceInterface $photosService, TranslatorInterface $translator, PhotosRepository $photosRepository)
+    public function __construct(PhotosServiceInterface $photosService, TranslatorInterface $translator, PhotosRepository $photosRepository, string $photoFileDirectory, CommentsService $commentsService)
     {
         $this->photosService = $photosService;
         $this->translator = $translator;
         $this->photosRepository = $photosRepository;
+        $this->photoFileDirectory = $photoFileDirectory;
+        $this->commentsService = $commentsService;
     }
 
     /**
      * Index action.
      *
      * @param Request $request HTTP Request
-     * @param PhotosRepository $photosRepository Photos repository
-     * @param PaginatorInterface $paginator Paginator
-     * @param int $page Page number
      * @return Response HTTP response
      */
     #[Route(name: 'photos_index', methods: 'GET')]
-    public function index(#[MapQueryParameter] int $page = 1): Response
+    public function index(Request $request): Response
     {
-        $pagination = $this->photosService->getPaginatedList($page);
+        $pagination = $this->photosService->getPaginatedList($request->query->getInt('page', 1));
         return $this->render('photos/index.html.twig', ['pagination' => $pagination]);
-
     }
 
     /**
@@ -86,11 +94,12 @@ class PhotosController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET'
     )]
-    public function show(int $id): Response
+    public function show(Photos $photos): Response
     {
-        $photos = $this->getDoctrine()->getRepository(Photos::class)->find($id);
-        return $this->render('photos/show.html.twig', ['photos' => $photos]);
+        $comments = $this->commentsService->getPaginatedListByPhotos(1, $photos);
+        return $this->render('photos/show.html.twig', ['photos' => $photos, 'comments' => $comments]);
     }
+
     /**
      * Create action.
      *
@@ -103,7 +112,7 @@ class PhotosController extends AbstractController
         name: 'photos_create',
         methods: 'GET|POST',
     )]
-    public function create(Request $request): Response
+    public function create(Request $request, string $photoFileDirectory, SluggerInterface $slugger): Response
     {
         /** @var Users $users */
         $users = $this->getUser();
@@ -113,12 +122,23 @@ class PhotosController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->photosService->save($photos);
-
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.created_successfully')
             );
+
+            $file = $form->get('photoFile')->getData();
+            if ($file) {
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+
+                $file->move($photoFileDirectory, $newFilename);
+                $photos->setPhotoFilename($newFilename);
+
+                $this->photosService->save($photos);
+            }
 
             return $this->redirectToRoute('photos_index');
         }

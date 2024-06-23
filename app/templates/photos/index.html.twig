@@ -17,13 +17,13 @@
             <a href="{{ url('albums_create') }}" title="{{ 'action.albums_create'|trans }}" class="nav-link">
                 {{ 'action.albums_create'|trans }}
             </a>
- {#           <a href="{{ url('users_index') }}" title="{{ 'action.users_list'|trans }}" class="nav-link">
+            <a href="{{ url('users_index') }}" title="{{ 'action.users_list'|trans }}" class="nav-link">
                 {{ 'action.users_list'|trans }}
-            </a>#}
-        {% endif %}
-{#        <a href="{{ url('comments_index') }}" title="{{ 'action.comments_list'|trans }}" class="nav-link">
+            </a>
+       <a href="{{ url('comments_index') }}" title="{{ 'action.comments_list'|trans }}" class="nav-link">
             {{ 'action.comments_list'|trans }}
-        </a>#}
+        </a>
+        {% endif %}
     </nav>
     {% if pagination is defined and pagination.items|length %}
 
@@ -50,7 +50,9 @@
                     <td>{{ photos.id }}</td>
                     <td>{{ photos.title }}</td>
                     <td>{{ photos.description }}</td>
-                    <td>{{ photos.photoFile }}</td>
+                    <td>
+                        <img style="width:30%; object-fit:contain" class="nav-profile-img" src="{{ asset(photoFile_directory~photos.photoFileName) }}">
+                    </td>
                     <td>{{ photos.uploadDate|format_date('long') }}</td>
                     <td>
 {#                    {% if is_granted('ROLE_ADMIN') %}

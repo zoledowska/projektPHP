@@ -1,0 +1,6 @@
+{% include 'default/_form.html.twig' with {
+    page_title: 'title.users_edit'|trans({'%id%': users.id|default(''), '%nick%': users.nick}),
+    form: form,
+    submit_label: 'action.save'|trans,
+    back_to_list_path: 'users_index',
+} %}

@@ -2,17 +2,14 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Comments;
 use App\Entity\Photos;
-use App\Entity\Albums;
-use App\Entity\Users;
-use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Generator;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
+class CommentsFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
      * Faker.
@@ -38,31 +35,25 @@ class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInt
             return;
         }
 
-        $this->createMany(100, 'photos', function (int $i) {
-            $photos = new Photos();
-            $photos->setTitle($this->faker->word);
-            $photos->setDescription($this->faker->sentence);
-            $photos->setUploadDate(
+        $this->createMany(100, 'comments', function (int $i) {
+            $comment = new Comments();
+            $comment->setContent($this->faker->sentence);
+            $comment->setNick($this->faker->word);
+            $comment->setEmail($this->faker->email);
+            $comment->setPostDate(
                 \DateTimeImmutable::createFromMutable($this->faker->dateTimeBetween('-100 days', '-1 days'))
             );
 
-            //$photos->setAlbum($album);
-            $photos->setAlbum($this->getRandomReference('albums'));
-            # dump($photos->getAlbum()->getName());
+            $comment->setPhoto($this->getRandomReference('photos'));
 
-            /** @var Users $author */
-            $author = $this->getRandomReference('users');
-            $photos->setAuthor($author);
-            return $photos;
+            return $comment;
         });
 
-        //$album = $this->getRandomReference('albums');
-        //print_r($album);
         $this->manager->flush();
     }
 
     public function getDependencies()
     {
-        return [AlbumsFixtures::class, UserFixtures::class];
+        return [PhotosFixtures::class];
     }
 }

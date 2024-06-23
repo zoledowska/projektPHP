@@ -1,20 +1,22 @@
 <?php
 /**
- * Albums service.
+ * Users service.
  */
 
 namespace App\Service;
 
-use App\Entity\Albums;
-use App\Repository\AlbumsRepository;
+use App\Entity\Users;
+use App\Repository\UsersRepository;
 use App\Repository\PhotosRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
- * Class AlbumsService.
+ * Class UsersService.
  */
-class AlbumsService implements AlbumsServiceInterface
+class UsersService implements UsersServiceInterface
 {
     /**
      * Items per page.
@@ -29,7 +31,7 @@ class AlbumsService implements AlbumsServiceInterface
 
     private PhotosRepository $photosRepository;
 
-    private AlbumsRepository $albumsRepository;
+    private UsersRepository $usersRepository;
 
     private PaginatorInterface $paginator;
 
@@ -38,13 +40,13 @@ class AlbumsService implements AlbumsServiceInterface
      *
      * @param PhotosRepository $photosRepository
      * @param PaginatorInterface $paginator Paginator
-     * @param AlbumsRepository $albumsRepository
+     * @param UsersRepository $usersRepository
      */
-    public function __construct(PhotosRepository $photosRepository, PaginatorInterface $paginator, AlbumsRepository $albumsRepository)
+    public function __construct(PhotosRepository $photosRepository, PaginatorInterface $paginator, UsersRepository $usersRepository)
     {
         $this->photosRepository = $photosRepository;
         $this->paginator = $paginator;
-        $this->albumsRepository = $albumsRepository;
+        $this->usersRepository = $usersRepository;
     }
 
     /**
@@ -57,7 +59,7 @@ class AlbumsService implements AlbumsServiceInterface
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->albumsRepository->queryAll(),
+            $this->usersRepository->queryAll(),
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
@@ -65,42 +67,38 @@ class AlbumsService implements AlbumsServiceInterface
     /**
      * Save entity.
      *
-     * @param Albums $albums Albums entity
+     * @param Users $users Users entity
      */
-    public function save(Albums $albums): void
+    public function save(Users $users): void
     {
-        if (null == $albums->getId()) {
-            $albums->setCreatedAt(new \DateTime());
-        }
-        $albums->setCreatedAt(new \DateTime());
 
-        $this->albumsRepository->save($albums);
+
+        $this->usersRepository->save($users);
     }
     /**
      * Delete entity.
      *
-     * @param Albums $albums Albums entity
+     * @param Users $users Users entity
      *
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function delete(Albums $albums): void
+    public function delete(Users $users): void
     {
-        $this->albumsRepository->delete($albums);
+        $this->usersRepository->delete($users);
     }
     /**
-     * Can Albums be deleted?
+     * Can Users be deleted?
      *
-     * @param Albums $albums Albums entity
+     * @param Users $users Users entity
      *
      * @return bool Result
      */
-    public function canBeDeleted(Albums $albums): bool
+    public function canBeDeleted(Users $users): bool
     {
         try {
-            $result = $this->photosRepository->countByAlbums($albums);
-
-            return !($result > 0);
+            $result = $this->photosRepository->queryByAuthor($users);
+            return !($result->getQuery()->getSingleScalarResult());
         } catch (NoResultException|NonUniqueResultException) {
             return false;
         }

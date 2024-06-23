@@ -6,6 +6,18 @@
         <source>label.actions</source>
         <target>Actions</target>
       </trans-unit>
+     <trans-unit id="action.show">
+        <source>action.show</source>
+        <target>Show</target>
+      </trans-unit>
+      <trans-unit id="action.edit">
+        <source>action.edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="action.delete">
+        <source>action.delete</source>
+        <target>Delete</target>
+      </trans-unit>
       <trans-unit id="label.id">
         <source>label.id</source>
         <target>Id</target>
@@ -18,21 +30,13 @@
         <source>label.description</source>
         <target>Description</target>
       </trans-unit>
-      <trans-unit id="label.photo_path">
-        <source>label.photo_path</source>
+      <trans-unit id="label.photo_file">
+        <source>label.photo_file</source>
         <target>Photo</target>
       </trans-unit>
       <trans-unit id="label.upload_date">
         <source>label.upload_date</source>
-        <target>Uploaded</target>
-      </trans-unit>
-      <trans-unit id="label.photoPath">
-        <source>label.photoPath</source>
-        <target>Photo</target>
-      </trans-unit>
-      <trans-unit id="label.uploadDate">
-         <source>label.uploadDate</source>
-         <target>Uploaded</target>
+        <target>Uploaded at</target>
       </trans-unit>
      <trans-unit id="label.album">
         <source>label.album</source>
@@ -46,6 +50,10 @@
         <source>message.record_not_found</source>
         <target>Record not found.</target>
       </trans-unit>
+      <trans-unit id="message.created_successfully">
+        <source>message.created_successfully</source>
+        <target>Created successfully</target>
+      </trans-unit>
       <trans-unit id="title.record_list">
         <source>title.record_list</source>
         <target>Records list</target>
@@ -53,18 +61,6 @@
       <trans-unit id="title.record_view">
         <source>title.record_view</source>
         <target>Record view #%id%</target>
-      </trans-unit>
-      <trans-unit id="action.show">
-        <source>action.show</source>
-        <target>Show details</target>
-      </trans-unit>
-      <trans-unit id="action.edit">
-        <source>action.edit</source>
-        <target>Edit</target>
-      </trans-unit>
-      <trans-unit id="action.delete">
-        <source>action.delete</source>
-        <target>Delete</target>
       </trans-unit>
       <trans-unit id="action.albums_list">
         <source>action.albums_list</source>
@@ -86,17 +82,53 @@
         <source>title.photos_list</source>
         <target>Photo list</target>
       </trans-unit>
+      <trans-unit id="title.albums_list">
+        <source>title.albums_list</source>
+        <target>Album list</target>
+      </trans-unit>
       <trans-unit id="title.photos_details">
         <source>title.photos_details</source>
-        <target>Photos details</target>
+        <target>Photo details</target>
+      </trans-unit>
+      <trans-unit id="title.albums_details">
+        <source>title.albums_details</source>
+        <target>Album details</target>
       </trans-unit>
       <trans-unit id="action.login">
         <source>action.login</source>
         <target>Login</target>
       </trans-unit>
+      <trans-unit id="action.logout">
+        <source>action.logout</source>
+        <target>Logout</target>
+      </trans-unit>
       <trans-unit id="label.author">
         <source>label.author</source>
         <target>Author</target>
+      </trans-unit>
+      <trans-unit id="label.created_at">
+        <source>label.created_at</source>
+        <target>Created at</target>
+      </trans-unit>
+      <trans-unit id="action.save">
+        <source>action.save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="label.albums_and_photos">
+        <source>label.albums_and_photos</source>
+        <target>Photos in this album</target>
+      </trans-unit>
+      <trans-unit id="title.photos_create">
+        <source>title.photos_create</source>
+        <target>Add a new photo</target>
+      </trans-unit>
+      <trans-unit id="title.albums_create">
+        <source>title.albums_create</source>
+        <target>Create a new album</target>
+      </trans-unit>
+      <trans-unit id="action.comments_list">
+        <source>action.comments_list</source>
+        <target>Comment list</target>
       </trans-unit>
       </body>
   </file>
