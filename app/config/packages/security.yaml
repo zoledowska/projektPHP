@@ -16,7 +16,7 @@ security:
 
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt)|css|fixture_images|js)/
             security: false
         main:
             lazy: true
@@ -41,7 +41,7 @@ security:
     access_control:
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/comment/create, roles: ROLE_USER }
+        - { path: ^/comments/create, roles: ROLE_USER }
         - { path: ^/user/edit/[ 0-9 ]+, roles: ROLE_USER }
         - { path: ^/user, roles: ROLE_ADMIN }
         - { path: ^/photos, roles: PUBLIC_ACCESS }

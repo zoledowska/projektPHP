@@ -22,20 +22,40 @@
         <h3 class="mt-6">{{ 'label.albums_and_photos'|trans({'%id%': albums.id|default('')}) }}</h3>
 
         {% if pagination is defined and pagination.items|length %}
+            <div class="pswp-gallery" id="my-gallery">
             <table class="table table-striped">
                 <thead>
                 <tr>
                     <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'photos.title') }}</th>
+                    <th>{{ 'photos.photo'|trans }}</th>
+                    <th>{{ 'label.actions'|trans }}</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for photos in pagination.items %}
                     <tr>
                         <td>{{ photos.title }}</td>
+                        <td class="d-flex">
+                            {% if photos.photoFileName is defined and photos.photoFileName|length %}
+                                <a class="image" href="{{ asset(photoFile_directory~photos.photoFileName) }}"
+                                   target="_blank"
+                                >
+                                <img style="width:25%;object-fit:contain;vertical-align: center" class="nav-profile-img" src="{{ asset(photoFile_directory~photos.photoFileName) }}" alt="">
+                                </a>
+                            {% endif %}</td>
+                        <td>
+                            <div style="vertical-align: center">
+                            <a style="vertical-align: center" href="{{ url('photos_show', {id: photos.id}) }}" title="{{ 'action.show'|trans }}" class="btn btn-outline-secondary my-">
+                                {{ 'action.show'|trans }}
+                            </a>
+                            </div>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
+            </div>
+
 
             <div class="navigation text-center">
                 {{ knp_pagination_render(pagination) }}
@@ -47,7 +67,6 @@
             </p>
         {% endif %}
 
-
     {% else %}
         <p>
             {{ 'message.empty_list'|trans }}
@@ -58,5 +77,4 @@
             {{ 'action.back_to_list'|trans }}
         </a>
     </p>
-
 {% endblock %}

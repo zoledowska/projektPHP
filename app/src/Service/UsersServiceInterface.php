@@ -6,7 +6,7 @@ use App\Entity\Users;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
- * Interface UsersServiceInterface
+ * Interface UsersServiceInterface.
  *
  * Define methods to be implemented by UsersService.
  */
@@ -16,6 +16,7 @@ interface UsersServiceInterface
      * Get paginated list of users.
      *
      * @param int $page Page number
+     *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface;
@@ -24,7 +25,6 @@ interface UsersServiceInterface
      * Save a Users entity.
      *
      * @param Users $users Users entity
-     * @return void
      */
     public function save(Users $users): void;
 
@@ -32,7 +32,6 @@ interface UsersServiceInterface
      * Delete a Users entity.
      *
      * @param Users $users Users entity
-     * @return void
      */
     public function delete(Users $users): void;
 }

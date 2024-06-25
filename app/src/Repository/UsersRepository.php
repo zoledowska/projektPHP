@@ -50,9 +50,9 @@ class UsersRepository extends ServiceEntityRepository
     {
         return $this->getOrCreateQueryBuilder()
             ->select('user');
-   }
+    }
 
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('user');
     }
@@ -79,7 +79,7 @@ class UsersRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
-    /**
+    /*
      * Get or create new query builder.
      *
      * @param QueryBuilder|null $queryBuilder Query builder

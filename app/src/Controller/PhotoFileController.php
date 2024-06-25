@@ -26,7 +26,7 @@ class PhotoFileController extends AbstractController
      * Constructor.
      *
      * @param PhotoFileServiceInterface $photoFileService PhotoFile service
-     * @param TranslatorInterface    $translator    Translator
+     * @param TranslatorInterface       $translator       Translator
      */
     public function __construct(private readonly PhotoFileServiceInterface $photoFileService, private readonly TranslatorInterface $translator)
     {
@@ -85,11 +85,12 @@ class PhotoFileController extends AbstractController
             ['form' => $form->createView()]
         );
     }
+
     /**
      * Edit action.
      *
-     * @param Request $request HTTP request
-     * @param PhotoFile  $photoFile  PhotoFile entity
+     * @param Request   $request   HTTP request
+     * @param PhotoFile $photoFile PhotoFile entity
      *
      * @return Response HTTP response
      */

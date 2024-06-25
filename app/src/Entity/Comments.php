@@ -3,9 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\CommentsRepository;
-use App\Entity\Photos;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommentsRepository::class)]
 class Comments
@@ -15,21 +15,34 @@ class Comments
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Email]
+    #[Assert\Length(max: 255)]
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 1, max: 45)]
     #[ORM\Column(length: 45)]
     private ?string $nick = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Type('string')]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
+    #[Assert\NotNull]
+    #[Assert\Type(\DateTimeInterface::class)]
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     public ?\DateTimeInterface $post_date = null;
 
+    #[Assert\NotNull]
     #[ORM\ManyToOne(targetEntity: Photos::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    public ?photos $photo = null;
+    public ?Photos $photo = null;
+
+    // Getter and Setter methods ...
 
     public function getId(): ?int
     {
@@ -84,12 +97,12 @@ class Comments
         return $this;
     }
 
-    public function getPhoto(): ?photos
+    public function getPhoto(): ?Photos
     {
         return $this->photo;
     }
 
-    public function setPhoto(?photos $photo): static
+    public function setPhoto(?Photos $photo): static
     {
         $this->photo = $photo;
 

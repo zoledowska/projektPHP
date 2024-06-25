@@ -50,10 +50,10 @@ class AlbumsRepository extends ServiceEntityRepository
     {
         return $this->getOrCreateQueryBuilder()
             ->select('partial album.{id, title, description, created_at}')
-            ->orderBy('album.created_at', 'DESC');
+            ->orderBy('album.created_at', 'ASC');
     }
 
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('album');
     }
@@ -80,7 +80,7 @@ class AlbumsRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
-    /**
+    /*
      * Get or create new query builder.
      *
      * @param QueryBuilder|null $queryBuilder Query builder

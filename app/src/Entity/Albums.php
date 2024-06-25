@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\AlbumsRepository;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AlbumsRepository::class)]
 #[ORM\Table(name: 'albums')]
-#[UniqueEntity(fields: ['title'])]
+#[UniqueEntity(fields: ['title'], message: 'This title is already in use.')]
 class Albums
 {
     #[ORM\Id]
@@ -23,25 +22,19 @@ class Albums
 
     #[ORM\Column(length: 255)]
     #[Assert\Type('string')]
-    #[Assert\NotBlank]
-    #[Assert\Length(min: 3, max: 64)]
+    #[Assert\NotBlank(message: 'Title cannot be blank.')]
+    #[Assert\Length(min: 1, max: 64, minMessage: 'Title must be at least {{ limit }} characters long.', maxMessage: 'Title cannot be longer than {{ limit }} characters.')]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: 'Description cannot be blank.')]
+    #[Assert\Type('string')]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotNull(message: 'Creation date cannot be null.')]
+    #[Assert\Type(\DateTime::class)]
     private ?\DateTime $created_at = null;
-
-    /**
-     * Slug.
-     * @var string|null
-     */
-    #[ORM\Column(type: 'string', length: 64)]
-    #[Assert\Type('string')]
-    #[Assert\Length(min: 3, max: 64)]
-    #[Gedmo\Slug(fields: ['title'])]
-    private ?string $slug;
 
     public function __construct()
     {

@@ -11,18 +11,18 @@
             {{ 'action.albums_list'|trans }}
         </a>
         {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ url('users_index') }}" title="{{ 'action.users_list'|trans }}" class="nav-link">
+                {{ 'action.users_list'|trans }}
+            </a>
+           <a href="{{ url('comments_index') }}" title="{{ 'action.comments_list'|trans }}" class="nav-link">
+                {{ 'action.comments_list'|trans }}
+            </a>
             <a href="{{ url('photos_create') }}" title="{{ 'action.photos_create'|trans }}" class="nav-link">
                 {{ 'action.photos_create'|trans }}
             </a>
             <a href="{{ url('albums_create') }}" title="{{ 'action.albums_create'|trans }}" class="nav-link">
                 {{ 'action.albums_create'|trans }}
             </a>
-            <a href="{{ url('users_index') }}" title="{{ 'action.users_list'|trans }}" class="nav-link">
-                {{ 'action.users_list'|trans }}
-            </a>
-       <a href="{{ url('comments_index') }}" title="{{ 'action.comments_list'|trans }}" class="nav-link">
-            {{ 'action.comments_list'|trans }}
-        </a>
         {% endif %}
     </nav>
     {% if pagination is defined and pagination.items|length %}
@@ -37,10 +37,9 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'photos.id') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'photos.title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.description'|trans, 'photos.description') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.photo_file'|trans, 'photos.photo_file') }}</th>
+                <th>{{ 'label.photo_file'|trans }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.upload_date'|trans, 'photos.upload_date') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.album'|trans, 'albums.title') }}</th>
-
+                <th>{{ knp_pagination_sortable(pagination, 'label.album'|trans, 'album.title') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -55,14 +54,6 @@
                     </td>
                     <td>{{ photos.uploadDate|format_date('long') }}</td>
                     <td>
-{#                    {% if is_granted('ROLE_ADMIN') %}
-                        <a type="button" class="btn btn-primary" title="{{ 'action.show' | trans}}" href="{{ url('photos_show', {id: photos.id}) }}">{{ 'action.show' | trans }}</a>
-{#                        <a type="button" class="btn btn-primary" title="{{ 'action.edit' | trans}}" href={{ url('photos_edit') }}>{{ 'action.edit' | trans }}></a>#}
-{#                        <a type="button" class="btn btn-primary" title="{{ 'action.edit' | trans}}" href={{ url('photos_edit') }}>{{ 'action.edit' | trans }}></a>#}
-{#                        {% else %}#}
-{#                       <a href="{{ url('photos_show', {id: photos.id}) }}" title="{{ 'action.view'|trans }}">
-                            {{ 'action.show'|trans }}
-                        </a>#}
                         <a href="{{ url('albums_index', {'filters.albums_id' : photos.album.id}) }}" title="{{ photos.album.title }}">
                             {{ photos.album.title }}
                         </a>                      

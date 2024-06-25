@@ -5,6 +5,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Entity\Users;
 use App\Form\UsersType;
 use App\Repository\UsersRepository;
@@ -27,14 +28,14 @@ class UsersController extends AbstractController
 
     /**
      * Constructor.
-     * @param TranslatorInterface    $translator    Translator
+     *
+     * @param TranslatorInterface   $translator   Translator
      * @param UsersServiceInterface $usersService Users service
      */
     public function __construct(TranslatorInterface $translator, private readonly UsersServiceInterface $usersService)
     {
         $this->translator = $translator;
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Index action.
@@ -47,16 +48,14 @@ class UsersController extends AbstractController
         $pagination = $this->usersService->getPaginatedList($request->query->getInt('page', 1));
 
         return $this->render('users/index.html.twig', ['pagination' => $pagination]);
-    }//end index()
-
+    }// end index()
 
     /**
      * Show action.
      *
-     * @param Request            $request            Request
-     * @param UsersRepository   $UsersRepository   Users Repository
-     * @param PhotosService      $photosService      Photos Service
-     * @param int                $id                 Id
+     * @param Request       $request       Request
+     * @param PhotosService $photosService Photos Service
+     * @param int           $id            Id
      *
      * @return Response HTTP response
      */
@@ -74,7 +73,6 @@ class UsersController extends AbstractController
         return $this->render('users/show.html.twig', ['users' => $user, 'pagination' => $pagination]);
     }
 
-
     /**
      * Create action.
      *
@@ -87,8 +85,6 @@ class UsersController extends AbstractController
         name: 'users_create',
         methods: 'GET|POST',
     )]
-
-
     /**
      * Create action.
      *
@@ -101,15 +97,20 @@ class UsersController extends AbstractController
         name: 'users_create',
         methods: 'GET|POST',
     )]
-    public function create(Request $request): Response
+    public function create(Request $request, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $user = new Users();
         $form   = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('password')->getData()
+                )
+            );
             $this->usersService->save($user);
-
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.created_successfully')
@@ -122,14 +123,13 @@ class UsersController extends AbstractController
             'users/create.html.twig',
             ['form' => $form->createView()]
         );
-    }//end create()
-
+    }// end create()
 
     /**
      * Edit action.
      *
      * @param Request $request HTTP request
-     * @param Users  $users  Users entity
+     * @param Users   $users   Users entity
      *
      * @return Response HTTP response
      */
@@ -164,14 +164,13 @@ class UsersController extends AbstractController
                 'users' => $users,
             ]
         );
-    }//end edit()
-
+    }// end edit()
 
     /**
      * Delete action.
      *
-     * @param Request  $request  HTTP request
-     * @param Users $users Users entity
+     * @param Request $request HTTP request
+     * @param Users   $users   Users entity
      *
      * @return Response HTTP response
      */
@@ -216,4 +215,4 @@ class UsersController extends AbstractController
             ]
         );
     }
-}//end class
+}// end class

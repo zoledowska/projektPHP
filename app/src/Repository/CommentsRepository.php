@@ -57,7 +57,8 @@ class CommentsRepository extends ServiceEntityRepository
                 'partial comments.{id, post_date, content}',
                 'partial photos.{id, title}'
             )
-            ->join('comments.photos', '');
+            ->join('comments.photos', 'photos')
+            ->orderBy('comments.post_date', 'DESC');
     }
 
     /**
@@ -107,7 +108,7 @@ class CommentsRepository extends ServiceEntityRepository
      * Removing comments.
      *
      * @param Comments $entity Comments entity
-     * @param bool    $flush  Flush
+     * @param bool     $flush  Flush
      */
     public function remove(Comments $entity, bool $flush = false): void
     {
@@ -125,7 +126,7 @@ class CommentsRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('comments');
     }

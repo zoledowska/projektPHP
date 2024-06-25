@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="pl" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="label.actions">
+        <source>label.actions</source>
+        <target>Opcje</target>
+      </trans-unit>
+      <trans-unit id="action.show">
+        <source>action.show</source>
+        <target>Pokaż</target>
+      </trans-unit>
+      <trans-unit id="action.edit">
+        <source>action.edit</source>
+        <target>Edytuj</target>
+      </trans-unit>
+      <trans-unit id="action.delete">
+        <source>action.delete</source>
+        <target>Usuń</target>
+      </trans-unit>
+      <trans-unit id="label.id">
+        <source>label.id</source>
+        <target>Identyfikator</target>
+      </trans-unit>
+      <trans-unit id="label.title">
+        <source>label.title</source>
+        <target>Tytuł</target>
+      </trans-unit>
+      <trans-unit id="label.description">
+        <source>label.description</source>
+        <target>Opis</target>
+      </trans-unit>
+      <trans-unit id="label.photo_file">
+        <source>label.photo_file</source>
+        <target>Zdjęcie</target>
+      </trans-unit>
+      <trans-unit id="label.upload_date">
+        <source>label.upload_date</source>
+        <target>Data przesłania</target>
+      </trans-unit>
+      <trans-unit id="label.album">
+        <source>label.album</source>
+        <target>Album</target>
+      </trans-unit>
+      <trans-unit id="message.empty_list">
+        <source>message.empty_list</source>
+        <target>Lista jest pusta</target>
+      </trans-unit>
+      <trans-unit id="message.record_not_found">
+        <source>message.record_not_found</source>
+        <target>Nie znaleziono rekordu</target>
+      </trans-unit>
+      <trans-unit id="message.created_successfully">
+        <source>message.created_successfully</source>
+        <target>Utworzono pomyślnie</target>
+      </trans-unit>
+      <trans-unit id="title.record_list">
+        <source>title.record_list</source>
+        <target>Lista rekordów</target>
+      </trans-unit>
+      <trans-unit id="title.record_view">
+        <source>title.record_view</source>
+        <target>Szczegóły rekordu #%id%</target>
+      </trans-unit>
+      <trans-unit id="action.albums_list">
+        <source>action.albums_list</source>
+        <target>Lista albumów</target>
+      </trans-unit>
+      <trans-unit id="action.photos_create">
+        <source>action.photos_create</source>
+        <target>Dodaj zdjęcie</target>
+      </trans-unit>
+      <trans-unit id="action.albums_create">
+        <source>action.albums_create</source>
+        <target>Utwórz album</target>
+      </trans-unit>
+      <trans-unit id="action.back_to_list">
+        <source>action.back_to_list</source>
+        <target>Powrót</target>
+      </trans-unit>
+      <trans-unit id="title.photos_list">
+        <source>title.photos_list</source>
+        <target>Lista zdjęć</target>
+      </trans-unit>
+      <trans-unit id="title.albums_list">
+        <source>title.albums_list</source>
+        <target>Lista albumów</target>
+      </trans-unit>
+      <trans-unit id="title.photos_details">
+        <source>title.photos_details</source>
+        <target>Szczegóły zdjęcia</target>
+      </trans-unit>
+      <trans-unit id="title.albums_details">
+        <source>title.albums_details</source>
+        <target>Szczegóły albumu</target>
+      </trans-unit>
+      <trans-unit id="action.login">
+        <source>action.login</source>
+        <target>Zaloguj</target>
+      </trans-unit>
+      <trans-unit id="action.logout">
+        <source>action.logout</source>
+        <target>Wyloguj</target>
+      </trans-unit>
+      <trans-unit id="label.author">
+        <source>label.author</source>
+        <target>Autor</target>
+      </trans-unit>
+      <trans-unit id="label.created_at">
+        <source>label.created_at</source>
+        <target>Data utworzenia</target>
+      </trans-unit>
+      <trans-unit id="action.save">
+        <source>action.save</source>
+        <target>Zapisz</target>
+      </trans-unit>
+      <trans-unit id="label.albums_and_photos">
+        <source>label.albums_and_photos</source>
+        <target>Zdjęcia w albumie</target>
+      </trans-unit>
+      <trans-unit id="title.photos_create">
+        <source>title.photos_create</source>
+        <target>Dodaj zdjęcie</target>
+      </trans-unit>
+      <trans-unit id="title.albums_create">
+        <source>title.albums_create</source>
+        <target>Utwórz album</target>
+      </trans-unit>
+      <trans-unit id="action.comments_list">
+        <source>action.comments_list</source>
+        <target>Lista komentarzy</target>
+      </trans-unit>
+      <trans-unit id="message.albums_contains_tasks">
+        <source>message.albums_contains_tasks</source>
+        <target>Album zawiera zadania</target>
+      </trans-unit>
+      <trans-unit id="message.deleted_successfully">
+        <source>message.deleted_successfully</source>
+        <target>Usunięto pomyślnie</target>
+      </trans-unit>
+      <trans-unit id="message.edited_successfully">
+        <source>message.edited_successfully</source>
+        <target>Zapisano zmiany</target>
+      </trans-unit>
+      <trans-unit id="message.user_has_photos">
+        <source>message.user_has_photos</source>
+        <target>Użytkownik ma zdjęcia</target>
+      </trans-unit>
+      <trans-unit id="title.comment_create">
+        <source>title.comment_create</source>
+        <target>Dodaj komentarz</target>
+      </trans-unit>
+      <trans-unit id="action.add">
+        <source>action.add</source>
+        <target>Dodaj</target>
+      </trans-unit>
+      <trans-unit id="title.comment_list">
+        <source>title.comment_list</source>
+        <target>Lista komentarzy</target>
+      </trans-unit>
+      <trans-unit id="label.content">
+        <source>label.content</source>
+        <target>Treść</target>
+      </trans-unit>
+      <trans-unit id="label.post_date">
+        <source>label.post_date</source>
+        <target>Data opublikowania</target>
+      </trans-unit>
+      <trans-unit id="label.photo">
+        <source>label.photo</source>
+        <target>Zdjęcie</target>
+      </trans-unit>
+      <trans-unit id="label.user">
+        <source>label.user</source>
+        <target>Użytkownik</target>
+      </trans-unit>
+      <trans-unit id="label.nick">
+        <source>label.nick</source>
+        <target>Pseudonim</target>
+      </trans-unit>
+      <trans-unit id="title.comment_delete">
+        <source>title.comment_delete</source>
+        <target>Usuń komentarz</target>
+      </trans-unit>
+      <trans-unit id="message.access_denied">
+        <source>message.access_denied</source>
+        <target>Odmowa dostępu</target>
+      </trans-unit>
+      <trans-unit id="title.albums_edit">
+        <source>title.albums_edit</source>
+        <target>Edytuj album</target>
+      </trans-unit>
+      <trans-unit id="photos.photo">
+        <source>photos.photo</source>
+        <target>Zdjęcie</target>
+      </trans-unit>
+      <trans-unit id="title.albums_delete">
+        <source>title.albums_delete</source>
+        <target>Usuń album</target>
+      </trans-unit>
+      <trans-unit id="label.hello">
+        <source>label.hello</source>
+        <target>Cześć</target>
+      </trans-unit>
+      <trans-unit id="message.form_error">
+        <source>message.form_error</source>
+        <target>Błąd formularza</target>
+      </trans-unit>
+      <trans-unit id="title.photos_edit">
+        <source>title.photos_edit</source>
+        <target>Edytuj zdjęcie</target>
+      </trans-unit>
+      <trans-unit id="action.users_list">
+        <source>action.users_list</source>
+        <target>Lista użytkowników</target>
+      </trans-unit>
+      <trans-unit id="title.comments_and_photos">
+        <source>title.comments_and_photos</source>
+        <target>Komentarze do zdjęcia</target>
+      </trans-unit>
+      <trans-unit id="label.comment_delete">
+        <source>label.comment_delete</source>
+        <target>Usuń komentarz</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

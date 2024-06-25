@@ -1,41 +1,46 @@
 <?php
-/**
- * Albums service interface.
- */
+
+// src/Service/AlbumsServiceInterface.php
 
 namespace App\Service;
 
 use App\Entity\Albums;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
-/**
- * Interface AlbumsServiceInterface.
- */
 interface AlbumsServiceInterface
 {
     /**
-     * Get paginated list.
+     * Get paginated list of albums.
      *
      * @param int $page Page number
      *
-     * @return PaginationInterface<string, mixed> Paginated list
+     * @return PaginationInterface<PaginationInterface<string, mixed>> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface;
-    
 
     /**
-     * Save entity.
+     * Save an album entity.
      *
-     * @param Albums $albums Albums entity
+     * @param Albums $album Album entity to save
      */
-    public function save(Albums $albums): void;
+    public function save(Albums $album): void;
 
     /**
-     * Can Albums be deleted?
+     * Delete an album entity.
      *
-     * @param Albums $albums Albums entity
+     * @param Albums $album Album entity to delete
      *
-     * @return bool Result
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
-    public function canBeDeleted(Albums $albums): bool;
+    public function delete(Albums $album): void;
+
+    /**
+     * Check if an album can be deleted.
+     *
+     * @param Albums $album Album entity to check
+     *
+     * @return bool Whether the album can be deleted
+     */
+    public function canBeDeleted(Albums $album): bool;
 }

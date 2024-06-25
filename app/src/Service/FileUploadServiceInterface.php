@@ -5,7 +5,6 @@
 
 namespace App\Service;
 
-use App\Entity\PhotoFile;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**

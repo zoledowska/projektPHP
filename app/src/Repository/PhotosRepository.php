@@ -72,11 +72,11 @@ class PhotosRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('photos');
     }
-    
+
     /**
      * Save entity.
      *
@@ -88,6 +88,7 @@ class PhotosRepository extends ServiceEntityRepository
         $this->_em->persist($photos);
         $this->_em->flush();
     }
+
     /**
      * Delete entity.
      *
@@ -104,7 +105,7 @@ class PhotosRepository extends ServiceEntityRepository
     }
 
     /**
-     * Count photoss by album.
+     * Count photos by album.
      *
      * @param Albums $album Albums
      *
@@ -123,6 +124,7 @@ class PhotosRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
     /**
      * Query photoss by author.
      *

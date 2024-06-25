@@ -23,16 +23,14 @@
         <table class="table table-striped align-middle">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'albums.id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'albums.title') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.description'|trans, 'albums.description') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'albums.created_at') }}</th>
-
-                {% if is_granted('ROLE_ADMIN') %}
-                    <th>{{ 'label.actions'|trans }}</th>
-                {% endif %}
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'album.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'album.title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.description'|trans, 'album.description') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'album.created_at') }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
+
             <tbody>
             {% for albums in pagination.items %}
                 <tr>

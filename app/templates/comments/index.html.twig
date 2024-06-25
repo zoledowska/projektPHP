@@ -16,12 +16,12 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'comment.id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.content'|trans, 'comment.content') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.post_date'|trans, 'comment.post_date') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.photo'|trans, 'comment.photo') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.user'|trans, 'comment.user') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.nick'|trans, 'comment.user.nick') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'comments.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.content'|trans, 'comments.content') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.post_date'|trans, 'comments.post_date') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.photo'|trans, 'comments.photo') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.user'|trans, 'comments.user') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.nick'|trans, 'comments.user.nick') }}</th>
 
                 {% if is_granted('ROLE_ADMIN') %}
                     <th>{{ 'label.actions'|trans }}</th>

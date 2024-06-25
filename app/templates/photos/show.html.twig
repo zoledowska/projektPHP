@@ -23,7 +23,7 @@
         </dl>
 
         {% if photos.photoFileName is defined and photos.photoFileName|length %}
-            <img style="width:100%;object-fit:contain" class="nav-profile-img" src="{{ asset(photoFile_directory~photos.photoFileName) }}">
+            <img style="width:25%;object-fit:contain" class="nav-profile-img" src="{{ asset(photoFile_directory~photos.photoFileName) }}">
         {% endif %}
 
     <h3 class="mt-6">{{ 'title.comments_and_photos'|trans({'%id%': photos.id|default('')}) }}</h3>
@@ -35,8 +35,14 @@
             <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(comments, 'label.user'|trans, 'comments.user') }}</th>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                <th>{{ knp_pagination_sortable(comments, 'label.email'|trans, 'comments.email') }}</th>
+                {% endif %}
+
                 <th>{{ knp_pagination_sortable(comments, 'label.content'|trans, 'comments.content') }}</th>
                 <th>{{ knp_pagination_sortable(comments, 'label.post_date'|trans, 'comments.created_at') }}</th>
+
                 {% if is_granted('ROLE_ADMIN') %}
                 <th>{{ 'label.comment_delete'|trans }}</th>
                 {% endif %}
@@ -50,6 +56,11 @@
                         <td>{{ comment.nick }}</td>
                     {% else %} <td> null </td>
                     {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <td>{{ comment.email }}</td>
+                    {% endif %}
+
                     <td>{{ comment.content }}</td>
                     <td>{{ comment.post_date|format_date('long') }}</td>
                     <td>

@@ -40,9 +40,9 @@ class CommentsController extends AbstractController
     /**
      * Constructor.
      *
-     * @param CommentsServiceInterface $commentsService    CommentsServiceInteraface
-     * @param TranslatorInterface     $translator        Translator
-     * @param PhotosRepository       $photosRepository Photos Repository
+     * @param CommentsServiceInterface $commentsService  CommentsServiceInteraface
+     * @param TranslatorInterface      $translator       Translator
+     * @param PhotosRepository         $photosRepository Photos Repository
      */
     public function __construct(CommentsServiceInterface $commentsService, TranslatorInterface $translator, PhotosRepository $photosRepository)
     {
@@ -53,9 +53,9 @@ class CommentsController extends AbstractController
     /**
      * Index action.
      *
-     * @param Request            $request           HTTP Request
-     * @param CommentsRepository  $commentsRepository comments repository
-     * @param PaginatorInterface $paginator         Paginator
+     * @param Request            $request            HTTP Request
+     * @param CommentsRepository $commentsRepository comments repository
+     * @param PaginatorInterface $paginator          Paginator
      *
      * @return Response HTTP response
      */
@@ -75,7 +75,7 @@ class CommentsController extends AbstractController
      * Show action.
      *
      * @param CommentsRepository $commentsRepository Comments Repository
-     * @param int               $id                Id
+     * @param int                $id                 Id
      *
      * @return Response HTTP response
      */
@@ -99,7 +99,7 @@ class CommentsController extends AbstractController
      * Create action.
      *
      * @param Request $request HTTP request
-     * @param Photos $photos Photos
+     * @param Photos  $photos  Photos
      *
      * @return Response HTTP response
      */
@@ -136,7 +136,7 @@ class CommentsController extends AbstractController
     /**
      * Delete.
      *
-     * @param Request $request Request
+     * @param Request  $request  Request
      * @param Comments $comments Comments
      *
      * @return Response Response

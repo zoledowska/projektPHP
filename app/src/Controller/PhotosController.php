@@ -5,25 +5,19 @@
 
 namespace App\Controller;
 
-use App\Entity\Comments;
 use App\Entity\Photos;
 use App\Entity\Users;
-use App\Repository\CommentsRepository;
 use App\Repository\PhotosRepository;
 use App\Form\Type\PhotosType;
 use App\Service\CommentsService;
-use App\Service\PhotosService;
 use App\Service\PhotosServiceInterface;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
-//use Symfony\Component\Routing\Attribute\Route; tego importu nie chcemy
+// use Symfony\Component\Routing\Attribute\Route; tego importu nie chcemy
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
@@ -51,14 +45,6 @@ class PhotosController extends AbstractController
 
     private CommentsService $commentsService;
 
-
-    /**
-     * @param PhotosServiceInterface $photosService
-     * @param TranslatorInterface $translator
-     * @param PhotosRepository $photosRepository
-     * @param string $photoFileDirectory
-     * @param CommentsService $commentsService
-     */
     public function __construct(PhotosServiceInterface $photosService, TranslatorInterface $translator, PhotosRepository $photosRepository, string $photoFileDirectory, CommentsService $commentsService)
     {
         $this->photosService = $photosService;
@@ -72,12 +58,14 @@ class PhotosController extends AbstractController
      * Index action.
      *
      * @param Request $request HTTP Request
+     *
      * @return Response HTTP response
      */
     #[Route(name: 'photos_index', methods: 'GET')]
     public function index(Request $request): Response
     {
         $pagination = $this->photosService->getPaginatedList($request->query->getInt('page', 1));
+
         return $this->render('photos/index.html.twig', ['pagination' => $pagination]);
     }
 
@@ -97,6 +85,7 @@ class PhotosController extends AbstractController
     public function show(Photos $photos): Response
     {
         $comments = $this->commentsService->getPaginatedListByPhotos(1, $photos);
+
         return $this->render('photos/show.html.twig', ['photos' => $photos, 'comments' => $comments]);
     }
 
@@ -148,11 +137,12 @@ class PhotosController extends AbstractController
             ['form' => $form->createView()]
         );
     }
+
     /**
      * Edit action.
      *
-     * @param Request  $request  HTTP request
-     * @param Photos $photos Photos entity
+     * @param Request $request HTTP request
+     * @param Photos  $photos  Photos entity
      *
      * @return Response HTTP response
      */
@@ -174,7 +164,7 @@ class PhotosController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('message.created_successfully')
+                $this->translator->trans('message.edited_successfully')
             );
 
             return $this->redirectToRoute('photos_index');
@@ -188,11 +178,12 @@ class PhotosController extends AbstractController
             ]
         );
     }
+
     /**
      * Delete action.
      *
-     * @param Request  $request  HTTP request
-     * @param Photos $photos Photos entity
+     * @param Request $request HTTP request
+     * @param Photos  $photos  Photos entity
      *
      * @return Response HTTP response
      */

@@ -36,9 +36,7 @@ class AlbumsService implements AlbumsServiceInterface
     /**
      * Constructor.
      *
-     * @param PhotosRepository $photosRepository
      * @param PaginatorInterface $paginator Paginator
-     * @param AlbumsRepository $albumsRepository
      */
     public function __construct(PhotosRepository $photosRepository, PaginatorInterface $paginator, AlbumsRepository $albumsRepository)
     {
@@ -62,6 +60,7 @@ class AlbumsService implements AlbumsServiceInterface
             self::PAGINATOR_ITEMS_PER_PAGE
         );
     }
+
     /**
      * Save entity.
      *
@@ -76,6 +75,7 @@ class AlbumsService implements AlbumsServiceInterface
 
         $this->albumsRepository->save($albums);
     }
+
     /**
      * Delete entity.
      *
@@ -88,6 +88,7 @@ class AlbumsService implements AlbumsServiceInterface
     {
         $this->albumsRepository->delete($albums);
     }
+
     /**
      * Can Albums be deleted?
      *

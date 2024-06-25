@@ -11,7 +11,7 @@ use App\Entity\Albums;
  */
 class AlbumsFixtures extends AbstractBaseFixtures
 {
-/**
+    /**
      * Load data.
      *
      * @psalm-suppress PossiblyNullReference

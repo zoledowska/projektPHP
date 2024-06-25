@@ -17,6 +17,7 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class CommentsService implements CommentsServiceInterface
 {
+    private const PAGINATOR_ITEMS_PER_PAGE = 10;
     /**
      * Comments repository.
      */
@@ -30,8 +31,8 @@ class CommentsService implements CommentsServiceInterface
     /**
      * Constructor.
      *
-     * @param CommentsRepository  $commentsRepository Comments repository
-     * @param PaginatorInterface $paginator         Paginator
+     * @param CommentsRepository $commentsRepository Comments repository
+     * @param PaginatorInterface $paginator          Paginator
      */
     public function __construct(CommentsRepository $commentsRepository, PaginatorInterface $paginator)
     {
@@ -49,16 +50,16 @@ class CommentsService implements CommentsServiceInterface
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->commentsRepository->QueryAll(),
+            $this->commentsRepository->queryAll(),
             $page,
-            CommentsRepository::PAGINATOR_ITEMS_PER_PAGE
+            self::PAGINATOR_ITEMS_PER_PAGE
         );
     }
 
     /**
      * Paginated list by users.
      *
-     * @param int     $page    Page
+     * @param int    $page   Page
      * @param Photos $photos Photos
      *
      * @return PaginationInterface Paginator interface
@@ -77,7 +78,7 @@ class CommentsService implements CommentsServiceInterface
     /**
      * Paginated list by users.
      *
-     * @param int  $page Page
+     * @param int   $page Page
      * @param Users $user Users
      *
      * @return PaginationInterface Paginator interface
@@ -117,7 +118,6 @@ class CommentsService implements CommentsServiceInterface
         }
         $this->commentsRepository->save($comments);
     }
-
 
     /**
      * Delete entity.

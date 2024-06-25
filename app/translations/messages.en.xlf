@@ -130,6 +130,154 @@
         <source>action.comments_list</source>
         <target>Comment list</target>
       </trans-unit>
+      <trans-unit id="message.albums_contains_tasks">
+          <source>message.albums_contains_tasks</source>
+          <target>Album contains tasks</target>
+      </trans-unit>
+      <trans-unit id="message.deleted_successfully">
+          <source>message.deleted_successfully</source>
+          <target>Deleted successfully</target>
+      </trans-unit>
+      <trans-unit id="message.edited_successfully">
+          <source>message.edited_successfully</source>
+          <target>Edited successfully</target>
+      </trans-unit>
+      <trans-unit id="message.user_has_photos">
+          <source>message.user_has_photos</source>
+          <target>User has photos</target>
+      </trans-unit>
+      <trans-unit id="title.comment_create">
+          <source>title.comment_create</source>
+          <target>Create comment</target>
+      </trans-unit>
+      <trans-unit id="action.add">
+          <source>action.add</source>
+          <target>Add</target>
+      </trans-unit>
+      <trans-unit id="title.comment_list">
+          <source>title.comment_list</source>
+          <target>Comment list</target>
+      </trans-unit>
+      <trans-unit id="label.content">
+          <source>label.content</source>
+          <target>Content</target>
+      </trans-unit>
+      <trans-unit id="label.post_date">
+          <source>label.post_date</source>
+          <target>Post date</target>
+      </trans-unit>
+      <trans-unit id="label.photo">
+          <source>label.photo</source>
+          <target>Photo</target>
+      </trans-unit>
+      <trans-unit id="label.user">
+          <source>label.user</source>
+          <target>User</target>
+      </trans-unit>
+      <trans-unit id="label.nick">
+          <source>label.nick</source>
+          <target>Nickname</target>
+      </trans-unit>
+      <trans-unit id="title.comment_delete">
+          <source>title.comment_delete</source>
+          <target>Delete comment</target>
+      </trans-unit>
+      <trans-unit id="message.access_denied">
+          <source>message.access_denied</source>
+          <target>Access denied</target>
+      </trans-unit>
+      <trans-unit id="title.albums_edit">
+          <source>title.albums_edit</source>
+          <target>Edit album</target>
+      </trans-unit>
+      <trans-unit id="photos.photo">
+          <source>photos.photo</source>
+          <target>Photo</target>
+      </trans-unit>
+      <trans-unit id="title.albums_delete">
+          <source>title.albums_delete</source>
+          <target>Delete album</target>
+      </trans-unit>
+      <trans-unit id="label.hello">
+          <source>label.hello</source>
+          <target>Hello</target>
+      </trans-unit>
+      <trans-unit id="message.form_error">
+          <source>message.form_error</source>
+          <target>Form error</target>
+      </trans-unit>
+      <trans-unit id="title.photos_edit">
+          <source>title.photos_edit</source>
+          <target>Edit photo</target>
+      </trans-unit>
+      <trans-unit id="action.users_list">
+          <source>action.users_list</source>
+          <target>User list</target>
+      </trans-unit>
+      <trans-unit id="title.comments_and_photos">
+          <source>title.comments_and_photos</source>
+          <target>Comments for this photo</target>
+      </trans-unit>
+      <trans-unit id="label.comment_delete">
+          <source>label.comment_delete</source>
+          <target>Delete comment</target>
+      </trans-unit>
+      <trans-unit id="message.comments_not_found">
+          <source>message.comments_not_found</source>
+          <target>There is no comments for this photo yet</target>
+      </trans-unit>
+      <trans-unit id="action.add_comment">
+          <source>action.add_comment</source>
+          <target>Add comment</target>
+      </trans-unit>
+      <trans-unit id="title.photos_delete">
+          <source>title.photos_delete</source>
+          <target>Delete photo</target>
+      </trans-unit>
+      <trans-unit id="title.users_create">
+          <source>title.users_create</source>
+          <target>Create user</target>
+      </trans-unit>
+      <trans-unit id="title.users_edit">
+          <source>title.users_edit</source>
+          <target>Edit user</target>
+      </trans-unit>
+      <trans-unit id="title.users_list">
+          <source>title.users_list</source>
+          <target>User list</target>
+      </trans-unit>
+      <trans-unit id="action.photos_list">
+          <source>action.photos_list</source>
+          <target>Photos list</target>
+      </trans-unit>
+      <trans-unit id="action.users_create">
+          <source>action.users_create</source>
+          <target>Create user</target>
+      </trans-unit>
+      <trans-unit id="label.email">
+          <source>label.email</source>
+          <target>Email</target>
+      </trans-unit>
+      <trans-unit id="label.roles">
+          <source>label.roles</source>
+          <target>Roles</target>
+      </trans-unit>
+      <trans-unit id="title.users_delete">
+          <source>title.users_delete</source>
+          <target>Delete user</target>
+      </trans-unit>
+      <trans-unit id="label.photoFile">
+          <source>label.photoFile</source>
+          <target>Photo file</target>
+      </trans-unit>
+      <trans-unit id="label.new_password">
+          <source>label.new_password</source>
+          <target>New password</target>
+      </trans-unit>
+      <trans-unit id="label.repeat_new_password">
+          <source>label.repeat_new_password</source>
+          <target>Repeat new password</target>
+      </trans-unit>
       </body>
   </file>
 </xliff>

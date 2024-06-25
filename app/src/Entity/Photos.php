@@ -8,10 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- *
- */
 #[ORM\Entity(repositoryClass: PhotosRepository::class)]
 class Photos
 {
@@ -21,36 +19,43 @@ class Photos
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Title cannot be blank.')]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 1, max: 255, minMessage: 'Title must be at least {{ limit }} characters long.', maxMessage: 'Title cannot be longer than {{ limit }} characters.')]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: 'Description cannot be blank.')]
+    #[Assert\Type('string')]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[Gedmo\Timestampable(on: 'create')]
+    #[Assert\NotNull(message: 'Upload date cannot be null.')]
+    #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTimeInterface $upload_date = null;
 
     #[ORM\ManyToOne(targetEntity: Albums::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull(message: 'Album cannot be null.')]
     private ?Albums $album = null;
 
-    /**
-     * Author.
-     *
-     * @var Users|null
-     */
     #[ORM\ManyToOne(targetEntity: Users::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Users $author;
+    #[Assert\NotNull(message: 'Author cannot be null.')]
+    private ?Users $author = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-//    #[ORM\JoinColumn(nullable: false)]
+    #[Assert\Valid]
     private ?PhotoFile $photoFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Type('string')]
+    #[Assert\Length(max: 255, maxMessage: 'File name cannot be longer than {{ limit }} characters.')]
     private ?string $photo_file_name = null;
 
     #[ORM\OneToMany(mappedBy: 'photo', targetEntity: Comments::class, fetch: 'EAGER', orphanRemoval: true)]
+    #[Assert\Valid]
     private Collection $comments;
 
     public function __construct()
@@ -86,10 +91,12 @@ class Photos
 
         return $this;
     }
+
     public function getUploadDate(): ?\DateTimeInterface
     {
         return $this->upload_date;
     }
+
     public function setUploadDate(\DateTimeInterface $upload_date): static
     {
         $this->upload_date = $upload_date;
@@ -109,24 +116,24 @@ class Photos
         return $this;
     }
 
-    public function getAuthor(): ?users
+    public function getAuthor(): ?Users
     {
         return $this->author;
     }
 
-    public function setAuthor(?users $author): static
+    public function setAuthor(?Users $author): static
     {
         $this->author = $author;
 
         return $this;
     }
 
-    public function getPhotoFile(): ?photoFile
+    public function getPhotoFile(): ?PhotoFile
     {
         return $this->photoFile;
     }
 
-    public function setPhotoFile(photoFile $photoFile): static
+    public function setPhotoFile(?PhotoFile $photoFile): static
     {
         $this->photoFile = $photoFile;
 

@@ -38,9 +38,7 @@ class UsersService implements UsersServiceInterface
     /**
      * Constructor.
      *
-     * @param PhotosRepository $photosRepository
      * @param PaginatorInterface $paginator Paginator
-     * @param UsersRepository $usersRepository
      */
     public function __construct(PhotosRepository $photosRepository, PaginatorInterface $paginator, UsersRepository $usersRepository)
     {
@@ -64,6 +62,7 @@ class UsersService implements UsersServiceInterface
             self::PAGINATOR_ITEMS_PER_PAGE
         );
     }
+
     /**
      * Save entity.
      *
@@ -71,10 +70,9 @@ class UsersService implements UsersServiceInterface
      */
     public function save(Users $users): void
     {
-
-
         $this->usersRepository->save($users);
     }
+
     /**
      * Delete entity.
      *
@@ -87,6 +85,7 @@ class UsersService implements UsersServiceInterface
     {
         $this->usersRepository->delete($users);
     }
+
     /**
      * Can Users be deleted?
      *
@@ -98,8 +97,13 @@ class UsersService implements UsersServiceInterface
     {
         try {
             $result = $this->photosRepository->queryByAuthor($users);
-            return !($result->getQuery()->getSingleScalarResult());
-        } catch (NoResultException|NonUniqueResultException) {
+            $count = $result->getQuery()->getSingleScalarResult();
+            return $count == 0;
+        }
+        catch (NoResultException) {
+            return true;
+        }
+        catch(NonUniqueResultException) {
             return false;
         }
     }

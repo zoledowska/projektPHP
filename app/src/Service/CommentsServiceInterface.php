@@ -26,7 +26,7 @@ interface CommentsServiceInterface
     /**
      * Get paginated list by photos.
      *
-     * @param int     $page    Page
+     * @param int    $page   Page
      * @param Photos $photos Photos
      *
      * @return PaginationInterface Paginator interface
@@ -36,7 +36,7 @@ interface CommentsServiceInterface
     /**
      * Get paginated list by user.
      *
-     * @param int  $page Page
+     * @param int   $page Page
      * @param Users $user User
      *
      * @return PaginationInterface Paginator interface

@@ -7,8 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Albums;
 use App\Form\Type\AlbumsType;
-use App\Repository\AlbumsRepository;
-use App\Service\AlbumsServiceInterface;
+use App\Service\AlbumsService;
 use App\Service\PhotosService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,16 +23,21 @@ class AlbumsController extends AbstractController
 {
     private $translator;
 
+    private PhotosService $photosService;
+
+    private AlbumsService $albumsService;
+
     /**
      * Constructor.
-     * @param TranslatorInterface    $translator    Translator
-     * @param AlbumsServiceInterface $albumsService Albums service
+     *
+     * @param TranslatorInterface $translator Translator
      */
-    public function __construct(TranslatorInterface $translator, private readonly AlbumsServiceInterface $albumsService)
+    public function __construct(TranslatorInterface $translator, PhotosService $photosService, AlbumsService $albumsService)
     {
         $this->translator = $translator;
-    }//end __construct()
-
+        $this->photosService = $photosService;
+        $this->albumsService = $albumsService;
+    }// end __construct()
 
     /**
      * Index action.
@@ -46,16 +50,12 @@ class AlbumsController extends AbstractController
         $pagination = $this->albumsService->getPaginatedList($request->query->getInt('page', 1));
 
         return $this->render('albums/index.html.twig', ['pagination' => $pagination]);
-    }//end index()
-
+    }// end index()
 
     /**
      * Show action.
      *
-     * @param Request            $request            Request
-     * @param AlbumsRepository   $AlbumsRepository   Albums Repository
-     * @param PhotosService      $photosService      Photos Service
-     * @param int                $id                 Id
+     * @param Request $request Request
      *
      * @return Response HTTP response
      */
@@ -65,14 +65,12 @@ class AlbumsController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET'
     )]
-    public function show(Request $request, AlbumsRepository $albumsRepository, PhotosService $photosService, int $id): Response
+    public function show(Request $request, Albums $albums): Response
     {
-        $album = $albumsRepository->find($id);
-        $pagination = $photosService->getPaginatedList($request->query->getInt('page', 1), $album);
+        $pagination = $this->photosService->getPhotosByAlbum($request->query->getInt('page', 1), $albums);
 
-        return $this->render('albums/show.html.twig', ['albums' => $album, 'pagination' => $pagination]);
+        return $this->render('albums/show.html.twig', ['albums' => $albums, 'pagination' => $pagination]);
     }
-
 
     /**
      * Create action.
@@ -86,8 +84,6 @@ class AlbumsController extends AbstractController
         name: 'albums_create',
         methods: 'GET|POST',
     )]
-
-
     /**
      * Create action.
      *
@@ -121,8 +117,7 @@ class AlbumsController extends AbstractController
             'albums/create.html.twig',
             ['form' => $form->createView()]
         );
-    }//end create()
-
+    }// end create()
 
     /**
      * Edit action.
@@ -150,7 +145,7 @@ class AlbumsController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('message.created_successfully')
+                $this->translator->trans('message.edited_successfully')
             );
 
             return $this->redirectToRoute('albums_index');
@@ -163,20 +158,20 @@ class AlbumsController extends AbstractController
                 'albums' => $albums,
             ]
         );
-    }//end edit()
-
+    }// end edit()
 
     /**
      * Delete action.
      *
-     * @param Request  $request  HTTP request
-     * @param Albums $albums Albums entity
+     * @param Request $request HTTP request
+     * @param Albums  $albums  Albums entity
      *
      * @return Response HTTP response
      */
     #[Route('/{id}/delete', name: 'albums_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Albums $albums): Response
     {
+
         if (!$this->albumsService->canBeDeleted($albums)) {
             $this->addFlash(
                 'warning',
@@ -197,6 +192,7 @@ class AlbumsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $this->albumsService->delete($albums);
 
             $this->addFlash(
@@ -215,4 +211,4 @@ class AlbumsController extends AbstractController
             ]
         );
     }
-}//end class
+}// end class

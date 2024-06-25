@@ -1,38 +1,45 @@
 <?php
-/**
- * Photos service interface.
- */
+
+// src/Service/PhotosServiceInterface.php
 
 namespace App\Service;
 
 use App\Entity\Photos;
+use App\Entity\Albums;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
-/**
- * Interface PhotosServiceInterface.
- */
 interface PhotosServiceInterface
 {
     /**
-     * Get paginated list.
+     * Get paginated list of photos.
      *
      * @param int $page Page number
      *
-     * @return PaginationInterface<string, mixed> Paginated list
+     * @return PaginationInterface<PaginationInterface<string, mixed>> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface;
 
     /**
-     * Save entity.
+     * Get paginated list of photos by album.
      *
-     * @param Photos $photos Photos entity
+     * @param int    $page   Page number
+     * @param Albums $albums Album entity
+     *
+     * @return PaginationInterface<PaginationInterface<string, mixed>> Paginated list
      */
-    public function save(Photos $photos): void;
+    public function getPhotosByAlbum(int $page, Albums $albums): PaginationInterface;
 
     /**
-     * Delete entity.
+     * Save a photo entity.
      *
-     * @param Photos $photos Photos entity
+     * @param Photos $photo Photo entity to save
      */
-    public function delete(Photos $photos): void;
+    public function save(Photos $photo): void;
+
+    /**
+     * Delete a photo entity.
+     *
+     * @param Photos $photo Photo entity to delete
+     */
+    public function delete(Photos $photo): void;
 }

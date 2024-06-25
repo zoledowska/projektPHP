@@ -6,8 +6,8 @@
 namespace App\Service;
 
 use App\Entity\Photos;
+use App\Entity\Albums;
 use App\Repository\PhotosRepository;
-use Doctrine\ORM\EntityManager;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
@@ -31,8 +31,8 @@ class PhotosService implements PhotosServiceInterface
     /**
      * Constructor.
      *
-     * @param PhotosRepository     $photosRepository Photos repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param PhotosRepository   $photosRepository Photos repository
+     * @param PaginatorInterface $paginator        Paginator
      */
     public function __construct(private readonly PhotosRepository $photosRepository, private readonly PaginatorInterface $paginator)
     {
@@ -54,6 +54,17 @@ class PhotosService implements PhotosServiceInterface
         );
     }
 
+    public function getPhotosByAlbum(int $page, Albums $albums): PaginationInterface
+    {
+        return $this->paginator->paginate(
+            $this->photosRepository->findBy(
+                ['album' => $albums],
+            ),
+            $page,
+            self::PAGINATOR_ITEMS_PER_PAGE
+        );
+    }
+
     /**
      * Save entity.
      *
@@ -67,6 +78,7 @@ class PhotosService implements PhotosServiceInterface
 
         $this->photosRepository->save($photos);
     }
+
     /**
      * Delete entity.
      *

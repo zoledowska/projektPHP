@@ -28,3 +28,5 @@
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
 migrations
+
+phpDocumentor.phar

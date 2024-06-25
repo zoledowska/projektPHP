@@ -3,11 +3,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\Comments;
-use App\Entity\Photos;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Generator;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class CommentsFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
@@ -16,11 +14,10 @@ class CommentsFixtures extends AbstractBaseFixtures implements DependentFixtureI
      */
     protected ?Generator $faker;
 
-
     /**
      * Persistence object manager.
      */
-    //protected ?ObjectManager $manager;
+    // protected ?ObjectManager $manager;
 
     /**
      * Load data.
