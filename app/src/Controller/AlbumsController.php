@@ -202,7 +202,6 @@ class AlbumsController extends AbstractController
 
             return $this->redirectToRoute('albums_index');
         }
-
         return $this->render(
             'albums/delete.html.twig',
             [

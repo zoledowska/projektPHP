@@ -126,7 +126,7 @@ class PhotosRepository extends ServiceEntityRepository
     }
 
     /**
-     * Query photoss by author.
+     * Query photos by author.
      *
      * @param Users $user Users entity
      *

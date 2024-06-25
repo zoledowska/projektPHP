@@ -111,13 +111,16 @@ class CommentsController extends AbstractController
         $comments->setEmail($user->getEmail());
         $comments->setNick($user->getNick());
         $comments->setPhoto($photos);
+        $comments->setPostDate(new \DateTime('now'));
 
         $form = $this->createForm(
             CommentsType::class,
             $comments,
             ['action' => $this->generateUrl('comments_create', ['id' => $photos->getId()]), 'current_user' => $user, 'current_photos' => $photos]
         );
+        // Blad
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->commentsService->save($comments);

@@ -107,9 +107,10 @@ class PhotosController extends AbstractController
         $users = $this->getUser();
         $photos = new Photos();
         $photos->setAuthor($users);
+        $photos->setUploadDate(new \DateTime('now'));
+
         $form = $this->createForm(PhotosType::class, $photos);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->addFlash(
                 'success',
@@ -147,7 +148,7 @@ class PhotosController extends AbstractController
      * @return Response HTTP response
      */
     #[Route('/{id}/edit', name: 'photos_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-    public function edit(Request $request, Photos $photos): Response
+    public function edit(Request $request, Photos $photos, string $photoFileDirectory, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(
             PhotosType::class,
@@ -160,12 +161,26 @@ class PhotosController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->photosService->save($photos);
+
+            $file = $form->get('photoFile')->getData();
+
+            if ($file) {
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+
+                $file->move($photoFileDirectory, $newFilename);
+                $photos->setPhotoFilename($newFilename);
+
+                $this->photosService->save($photos);
+            }
 
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.edited_successfully')
             );
+
 
             return $this->redirectToRoute('photos_index');
         }
