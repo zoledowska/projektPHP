@@ -98,12 +98,6 @@ class AlbumsService implements AlbumsServiceInterface
      */
     public function canBeDeleted(Albums $albums): bool
     {
-        try {
-            $result = $this->photosRepository->countByAlbums($albums);
-
-            return !($result > 0);
-        } catch (NoResultException|NonUniqueResultException) {
-            return false;
-        }
+        return !($this->photosRepository->findBy(['album' => $albums]));
     }
 }
