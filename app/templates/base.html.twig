@@ -20,10 +20,10 @@
     <div class="container-fluid">
         {% if is_granted('ROLE_USER') %}
             <span style="float: right">{{ 'label.hello'|trans }} {{ app.user.nick }}</span><br>
-            <a style="float: right" type="button" class="btn btn-primary" title="{{ 'action.logout' | trans}}" href="/logout">{{ 'action.logout' | trans }}</a>
+            <a style="float: right" type="button" class="btn btn-primary" title="{{ 'action.logout' | trans}}" href="{{ url('app_logout') }}" >{{ 'action.logout' | trans }}</a>
             </div>
         {% else %}
-            <a style="float: right; margin-top: 10px;" type="button" class="btn btn-primary" title="{{ 'action.login' | trans}}" href="/login">{{ 'action.login' | trans }}</a>
+            <a style="float: right; margin-top: 10px;" type="button" class="btn btn-primary" title="{{ 'action.login' | trans}}" href="{{ url('app_login') }}" >{{ 'action.login' | trans }}</a>
         {% endif %}        {% for type, messages in app.session.flashBag.all %}
             {% for message in messages %}
                 <div class="alert alert-{{ type }}" role="alert">
@@ -32,7 +32,6 @@
             {% endfor %}
         {% endfor %}
         {% block body %}{% endblock %}
-    </div>
 </main>
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
