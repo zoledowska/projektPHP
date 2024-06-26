@@ -1,12 +1,17 @@
 <?php
-
-// src/Service/AlbumsServiceInterface.php
+/**
+ * Albums service interface.
+ */
 
 namespace App\Service;
 
 use App\Entity\Albums;
+use Doctrine\ORM\OptimisticLockException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
+/**
+ * Interface AlbumsServiceInterface.
+ */
 interface AlbumsServiceInterface
 {
     /**

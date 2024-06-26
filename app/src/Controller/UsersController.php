@@ -5,9 +5,9 @@
 
 namespace App\Controller;
 
+use App\Form\Type\UsersType;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Entity\Users;
-use App\Form\UsersType;
 use App\Repository\UsersRepository;
 use App\Service\UsersServiceInterface;
 use App\Service\PhotosService;
@@ -24,7 +24,15 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/user')]
 class UsersController extends AbstractController
 {
-    private $translator;
+    /**
+     * Translator.
+     */
+    private TranslatorInterface $translator;
+
+    /**
+     * Users service.
+     */
+    private UsersServiceInterface $usersService;
 
     /**
      * Constructor.
@@ -32,13 +40,16 @@ class UsersController extends AbstractController
      * @param TranslatorInterface   $translator   Translator
      * @param UsersServiceInterface $usersService Users service
      */
-    public function __construct(TranslatorInterface $translator, private readonly UsersServiceInterface $usersService)
+    public function __construct(TranslatorInterface $translator, UsersServiceInterface $usersService)
     {
         $this->translator = $translator;
-    }// end __construct()
+        $this->usersService = $usersService;
+    }
 
     /**
      * Index action.
+     *
+     * @param Request $request HTTP Request
      *
      * @return Response HTTP response
      */
@@ -48,14 +59,15 @@ class UsersController extends AbstractController
         $pagination = $this->usersService->getPaginatedList($request->query->getInt('page', 1));
 
         return $this->render('users/index.html.twig', ['pagination' => $pagination]);
-    }// end index()
+    }
 
     /**
      * Show action.
      *
-     * @param Request       $request       Request
-     * @param PhotosService $photosService Photos Service
-     * @param int           $id            Id
+     * @param Request         $request         HTTP request
+     * @param UsersRepository $usersRepository Users repository
+     * @param PhotosService   $photosService   Photos Service
+     * @param int             $id              User ID
      *
      * @return Response HTTP response
      */
@@ -76,19 +88,8 @@ class UsersController extends AbstractController
     /**
      * Create action.
      *
-     * @param Request $request HTTP request
-     *
-     * @return Response HTTP response
-     */
-    #[Route(
-        '/create',
-        name: 'users_create',
-        methods: 'GET|POST',
-    )]
-    /**
-     * Create action.
-     *
-     * @param Request $request HTTP request
+     * @param Request                     $request            HTTP request
+     * @param UserPasswordHasherInterface $userPasswordHasher Password hasher
      *
      * @return Response HTTP response
      */
@@ -100,7 +101,7 @@ class UsersController extends AbstractController
     public function create(Request $request, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $user = new Users();
-        $form   = $this->createForm(UsersType::class, $user);
+        $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -123,7 +124,7 @@ class UsersController extends AbstractController
             'users/create.html.twig',
             ['form' => $form->createView()]
         );
-    }// end create()
+    }
 
     /**
      * Edit action.
@@ -160,11 +161,11 @@ class UsersController extends AbstractController
         return $this->render(
             'users/edit.html.twig',
             [
-                'form'   => $form->createView(),
+                'form' => $form->createView(),
                 'users' => $users,
             ]
         );
-    }// end edit()
+    }
 
     /**
      * Delete action.
@@ -215,4 +216,4 @@ class UsersController extends AbstractController
             ]
         );
     }
-}// end class
+}

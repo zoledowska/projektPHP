@@ -130,9 +130,9 @@
         <source>action.comments_list</source>
         <target>Comment list</target>
       </trans-unit>
-      <trans-unit id="message.albums_contains_tasks">
-          <source>message.albums_contains_tasks</source>
-          <target>Album contains tasks</target>
+      <trans-unit id="message.albums_contains_photos">
+          <source>message.albums_contains_photos</source>
+          <target>Album contains photos</target>
       </trans-unit>
       <trans-unit id="message.deleted_successfully">
           <source>message.deleted_successfully</source>
@@ -277,6 +277,10 @@
       <trans-unit id="label.repeat_new_password">
           <source>label.repeat_new_password</source>
           <target>Repeat new password</target>
+      </trans-unit>
+      <trans-unit id="label.password">
+          <source>label.password</source>
+          <target>Password</target>
       </trans-unit>
       </body>
   </file>

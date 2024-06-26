@@ -1,4 +1,7 @@
 <?php
+/**
+ * Photo file repository.
+ */
 
 namespace App\Repository;
 
@@ -16,38 +19,26 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PhotoFileRepository extends ServiceEntityRepository
 {
+    /**
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry Manager registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, PhotoFile::class);
     }
 
-    //    /**
-    //     * @return PhotoFile[] Returns an array of PhotoFile objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?PhotoFile
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    /**
+     * Save entity.
+     *
+     * @param PhotoFile $photoFile PhotoFile entity
+     */
     public function save(PhotoFile $photoFile): void
     {
         $this->_em->persist($photoFile);
         $this->_em->flush();
     }
 }
+
+// Ensure there is a newline at the end of the file

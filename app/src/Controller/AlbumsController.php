@@ -22,26 +22,28 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/album')]
 class AlbumsController extends AbstractController
 {
-    private $translator;
-
+    private TranslatorInterface $translator;
     private PhotosService $photosService;
-
     private AlbumsService $albumsService;
 
     /**
      * Constructor.
      *
-     * @param TranslatorInterface $translator Translator
+     * @param TranslatorInterface $translator    Translator
+     * @param PhotosService       $photosService Photos Service
+     * @param AlbumsService       $albumsService Albums Service
      */
     public function __construct(TranslatorInterface $translator, PhotosService $photosService, AlbumsService $albumsService)
     {
         $this->translator = $translator;
         $this->photosService = $photosService;
         $this->albumsService = $albumsService;
-    }// end __construct()
+    }
 
     /**
      * Index action.
+     *
+     * @param Request $request HTTP request
      *
      * @return Response HTTP response
      */
@@ -51,12 +53,13 @@ class AlbumsController extends AbstractController
         $pagination = $this->albumsService->getPaginatedList($request->query->getInt('page', 1));
 
         return $this->render('albums/index.html.twig', ['pagination' => $pagination]);
-    }// end index()
+    }
 
     /**
      * Show action.
      *
-     * @param Request $request Request
+     * @param Request $request HTTP request
+     * @param Albums  $albums  Albums entity
      *
      * @return Response HTTP response
      */
@@ -83,24 +86,12 @@ class AlbumsController extends AbstractController
     #[Route(
         '/create',
         name: 'albums_create',
-        methods: 'GET|POST',
-    )]
-    /**
-     * Create action.
-     *
-     * @param Request $request HTTP request
-     *
-     * @return Response HTTP response
-     */
-    #[Route(
-        '/create',
-        name: 'albums_create',
-        methods: 'GET|POST',
+        methods: 'GET|POST'
     )]
     public function create(Request $request): Response
     {
         $album = new Albums();
-        $form   = $this->createForm(AlbumsType::class, $album);
+        $form = $this->createForm(AlbumsType::class, $album);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -118,7 +109,7 @@ class AlbumsController extends AbstractController
             'albums/create.html.twig',
             ['form' => $form->createView()]
         );
-    }// end create()
+    }
 
     /**
      * Edit action.
@@ -155,11 +146,11 @@ class AlbumsController extends AbstractController
         return $this->render(
             'albums/edit.html.twig',
             [
-                'form'   => $form->createView(),
+                'form' => $form->createView(),
                 'albums' => $albums,
             ]
         );
-    }// end edit()
+    }
 
     /**
      * Delete action.
@@ -172,11 +163,10 @@ class AlbumsController extends AbstractController
     #[Route('/{id}/delete', name: 'albums_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Albums $albums): Response
     {
-
         if (!$this->albumsService->canBeDeleted($albums)) {
             $this->addFlash(
                 'warning',
-                $this->translator->trans('message.albums_contains_tasks')
+                $this->translator->trans('message.albums_contains_photos')
             );
 
             return $this->redirectToRoute('albums_index');
@@ -193,7 +183,6 @@ class AlbumsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->albumsService->delete($albums);
 
             $this->addFlash(
@@ -203,6 +192,7 @@ class AlbumsController extends AbstractController
 
             return $this->redirectToRoute('albums_index');
         }
+
         return $this->render(
             'albums/delete.html.twig',
             [
@@ -211,4 +201,6 @@ class AlbumsController extends AbstractController
             ]
         );
     }
-}// end class
+}
+
+// Ensure there is a newline at the end of the file

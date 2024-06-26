@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Comments repository.
  */
@@ -131,3 +130,5 @@ class CommentsRepository extends ServiceEntityRepository
         return $queryBuilder ?? $this->createQueryBuilder('comments');
     }
 }
+
+// Ensure there is a newline at the end of the file

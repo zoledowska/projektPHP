@@ -28,15 +28,15 @@ class AlbumsService implements AlbumsServiceInterface
     private const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     private PhotosRepository $photosRepository;
-
     private AlbumsRepository $albumsRepository;
-
     private PaginatorInterface $paginator;
 
     /**
      * Constructor.
      *
-     * @param PaginatorInterface $paginator Paginator
+     * @param PhotosRepository   $photosRepository Photos repository
+     * @param PaginatorInterface $paginator        Paginator
+     * @param AlbumsRepository   $albumsRepository Albums repository
      */
     public function __construct(PhotosRepository $photosRepository, PaginatorInterface $paginator, AlbumsRepository $albumsRepository)
     {
@@ -50,7 +50,7 @@ class AlbumsService implements AlbumsServiceInterface
      *
      * @param int $page Page number
      *
-     * @return PaginationInterface<string, mixed> Paginated list
+     * @return PaginationInterface<PaginationInterface<string, mixed>> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface
     {
@@ -68,7 +68,7 @@ class AlbumsService implements AlbumsServiceInterface
      */
     public function save(Albums $albums): void
     {
-        if (null == $albums->getId()) {
+        if (null === $albums->getId()) {
             $albums->setCreatedAt(new \DateTime());
         }
         $albums->setCreatedAt(new \DateTime());
@@ -98,6 +98,8 @@ class AlbumsService implements AlbumsServiceInterface
      */
     public function canBeDeleted(Albums $albums): bool
     {
-        return !($this->photosRepository->findBy(['album' => $albums]));
+        return !$this->photosRepository->findBy(['album' => $albums]);
     }
 }
+
+// End of AlbumsService.php file

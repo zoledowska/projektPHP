@@ -1,4 +1,7 @@
 <?php
+/**
+ * Photos fixtures.
+ */
 
 namespace App\DataFixtures;
 
@@ -10,14 +13,35 @@ use Faker\Generator;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
+/**
+ * Class PhotosFixtures.
+ *
+ * Loads photo data into the database for testing and development.
+ */
 class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
-    private $photoFileDirectory;
+    /**
+     * Directory for photo files.
+     */
+    private string $photoFileDirectory;
 
-    private $rootDir;
+    /**
+     * Root directory.
+     */
+    private string $fixtureFileDirectory;
 
+    /**
+     * Filesystem component.
+     */
     private Filesystem $filesystem;
 
+    /**
+     * Constructor.
+     *
+     * @param string     $rootDir            the root directory path
+     * @param string     $photoFileDirectory the directory where photo files are stored
+     * @param Filesystem $filesystem         the filesystem component for handling files
+     */
     public function __construct(string $rootDir, string $photoFileDirectory, Filesystem $filesystem)
     {
         $this->fixtureFileDirectory = $rootDir.'/public/fixture_images';
@@ -25,6 +49,11 @@ class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInt
         $this->filesystem = $filesystem;
     }
 
+    /**
+     * Load data.
+     *
+     * This method is used to load initial photo data into the database.
+     */
     public function loadData(): void
     {
         if (!$this->manager instanceof ObjectManager || !$this->faker instanceof Generator) {
@@ -32,7 +61,6 @@ class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInt
         }
 
         // Use Symfony Filesystem component to scan the fixtures_images directory
-        $filesystem = new Filesystem();
         $finder = new Finder();
         $finder->in($this->fixtureFileDirectory)->files();
 
@@ -63,7 +91,14 @@ class PhotosFixtures extends AbstractBaseFixtures implements DependentFixtureInt
         $this->manager->flush();
     }
 
-    public function getDependencies()
+    /**
+     * Get dependencies.
+     *
+     * This method returns the classes of fixtures that this fixture depends on.
+     *
+     * @return array an array of fixture classes
+     */
+    public function getDependencies(): array
     {
         return [AlbumsFixtures::class, UserFixtures::class];
     }

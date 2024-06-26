@@ -1,4 +1,7 @@
 <?php
+/**
+ * Photos repository.
+ */
 
 namespace App\Repository;
 
@@ -58,23 +61,11 @@ class PhotosRepository extends ServiceEntityRepository
     {
         return $this->getOrCreateQueryBuilder()
             ->select(
-                'partial photos.{id, title, description, photo_file_name, upload_date}',
-                'partial album.{id, title, description, created_at}'
+                'partial photos.{id, title, description, photoFileName, uploadDate}',
+                'partial album.{id, title, description, createdAt}'
             )
             ->join('photos.album', 'album')
-            ->orderBy('photos.upload_date', 'DESC');
-    }
-
-    /**
-     * Get or create new query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('photos');
+            ->orderBy('photos.uploadDate', 'DESC');
     }
 
     /**
@@ -140,5 +131,17 @@ class PhotosRepository extends ServiceEntityRepository
             ->setParameter('author', $user);
 
         return $queryBuilder;
+    }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('photos');
     }
 }

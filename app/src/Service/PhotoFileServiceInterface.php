@@ -10,7 +10,7 @@ use App\Entity\Photos;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Class PhotoFile service.
+ * Interface PhotoFileServiceInterface.
  */
 interface PhotoFileServiceInterface
 {
@@ -28,7 +28,7 @@ interface PhotoFileServiceInterface
      *
      * @param UploadedFile           $uploadedFile Uploaded file
      * @param PhotoFile              $photoFile    PhotoFile entity
-     * @param PhotosServiceInterface $user         Photos interface
+     * @param PhotosServiceInterface $photos       Photos interface
      */
-    public function update(UploadedFile $uploadedFile, PhotoFile $photoFile, PhotosServiceInterface $user): void;
+    public function update(UploadedFile $uploadedFile, PhotoFile $photoFile, PhotosServiceInterface $photos): void;
 }

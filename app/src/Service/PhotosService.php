@@ -9,7 +9,6 @@ use App\Entity\Photos;
 use App\Entity\Albums;
 use App\Repository\PhotosRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
-use Knp\Component\Pager\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
@@ -28,14 +27,19 @@ class PhotosService implements PhotosServiceInterface
      */
     private const PAGINATOR_ITEMS_PER_PAGE = 10;
 
+    private PhotosRepository $photosRepository;
+    private PaginatorInterface $paginator;
+
     /**
      * Constructor.
      *
      * @param PhotosRepository   $photosRepository Photos repository
      * @param PaginatorInterface $paginator        Paginator
      */
-    public function __construct(private readonly PhotosRepository $photosRepository, private readonly PaginatorInterface $paginator)
+    public function __construct(PhotosRepository $photosRepository, PaginatorInterface $paginator)
     {
+        $this->photosRepository = $photosRepository;
+        $this->paginator = $paginator;
     }
 
     /**
@@ -43,7 +47,7 @@ class PhotosService implements PhotosServiceInterface
      *
      * @param int $page Page number
      *
-     * @return PaginationInterface<string, mixed> Paginated list
+     * @return PaginationInterface<PaginationInterface<string, mixed>> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface
     {
@@ -54,12 +58,18 @@ class PhotosService implements PhotosServiceInterface
         );
     }
 
+    /**
+     * Get photos by album.
+     *
+     * @param int    $page   Page number
+     * @param Albums $albums Albums entity
+     *
+     * @return PaginationInterface<PaginationInterface<string, mixed>> Paginated list
+     */
     public function getPhotosByAlbum(int $page, Albums $albums): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->photosRepository->findBy(
-                ['album' => $albums],
-            ),
+            $this->photosRepository->findBy(['album' => $albums]),
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
@@ -68,11 +78,11 @@ class PhotosService implements PhotosServiceInterface
     /**
      * Save entity.
      *
-     * @param Photos|Photos $photos Photos entity
+     * @param Photos $photos Photos entity
      */
-    public function save(Photos|\App\Service\Photos $photos): void
+    public function save(Photos $photos): void
     {
-        if (null == $photos->getId()) {
+        if (null === $photos->getId()) {
             $photos->setUploadDate(new \DateTimeImmutable());
         }
 
@@ -89,3 +99,5 @@ class PhotosService implements PhotosServiceInterface
         $this->photosRepository->delete($photos);
     }
 }
+
+// End of PhotosService.php file

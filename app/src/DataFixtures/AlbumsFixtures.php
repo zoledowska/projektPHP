@@ -1,4 +1,7 @@
 <?php
+/**
+ * Albums fixtures.
+ */
 
 namespace App\DataFixtures;
 

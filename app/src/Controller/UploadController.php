@@ -1,75 +1,74 @@
 <?php
 /**
- * Avatar controller.
+ * Upload controller.
  */
 
 namespace App\Controller;
 
-use App\Entity\Avatar;
 use App\Entity\Photos;
+use Doctrine\ORM\EntityManagerInterface; // Use the correct manager interface
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class AvatarController.
+ * Class UploadController.
  */
 #[Route('/upload')]
 class UploadController extends AbstractController
 {
+    protected ?EntityManagerInterface $manager;
+
     /**
-     * Create action.
+     * Constructor.
      *
-     * @param Request $request HTTP request
-     *
-     * @return Response HTTP response
+     * @param EntityManagerInterface $manager Entity manager
      */
-    protected ?ObjectManager $manager;
+    public function __construct(EntityManagerInterface $manager)
+    {
+        $this->manager = $manager;
+    }
 
-    //    #[Route(
-    //        '/create',
-    //        name: 'file_create',
-    //        methods: 'GET|POST'
-    //    )]
-    //    public function create(Request $request): Response
-    //    {
-
-    // Save file on server
-    // Generate photo record in DB
-    //    $photo = new Photos();
-    //    $form = $this->createForm(Photos::class, $photo);
-    //    $form->handleRequest($request);
-    //    $form->get("nazwa inputu");
-    //    $form->get("sfd");
-
-    //    $photo->save();
-
-    // file -> saveOnDrive()
-
-    //        if ($form->isSubmitted() && $form->isValid()) {
-    //            /** @var UploadedFile $file */
-    //            $file = $form->get('file')->getData();
-    //            /$this->avatarService->create(
-    //                $file,
-    //                $avatar,
-    //                $user
-    //            );
-    //
-    //            $this->addFlash(
-    //                'success',
-    //                $this->translator->trans('message.created_successfully')
-    //            );
-    //
-    //            return $this->redirectToRoute('task_index');
-    //        }
-    //
-    //        return $this->render(
-    //            'avatar/create.html.twig',
-    //            ['form' => $form->createView()]
-    //        );
-
-    //    return
-    //    }
-}
+    // Uncomment and complete this method if needed
+    // /**
+    //  * Create action.
+    //  *
+    //  * @param Request $request HTTP request
+    //  *
+    //  * @return Response HTTP response
+    //  */
+    // #[Route(
+    //     '/create',
+    //     name: 'file_create',
+    //     methods: 'GET|POST'
+    // )]
+    // public function create(Request $request): Response
+    // {
+    //     // Implement your file upload logic here
+    //     // Save file on server
+    //     // Generate photo record in DB
+    //     // $photo = new Photos();
+    //     // $form = $this->createForm(PhotosType::class, $photo);
+    //     // $form->handleRequest($request);
+    //     //
+    //     // if ($form->isSubmitted() && $form->isValid()) {
+    //     //     /** @var UploadedFile $file */
+    //     //     $file = $form->get('file')->getData();
+    //     //     // Save the file and update the database
+    //     //
+    //     //     $this->addFlash(
+    //     //         'success',
+    //     //         $this->translator->trans('message.created_successfully')
+    //     //     );
+    //     //
+    //     //     return $this->redirectToRoute('file_index');
+    //     // }
+    //     //
+    //     // return $this->render(
+    //     //     'upload/create.html.twig',
+    //     //     ['form' => $form->createView()]
+    //     // );
+    // }
+} // Ensure this brace is on its own line

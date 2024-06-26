@@ -47,7 +47,8 @@ class CommentsType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Comments::class,
+        $resolver->setDefaults([
+            'data_class' => Comments::class,
             'current_user' => null, // Add the 'current_user' option with a default value of null
             'current_photos' => null,
         ]);

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Albums entity.
+ */
 
 namespace App\Entity;
 
@@ -6,52 +9,93 @@ use App\Repository\AlbumsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Represents an Album entity.
+ *
+ * This entity is used to manage photo albums and related operations.
+ */
 #[ORM\Entity(repositoryClass: AlbumsRepository::class)]
 #[ORM\Table(name: 'albums')]
 #[UniqueEntity(fields: ['title'], message: 'This title is already in use.')]
 class Albums
 {
+    /**
+     * The unique identifier for the Album entity.
+     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
+    /**
+     * The title of the album.
+     */
     #[ORM\Column(length: 255)]
     #[Assert\Type('string')]
     #[Assert\NotBlank(message: 'Title cannot be blank.')]
-    #[Assert\Length(min: 1, max: 64, minMessage: 'Title must be at least {{ limit }} characters long.', maxMessage: 'Title cannot be longer than {{ limit }} characters.')]
+    #[Assert\Length(
+        min: 1,
+        max: 64,
+        minMessage: 'Title must be at least {{ limit }} characters long.',
+        maxMessage: 'Title cannot be longer than {{ limit }} characters.'
+    )]
     private ?string $title = null;
 
+    /**
+     * The description of the album.
+     */
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank(message: 'Description cannot be blank.')]
     #[Assert\Type('string')]
     private ?string $description = null;
 
+    /**
+     * The date when the album was created.
+     */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Assert\NotNull(message: 'Creation date cannot be null.')]
     #[Assert\Type(\DateTime::class)]
-    private ?\DateTime $created_at = null;
+    private ?\DateTime $createdAt = null;
 
+    /**
+     * Initializes a new instance of the Album entity.
+     */
     public function __construct()
     {
         $this->photos = new ArrayCollection();
-        $this->created_at = new \DateTime();
+        $this->createdAt = new \DateTime();
     }
 
+    /**
+     * Gets the ID of the Album.
+     *
+     * @return int|null the ID of the Album entity
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * Gets the title of the album.
+     *
+     * @return string|null the title of the album
+     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
+    /**
+     * Sets the title of the album.
+     *
+     * @param string $title the title to set
+     *
+     * @return static the current instance for chaining
+     */
     public function setTitle(string $title): static
     {
         $this->title = $title;
@@ -59,11 +103,23 @@ class Albums
         return $this;
     }
 
+    /**
+     * Gets the description of the album.
+     *
+     * @return string|null the description of the album
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    /**
+     * Sets the description of the album.
+     *
+     * @param string $description the description to set
+     *
+     * @return static the current instance for chaining
+     */
     public function setDescription(string $description): static
     {
         $this->description = $description;
@@ -71,14 +127,26 @@ class Albums
         return $this;
     }
 
+    /**
+     * Gets the creation date of the album.
+     *
+     * @return \DateTime|null the creation date of the album
+     */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTime $created_at): static
+    /**
+     * Sets the creation date of the album.
+     *
+     * @param \DateTime $createdAt the creation date to set
+     *
+     * @return static the current instance for chaining
+     */
+    public function setCreatedAt(\DateTime $createdAt): static
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }

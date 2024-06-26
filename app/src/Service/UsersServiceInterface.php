@@ -1,4 +1,7 @@
 <?php
+/**
+ * Users service Interface.
+ */
 
 namespace App\Service;
 
@@ -17,7 +20,7 @@ interface UsersServiceInterface
      *
      * @param int $page Page number
      *
-     * @return PaginationInterface<string, mixed> Paginated list
+     * @return PaginationInterface<PaginationInterface<string, mixed>> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface;
 
@@ -35,3 +38,5 @@ interface UsersServiceInterface
      */
     public function delete(Users $users): void;
 }
+
+// End of UsersServiceInterface.php file

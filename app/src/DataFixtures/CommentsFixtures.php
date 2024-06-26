@@ -1,4 +1,7 @@
 <?php
+/**
+ * Comments fixtures.
+ */
 
 namespace App\DataFixtures;
 
@@ -7,20 +10,22 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Generator;
 
+/**
+ * Class CommentsFixtures.
+ *
+ * This fixture loads a set of comments for testing and development purposes.
+ */
 class CommentsFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
-     * Faker.
+     * Faker instance.
      */
     protected ?Generator $faker;
 
     /**
-     * Persistence object manager.
-     */
-    // protected ?ObjectManager $manager;
-
-    /**
      * Load data.
+     *
+     * Generates a series of comments with random content.
      *
      * @psalm-suppress PossiblyNullPropertyFetch
      * @psalm-suppress PossiblyNullReference
@@ -49,7 +54,12 @@ class CommentsFixtures extends AbstractBaseFixtures implements DependentFixtureI
         $this->manager->flush();
     }
 
-    public function getDependencies()
+    /**
+     * Get dependencies.
+     *
+     * @return array<class-string<DependentFixtureInterface>>
+     */
+    public function getDependencies(): array
     {
         return [PhotosFixtures::class];
     }

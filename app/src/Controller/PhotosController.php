@@ -14,7 +14,6 @@ use App\Service\PhotosServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-// use Symfony\Component\Routing\Attribute\Route; tego importu nie chcemy
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -22,6 +21,8 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * Class PhotosController.
+ *
+ * Manages photo-related actions such as displaying, creating, editing, and deleting photos.
  */
 #[Route('/photos')]
 class PhotosController extends AbstractController
@@ -41,10 +42,25 @@ class PhotosController extends AbstractController
      */
     private PhotosRepository $photosRepository;
 
+    /**
+     * Directory for storing photo files.
+     */
     private string $photoFileDirectory;
 
+    /**
+     * Comments service.
+     */
     private CommentsService $commentsService;
 
+    /**
+     * Constructor.
+     *
+     * @param PhotosServiceInterface $photosService      Photos service
+     * @param TranslatorInterface    $translator         Translator
+     * @param PhotosRepository       $photosRepository   Photos repository
+     * @param string                 $photoFileDirectory Directory for storing photo files
+     * @param CommentsService        $commentsService    Comments service
+     */
     public function __construct(PhotosServiceInterface $photosService, TranslatorInterface $translator, PhotosRepository $photosRepository, string $photoFileDirectory, CommentsService $commentsService)
     {
         $this->photosService = $photosService;
@@ -72,7 +88,7 @@ class PhotosController extends AbstractController
     /**
      * Show action.
      *
-     * @param Photos $photos Photos
+     * @param Photos $photos Photos entity
      *
      * @return Response HTTP response
      */
@@ -92,14 +108,16 @@ class PhotosController extends AbstractController
     /**
      * Create action.
      *
-     * @param Request $request HTTP request
+     * @param Request          $request            HTTP request
+     * @param string           $photoFileDirectory Directory for storing photo files
+     * @param SluggerInterface $slugger            Slugger
      *
      * @return Response HTTP response
      */
     #[Route(
         '/create',
         name: 'photos_create',
-        methods: 'GET|POST',
+        methods: 'GET|POST'
     )]
     public function create(Request $request, string $photoFileDirectory, SluggerInterface $slugger): Response
     {
@@ -111,6 +129,7 @@ class PhotosController extends AbstractController
 
         $form = $this->createForm(PhotosType::class, $photos);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $this->addFlash(
                 'success',
@@ -142,8 +161,10 @@ class PhotosController extends AbstractController
     /**
      * Edit action.
      *
-     * @param Request $request HTTP request
-     * @param Photos  $photos  Photos entity
+     * @param Request          $request            HTTP request
+     * @param Photos           $photos             Photos entity
+     * @param string           $photoFileDirectory Directory for storing photo files
+     * @param SluggerInterface $slugger            Slugger
      *
      * @return Response HTTP response
      */
@@ -161,7 +182,6 @@ class PhotosController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $file = $form->get('photoFile')->getData();
 
             if ($file) {
@@ -180,7 +200,6 @@ class PhotosController extends AbstractController
                 'success',
                 $this->translator->trans('message.edited_successfully')
             );
-
 
             return $this->redirectToRoute('photos_index');
         }
@@ -205,10 +224,14 @@ class PhotosController extends AbstractController
     #[Route('/{id}/delete', name: 'photos_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Photos $photos): Response
     {
-        $form = $this->createForm(FormType::class, $photos, [
-            'method' => 'DELETE',
-            'action' => $this->generateUrl('photos_delete', ['id' => $photos->getId()]),
-        ]);
+        $form = $this->createForm(
+            FormType::class,
+            $photos,
+            [
+                'method' => 'DELETE',
+                'action' => $this->generateUrl('photos_delete', ['id' => $photos->getId()]),
+            ]
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

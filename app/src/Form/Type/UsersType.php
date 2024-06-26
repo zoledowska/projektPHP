@@ -1,4 +1,7 @@
 <?php
+/**
+ * Users Type.
+ */
 
 namespace App\Form\Type;
 
@@ -11,8 +14,17 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
+/**
+ * Form type for handling user data.
+ */
 class UsersType extends AbstractType
 {
+    /**
+     * Builds the user form.
+     *
+     * @param FormBuilderInterface $builder The form builder
+     * @param array                $options The options for the form
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -33,6 +45,11 @@ class UsersType extends AbstractType
             ]);
     }
 
+    /**
+     * Configures the form options.
+     *
+     * @param OptionsResolver $resolver The resolver for form options
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

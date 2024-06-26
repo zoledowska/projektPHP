@@ -1,735 +1,82 @@
-   1) src/Form/Type/CommentsType.php (no_unused_imports, single_blank_line_at_eof)
-   2) src/Form/Type/AlbumsType.php (method_argument_space, space_after_semicolon, braces_position)
-   3) src/Form/Type/PhotosType.php (no_unused_imports)
-   4) src/Repository/PhotosRepository.php (class_attributes_separation, nullable_type_declaration_for_default_null_value, no_whitespace_in_blank_line, single_blank_line_at_eof)
-   5) src/Repository/PhotoFileRepository.php (statement_indentation)
-   6) src/Repository/CommentsRepository.php (nullable_type_declaration_for_default_null_value, phpdoc_align, single_blank_line_at_eof)
-   7) src/Repository/UsersRepository.php (phpdoc_to_comment, nullable_type_declaration_for_default_null_value, statement_indentation, single_blank_line_at_eof)
-   8) src/Repository/AlbumsRepository.php (phpdoc_to_comment, nullable_type_declaration_for_default_null_value, single_blank_line_at_eof)
-   9) src/Controller/CommentsController.php (phpdoc_align, single_blank_line_at_eof)
-  10) src/Controller/AlbumsController.php (class_attributes_separation, fully_qualified_strict_types, no_superfluous_phpdoc_tags, single_line_comment_spacing, phpdoc_separation, no_unused_imports, no_extra_blank_lines, phpdoc_align)
-  11) src/Controller/UploadController.php (statement_indentation, no_unused_imports, no_extra_blank_lines)
-  12) src/Controller/PhotosController.php (class_attributes_separation, no_superfluous_phpdoc_tags, no_empty_phpdoc, single_line_comment_spacing, phpdoc_separation, no_unused_imports, blank_line_before_statement, phpdoc_align)
-  13) src/Controller/UsersController.php (class_attributes_separation, no_superfluous_phpdoc_tags, single_line_comment_spacing, phpdoc_separation, no_extra_blank_lines, phpdoc_align)
-  14) src/Controller/PhotoFileController.php (class_attributes_separation, phpdoc_align)
-  15) src/DataFixtures/AlbumsFixtures.php (align_multiline_comment, phpdoc_indent)
-  16) src/DataFixtures/CommentsFixtures.php (single_line_comment_spacing, no_unused_imports, no_extra_blank_lines)
-  17) src/DataFixtures/PhotosFixtures.php (concat_space, no_unused_imports)
-  18) src/Service/PhotosServiceInterface.php (no_superfluous_phpdoc_tags, blank_line_after_opening_tag, phpdoc_separation, phpdoc_align)
-  19) src/Service/CommentsService.php (class_attributes_separation, phpdoc_align, single_blank_line_at_eof)
-  20) src/Service/PhotoFileService.php (statement_indentation, phpdoc_align, no_whitespace_in_blank_line)
-  21) src/Service/PhotoFileServiceInterface.php (no_unused_imports, phpdoc_align)
-  22) src/Service/AlbumsServiceInterface.php (no_superfluous_phpdoc_tags, blank_line_after_opening_tag, phpdoc_separation)
-  23) src/Service/FileUploadServiceInterface.php (no_unused_imports, single_blank_line_at_eof)
-  24) src/Service/UsersServiceInterface.php (no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_separation)
-  25) src/Service/CommentsServiceInterface.php (phpdoc_align, single_blank_line_at_eof)
-  26) src/Service/UsersService.php (class_attributes_separation, no_unneeded_control_parentheses, no_superfluous_phpdoc_tags, no_extra_blank_lines, blank_line_before_statement)
-  27) src/Service/AlbumsService.php (class_attributes_separation, no_superfluous_phpdoc_tags)
-  28) src/Service/PhotosService.php (class_attributes_separation, no_unused_imports, phpdoc_align)
-  29) src/Entity/Comments.php (fully_qualified_strict_types, no_unused_imports)
-  30) src/Entity/Albums.php (no_superfluous_phpdoc_tags)
-  31) src/Entity/Users.php (trailing_comma_in_multiline, blank_line_before_statement)
-  32) src/Security/LoginFormAuthenticator.php (single_blank_line_at_eof)
 
-Found 32 of 44 files that can be fixed in 0.758 seconds, 20.00 MB memory used
-
-FILE: /home/wwwroot/app/src/Form/Type/UsersType.php
-------------------------------------------------------------------------
-FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
-------------------------------------------------------------------------
-  3 | WARNING | The license block has to be present at the top
-    |         |                 of every PHP file, before the namespace
- 14 | ERROR   | Missing doc comment for class UsersType
- 16 | ERROR   | Missing doc comment for function buildForm()
- 36 | ERROR   | Missing doc comment for function configureOptions()
-------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Form/Type/CommentsType.php
-----------------------------------------------------------------------
-FOUND 1 ERROR AFFECTING 1 LINE
-----------------------------------------------------------------------
- 70 | ERROR | [x] Expected 1 newline at end of file; 0 found
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Form/Type/AlbumsType.php
---------------------------------------------------------------------------------------------------
-FOUND 8 ERRORS AFFECTING 2 LINES
---------------------------------------------------------------------------------------------------
- 39 | ERROR | [x] Multi-line function call not indented correctly; expected 8 spaces but found 12
- 39 | ERROR | [x] Multi-line function call not indented correctly; expected 8 spaces but found 12
- 39 | ERROR | [x] Closing parenthesis of a multi-line function call must be on a line by itself
- 48 | ERROR | [x] Multi-line function call not indented correctly; expected 8 spaces but found 12
- 48 | ERROR | [x] Multi-line function call not indented correctly; expected 8 spaces but found 12
- 48 | ERROR | [x] Closing parenthesis of a multi-line function call must be on a line by itself
- 48 | ERROR | [x] Closing brace must be on a line by itself
- 48 | ERROR | [x] Closing brace must be on a line by itself
---------------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 8 MARKED SNIFF VIOLATIONS AUTOMATICALLY
---------------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Repository/PhotosRepository.php
------------------------------------------------------------------------------------------------
-FOUND 2 ERRORS AND 2 WARNINGS AFFECTING 4 LINES
------------------------------------------------------------------------------------------------
-   3 | WARNING | [ ] The license block has to be present at the top
-     |         |                     of every PHP file, before the namespace
-  79 | WARNING | [x] Please trim any trailing whitespace
-  85 | ERROR   | [ ] Declare public methods first,then protected ones and finally private ones
- 142 | ERROR   | [x] Expected 1 newline at end of file; 0 found
------------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
------------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Repository/PhotoFileRepository.php
--------------------------------------------------------------------------
-FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
--------------------------------------------------------------------------
-  3 | WARNING | The license block has to be present at the top
-    |         |                 of every PHP file, before the namespace
- 19 | ERROR   | Missing doc comment for function __construct()
- 48 | ERROR   | You must use "/**" style comments for a function comment
--------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Repository/CommentsRepository.php
-----------------------------------------------------------------------
-FOUND 2 ERRORS AFFECTING 2 LINES
-----------------------------------------------------------------------
- 110 | ERROR | [x] Expected 5 spaces after parameter type; 4 found
- 132 | ERROR | [x] Expected 1 newline at end of file; 0 found
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Repository/UsersRepository.php
---------------------------------------------------------------------------------------------
-FOUND 6 ERRORS AFFECTING 4 LINES
---------------------------------------------------------------------------------------------
- 53 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found 3
- 53 | ERROR | [x] Closing brace indented incorrectly; expected 4 spaces, found 3
- 53 | ERROR | [x] Closing brace indented incorrectly; expected 4 spaces, found 3
- 55 | ERROR | [ ] Missing doc comment for function getOrCreateQueryBuilder()
- 65 | ERROR | [ ] Declare public methods first,then protected ones and finally private ones
- 89 | ERROR | [x] Expected 1 newline at end of file; 0 found
---------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
---------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Repository/AlbumsRepository.php
---------------------------------------------------------------------------------------------
-FOUND 3 ERRORS AFFECTING 3 LINES
---------------------------------------------------------------------------------------------
- 56 | ERROR | [ ] Missing doc comment for function getOrCreateQueryBuilder()
- 66 | ERROR | [ ] Declare public methods first,then protected ones and finally private ones
- 90 | ERROR | [x] Expected 1 newline at end of file; 0 found
---------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
---------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Controller/CommentsController.php
-----------------------------------------------------------------------
-FOUND 14 ERRORS AFFECTING 10 LINES
-----------------------------------------------------------------------
-  43 | ERROR | [x] Expected 2 spaces after parameter name; 4 found
-  44 | ERROR | [x] Expected 6 spaces after parameter type; 5 found
-  44 | ERROR | [x] Expected 7 spaces after parameter name; 8 found
-  45 | ERROR | [x] Expected 9 spaces after parameter type; 7 found
-  56 | ERROR | [x] Expected 12 spaces after parameter name; 11 found
-  57 | ERROR | [x] Expected 1 spaces after parameter type; 2 found
-  58 | ERROR | [x] Expected 10 spaces after parameter name; 9 found
-  78 | ERROR | [x] Expected 16 spaces after parameter type; 15 found
-  78 | ERROR | [x] Expected 17 spaces after parameter name; 16 found
- 102 | ERROR | [x] Expected 2 spaces after parameter type; 1 found
- 102 | ERROR | [x] Expected 2 spaces after parameter name; 1 found
- 139 | ERROR | [x] Expected 2 spaces after parameter type; 1 found
- 139 | ERROR | [x] Expected 2 spaces after parameter name; 1 found
- 176 | ERROR | [x] Expected 1 newline at end of file; 0 found
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 14 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Controller/AlbumsController.php
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-FOUND 10 ERRORS AFFECTING 7 LINES
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  34 | ERROR | [x] Expected 4 spaces after parameter name; 1 found
-  35 | ERROR | [x] Expected 7 spaces after parameter type; 1 found
-  36 | ERROR | [x] Expected 7 spaces after parameter type; 1 found
-  46 | ERROR | [ ] Doc comment for parameter "$request" missing
-  64 | ERROR | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
-  64 | ERROR | [x] Expected 2 spaces after parameter type; 1 found
- 176 | ERROR | [x] Expected 1 spaces after parameter type; 2 found
- 176 | ERROR | [x] Expected 1 spaces after parameter name; 2 found
- 177 | ERROR | [x] Expected 2 spaces after parameter type; 1 found
- 177 | ERROR | [x] Expected 2 spaces after parameter name; 1 found
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 9 MARKED SNIFF VIOLATIONS AUTOMATICALLY
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Controller/UploadController.php
-------------------------------------------------------------------------------------------
-FOUND 1 ERROR AFFECTING 1 LINE
-------------------------------------------------------------------------------------------
- 81 | ERROR | [x] The closing brace for the class must go on the next line after the body
-------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Controller/SecurityController.php
-------------------------------------------------------------------------
-FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
-------------------------------------------------------------------------
-  3 | WARNING | The license block has to be present at the top
-    |         |                 of every PHP file, before the namespace
- 10 | ERROR   | Missing doc comment for class SecurityController
- 13 | ERROR   | Missing doc comment for function login()
- 28 | ERROR   | Missing doc comment for function logout()
-------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Controller/PhotosController.php
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-FOUND 17 ERRORS AFFECTING 12 LINES
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  57 | ERROR | [x] Expected 4 spaces after parameter type; 1 found
-  58 | ERROR | [x] Expected 7 spaces after parameter type; 1 found
-  59 | ERROR | [x] Expected 17 spaces after parameter type; 1 found
-  60 | ERROR | [x] Expected 8 spaces after parameter type; 1 found
-  74 | ERROR | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
-  81 | ERROR | [x] Missing blank line before return statement
- 100 | ERROR | [x] Missing blank line before return statement
- 103 | ERROR | [ ] Doc comment for parameter "$photoFileDirectory" missing
- 103 | ERROR | [ ] Doc comment for parameter "$slugger" missing
- 154 | ERROR | [x] Expected 1 spaces after parameter type; 2 found
- 154 | ERROR | [x] Expected 1 spaces after parameter name; 2 found
- 155 | ERROR | [x] Expected 2 spaces after parameter type; 1 found
- 155 | ERROR | [x] Expected 2 spaces after parameter name; 1 found
- 194 | ERROR | [x] Expected 1 spaces after parameter type; 2 found
- 194 | ERROR | [x] Expected 1 spaces after parameter name; 2 found
- 195 | ERROR | [x] Expected 2 spaces after parameter type; 1 found
- 195 | ERROR | [x] Expected 2 spaces after parameter name; 1 found
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 15 MARKED SNIFF VIOLATIONS AUTOMATICALLY
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Controller/UsersController.php
----------------------------------------------------------------------------------------------------------------------------
-FOUND 20 ERRORS AFFECTING 11 LINES
----------------------------------------------------------------------------------------------------------------------------
-  31 | ERROR | [x] Expected 3 spaces after parameter type; 4 found
-  31 | ERROR | [x] Expected 3 spaces after parameter name; 4 found
-  40 | ERROR | [ ] Doc comment for parameter "$request" missing
-  54 | ERROR | [ ] Doc comment for parameter "$usersRepository" missing
-  57 | ERROR | [x] Expected 9 spaces after parameter type; 12 found
-  57 | ERROR | [x] Expected 9 spaces after parameter name; 12 found
-  58 | ERROR | [x] Expected 1 spaces after parameter type; 3 found
-  58 | ERROR | [ ] Doc comment for parameter $UsersRepository does not match case of actual variable name $usersRepository
-  58 | ERROR | [x] Expected 1 spaces after parameter name; 3 found
-  59 | ERROR | [x] Expected 3 spaces after parameter type; 6 found
-  59 | ERROR | [x] Expected 3 spaces after parameter name; 6 found
-  60 | ERROR | [x] Expected 13 spaces after parameter type; 16 found
-  60 | ERROR | [x] Expected 14 spaces after parameter name; 17 found
-  93 | ERROR | [ ] Doc comment for parameter "$userPasswordHasher" missing
- 138 | ERROR | [x] Expected 3 spaces after parameter type; 2 found
- 138 | ERROR | [x] Expected 3 spaces after parameter name; 2 found
- 179 | ERROR | [x] Expected 1 spaces after parameter type; 2 found
- 179 | ERROR | [x] Expected 1 spaces after parameter name; 2 found
- 180 | ERROR | [x] Expected 3 spaces after parameter type; 1 found
- 180 | ERROR | [x] Expected 3 spaces after parameter name; 1 found
----------------------------------------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 16 MARKED SNIFF VIOLATIONS AUTOMATICALLY
----------------------------------------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Controller/PhotoFileController.php
-----------------------------------------------------------------------
-FOUND 6 ERRORS AFFECTING 3 LINES
-----------------------------------------------------------------------
- 29 | ERROR | [x] Expected 7 spaces after parameter type; 4 found
- 29 | ERROR | [x] Expected 7 spaces after parameter name; 4 found
- 91 | ERROR | [x] Expected 3 spaces after parameter type; 1 found
- 91 | ERROR | [x] Expected 3 spaces after parameter name; 1 found
- 92 | ERROR | [x] Expected 1 spaces after parameter type; 2 found
- 92 | ERROR | [x] Expected 1 spaces after parameter name; 2 found
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 6 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/DataFixtures/AlbumsFixtures.php
------------------------------------------------------------------------
-FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
------------------------------------------------------------------------
- 3 | WARNING | The license block has to be present at the top
-   |         |                 of every PHP file, before the namespace
------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/DataFixtures/CommentsFixtures.php
-------------------------------------------------------------------------
-FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
-------------------------------------------------------------------------
-  3 | WARNING | The license block has to be present at the top
-    |         |                 of every PHP file, before the namespace
- 12 | ERROR   | Missing doc comment for class CommentsFixtures
- 55 | ERROR   | Missing doc comment for function getDependencies()
-------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/DataFixtures/AppFixtures.php
-------------------------------------------------------------------------
-FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
-------------------------------------------------------------------------
-  3 | WARNING | The license block has to be present at the top
-    |         |                 of every PHP file, before the namespace
-  8 | ERROR   | Missing doc comment for class AppFixtures
- 10 | ERROR   | Missing doc comment for function load()
-------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/DataFixtures/PhotosFixtures.php
-----------------------------------------------------------------------------
-FOUND 5 ERRORS AND 1 WARNING AFFECTING 6 LINES
-----------------------------------------------------------------------------
-  3 | WARNING | [ ] The license block has to be present at the top
-    |         |                     of every PHP file, before the namespace
- 14 | ERROR   | [ ] Missing doc comment for class PhotosFixtures
- 22 | ERROR   | [ ] Missing doc comment for function __construct()
- 24 | ERROR   | [x] Concat operator must not be surrounded by spaces
- 29 | ERROR   | [ ] Missing doc comment for function loadData()
- 67 | ERROR   | [ ] Missing doc comment for function getDependencies()
-----------------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Service/PhotosServiceInterface.php
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-FOUND 7 ERRORS AFFECTING 6 LINES
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 10 | ERROR | [ ] Missing doc comment for interface PhotosServiceInterface
- 15 | ERROR | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
- 23 | ERROR | [x] Expected 4 spaces after parameter type; 1 found
- 23 | ERROR | [x] Expected 3 spaces after parameter name; 1 found
- 24 | ERROR | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
- 32 | ERROR | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
- 40 | ERROR | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 6 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Service/CommentsService.php
-----------------------------------------------------------------------
-FOUND 6 ERRORS AFFECTING 5 LINES
-----------------------------------------------------------------------
-  33 | ERROR | [x] Expected 1 spaces after parameter type; 2 found
-  34 | ERROR | [x] Expected 10 spaces after parameter name; 9 found
-  61 | ERROR | [x] Expected 4 spaces after parameter type; 5 found
-  61 | ERROR | [x] Expected 3 spaces after parameter name; 4 found
-  80 | ERROR | [x] Expected 3 spaces after parameter type; 2 found
- 131 | ERROR | [x] Expected 1 newline at end of file; 0 found
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 6 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Service/PhotoFileService.php
-----------------------------------------------------------------------
-FOUND 13 ERRORS AND 1 WARNING AFFECTING 10 LINES
-----------------------------------------------------------------------
- 27 | ERROR   | [x] Expected 5 spaces after parameter name; 3 found
- 28 | ERROR   | [x] Expected 8 spaces after parameter type; 11 found
- 28 | ERROR   | [x] Expected 1 spaces after parameter name; 2 found
- 29 | ERROR   | [x] Expected 3 spaces after parameter name; 1 found
- 30 | ERROR   | [x] Expected 10 spaces after parameter name; 8 found
- 44 | ERROR   | [x] Expected 4 spaces after parameter type; 7 found
- 44 | ERROR   | [x] Expected 4 spaces after parameter name; 7 found
- 45 | ERROR   | [x] Expected 7 spaces after parameter type; 9 found
- 45 | ERROR   | [x] Expected 7 spaces after parameter name; 9 found
- 59 | WARNING | [x] Please trim any trailing whitespace
- 63 | ERROR   | [x] Expected 11 spaces after parameter type; 2 found
- 64 | ERROR   | [x] Expected 14 spaces after parameter type; 8 found
- 64 | ERROR   | [x] Expected 4 spaces after parameter name; 7 found
- 65 | ERROR   | [x] Expected 7 spaces after parameter name; 9 found
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 14 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Service/PhotoFileServiceInterface.php
-----------------------------------------------------------------------
-FOUND 7 ERRORS AFFECTING 4 LINES
-----------------------------------------------------------------------
- 22 | ERROR | [x] Expected 4 spaces after parameter type; 7 found
- 22 | ERROR | [x] Expected 4 spaces after parameter name; 7 found
- 23 | ERROR | [x] Expected 7 spaces after parameter type; 9 found
- 23 | ERROR | [x] Expected 7 spaces after parameter name; 9 found
- 30 | ERROR | [x] Expected 11 spaces after parameter type; 2 found
- 31 | ERROR | [x] Expected 14 spaces after parameter type; 8 found
- 31 | ERROR | [x] Expected 4 spaces after parameter name; 7 found
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 7 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Service/AlbumsServiceInterface.php
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-FOUND 6 ERRORS AFFECTING 6 LINES
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  9 | ERROR | [ ] Missing doc comment for interface AlbumsServiceInterface
- 14 | ERROR | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
- 22 | ERROR | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
- 30 | ERROR | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
- 31 | ERROR | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
- 40 | ERROR | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 5 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Service/FileUploadServiceInterface.php
-----------------------------------------------------------------------
-FOUND 1 ERROR AFFECTING 1 LINE
-----------------------------------------------------------------------
- 31 | ERROR | [x] Expected 1 newline at end of file; 0 found
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Service/UsersServiceInterface.php
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  3 | WARNING | [ ] The license block has to be present at the top
-    |         |                     of every PHP file, before the namespace
- 18 | ERROR   | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
- 26 | ERROR   | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
- 34 | ERROR   | [x] Group annotations together so that annotations of the same type immediately follow each other, and annotations of a different type are separated by a single blank line
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Service/CommentsServiceInterface.php
-----------------------------------------------------------------------
-FOUND 4 ERRORS AFFECTING 3 LINES
-----------------------------------------------------------------------
- 29 | ERROR | [x] Expected 4 spaces after parameter type; 5 found
- 29 | ERROR | [x] Expected 3 spaces after parameter name; 4 found
- 39 | ERROR | [x] Expected 3 spaces after parameter type; 2 found
- 45 | ERROR | [x] Expected 1 newline at end of file; 0 found
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Service/UsersService.php
-----------------------------------------------------------------------
-FOUND 4 ERRORS AFFECTING 4 LINES
-----------------------------------------------------------------------
-  41 | ERROR | [x] Expected 3 spaces after parameter type; 1 found
-  42 | ERROR | [x] Expected 8 spaces after parameter name; 1 found
-  43 | ERROR | [x] Expected 4 spaces after parameter type; 1 found
- 101 | ERROR | [x] Missing blank line before return statement
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Service/AlbumsService.php
-----------------------------------------------------------------------------------
-FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
-----------------------------------------------------------------------------------
- 39 | ERROR   | [x] Expected 3 spaces after parameter type; 1 found
- 40 | ERROR   | [x] Expected 8 spaces after parameter name; 1 found
- 41 | ERROR   | [x] Expected 3 spaces after parameter type; 1 found
- 72 | WARNING | [ ] Always use identical comparison unless you need type juggling
-----------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Service/PhotosService.php
-----------------------------------------------------------------------------------
-FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
-----------------------------------------------------------------------------------
- 35 | ERROR   | [x] Expected 3 spaces after parameter type; 5 found
- 36 | ERROR   | [x] Expected 8 spaces after parameter name; 6 found
- 58 | ERROR   | [ ] Missing doc comment for function getPhotosByAlbum()
- 76 | WARNING | [ ] Always use identical comparison unless you need type juggling
-----------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Entity/PhotoFile.php
-------------------------------------------------------------------------
-FOUND 6 ERRORS AND 1 WARNING AFFECTING 7 LINES
-------------------------------------------------------------------------
-  3 | WARNING | The license block has to be present at the top
-    |         |                 of every PHP file, before the namespace
-  9 | ERROR   | Missing doc comment for class PhotoFile
- 23 | ERROR   | Missing doc comment for function getId()
- 28 | ERROR   | Missing doc comment for function getPhoto()
- 33 | ERROR   | Missing doc comment for function setPhoto()
- 40 | ERROR   | Missing doc comment for function getFileName()
- 45 | ERROR   | Missing doc comment for function setFileName()
-------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Entity/Comments.php
--------------------------------------------------------------------------------
-FOUND 17 ERRORS AND 1 WARNING AFFECTING 16 LINES
--------------------------------------------------------------------------------
-   3 | WARNING | The license block has to be present at the top
-     |         |                 of every PHP file, before the namespace
-  12 | ERROR   | Missing doc comment for class Comments
-  39 | ERROR   | Member variable "post_date" is not in valid camel caps format
-  48 | ERROR   | You must use "/**" style comments for a function comment
-  53 | ERROR   | Missing doc comment for function getEmail()
-  58 | ERROR   | Missing doc comment for function setEmail()
-  65 | ERROR   | Missing doc comment for function getNick()
-  70 | ERROR   | Missing doc comment for function setNick()
-  77 | ERROR   | Missing doc comment for function getContent()
-  82 | ERROR   | Missing doc comment for function setContent()
-  89 | ERROR   | Missing doc comment for function getPostDate()
-  91 | ERROR   | Variable "post_date" is not in valid camel caps format
-  94 | ERROR   | Missing doc comment for function setPostDate()
-  94 | ERROR   | Variable "post_date" is not in valid camel caps format
-  96 | ERROR   | Variable "post_date" is not in valid camel caps format
-  96 | ERROR   | Variable "post_date" is not in valid camel caps format
- 101 | ERROR   | Missing doc comment for function getPhoto()
- 106 | ERROR   | Missing doc comment for function setPhoto()
--------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Entity/Albums.php
--------------------------------------------------------------------------------
-FOUND 15 ERRORS AND 1 WARNING AFFECTING 14 LINES
--------------------------------------------------------------------------------
-  3 | WARNING | The license block has to be present at the top
-    |         |                 of every PHP file, before the namespace
- 16 | ERROR   | Missing doc comment for class Albums
- 37 | ERROR   | Member variable "created_at" is not in valid camel caps format
- 49 | ERROR   | Missing doc comment for function __construct()
- 52 | ERROR   | Variable "created_at" is not in valid camel caps format
- 55 | ERROR   | Missing doc comment for function getId()
- 60 | ERROR   | Missing doc comment for function getTitle()
- 65 | ERROR   | Missing doc comment for function setTitle()
- 72 | ERROR   | Missing doc comment for function getDescription()
- 77 | ERROR   | Missing doc comment for function setDescription()
- 84 | ERROR   | Missing doc comment for function getCreatedAt()
- 86 | ERROR   | Variable "created_at" is not in valid camel caps format
- 89 | ERROR   | Missing doc comment for function setCreatedAt()
- 89 | ERROR   | Variable "created_at" is not in valid camel caps format
- 91 | ERROR   | Variable "created_at" is not in valid camel caps format
- 91 | ERROR   | Variable "created_at" is not in valid camel caps format
--------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Entity/Photos.php
--------------------------------------------------------------------------------------
-FOUND 29 ERRORS AND 1 WARNING AFFECTING 26 LINES
--------------------------------------------------------------------------------------
-   3 | WARNING | The license block has to be present at the top
-     |         |                 of every PHP file, before the namespace
-  14 | ERROR   | Missing doc comment for class Photos
-  36 | ERROR   | Member variable "upload_date" is not in valid camel caps format
-  55 | ERROR   | Member variable "photo_file_name" is not in valid camel caps format
-  61 | ERROR   | Missing doc comment for function __construct()
-  66 | ERROR   | Missing doc comment for function getId()
-  71 | ERROR   | Missing doc comment for function getTitle()
-  76 | ERROR   | Missing doc comment for function setTitle()
-  83 | ERROR   | Missing doc comment for function getDescription()
-  88 | ERROR   | Missing doc comment for function setDescription()
-  95 | ERROR   | Missing doc comment for function getUploadDate()
-  97 | ERROR   | Variable "upload_date" is not in valid camel caps format
- 100 | ERROR   | Missing doc comment for function setUploadDate()
- 100 | ERROR   | Variable "upload_date" is not in valid camel caps format
- 102 | ERROR   | Variable "upload_date" is not in valid camel caps format
- 102 | ERROR   | Variable "upload_date" is not in valid camel caps format
- 107 | ERROR   | Missing doc comment for function getAlbum()
- 112 | ERROR   | Missing doc comment for function setAlbum()
- 119 | ERROR   | Missing doc comment for function getAuthor()
- 124 | ERROR   | Missing doc comment for function setAuthor()
- 131 | ERROR   | Missing doc comment for function getPhotoFile()
- 136 | ERROR   | Missing doc comment for function setPhotoFile()
- 143 | ERROR   | Missing doc comment for function getPhotoFileName()
- 145 | ERROR   | Variable "photo_file_name" is not in valid camel caps format
- 148 | ERROR   | Missing doc comment for function setPhotoFileName()
- 148 | ERROR   | Variable "photo_file_name" is not in valid camel caps format
- 150 | ERROR   | Variable "photo_file_name" is not in valid camel caps format
- 150 | ERROR   | Variable "photo_file_name" is not in valid camel caps format
- 163 | ERROR   | Missing doc comment for function addComment()
- 173 | ERROR   | Missing doc comment for function removeComment()
--------------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Entity/Users.php
------------------------------------------------------------------------------
-FOUND 17 ERRORS AND 1 WARNING AFFECTING 18 LINES
------------------------------------------------------------------------------
-   3 | WARNING | [ ] The license block has to be present at the top
-     |         |                     of every PHP file, before the namespace
-  15 | ERROR   | [ ] Missing doc comment for class Users
-  29 | ERROR   | [x] Add a comma after each item in a multi-line array
-  45 | ERROR   | [ ] Missing doc comment for function getId()
-  50 | ERROR   | [ ] Missing doc comment for function getEmail()
-  55 | ERROR   | [ ] Missing doc comment for function setEmail()
-  60 | ERROR   | [ ] Missing doc comment for function getUserIdentifier()
-  67 | ERROR   | [ ] Missing @return tag in function comment
-  73 | ERROR   | [ ] Missing doc comment for function getRoles()
-  77 | ERROR   | [x] Missing blank line before return statement
-  80 | ERROR   | [ ] Missing doc comment for function setRoles()
-  85 | ERROR   | [ ] Missing doc comment for function getPassword()
-  90 | ERROR   | [ ] Missing doc comment for function setPassword()
-  95 | ERROR   | [ ] Missing doc comment for function getSalt()
- 100 | ERROR   | [ ] Missing doc comment for function eraseCredentials()
- 105 | ERROR   | [ ] Missing doc comment for function getNick()
- 110 | ERROR   | [ ] Missing doc comment for function setNick()
- 113 | ERROR   | [x] Missing blank line before return statement
------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
------------------------------------------------------------------------------
-
-
-FILE: /home/wwwroot/app/src/Security/LoginFormAuthenticator.php
-----------------------------------------------------------------------
-FOUND 1 ERROR AFFECTING 1 LINE
-----------------------------------------------------------------------
- 142 | ERROR | [x] Expected 1 newline at end of file; 0 found
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-Time: 12.8 secs; Memory: 12MB
-
- ----------- ---------- ------------------------------- ------------------------------- 
-  State       Domain     Id                              Message Preview (en)           
- ----------- ---------- ------------------------------- ------------------------------- 
-   missing    messages   message.albums_contains_tasks   message.albums_contains_tasks  
-   missing    messages   message.deleted_successfully    message.deleted_successfully   
-   missing    messages   message.edited_successfully     message.edited_successfully    
-   missing    messages   message.user_has_photos         message.user_has_photos        
-   missing    messages   title.comment_create            title.comment_create           
-   missing    messages   action.add                      action.add                     
-   missing    messages   title.comment_list              title.comment_list             
-   missing    messages   label.content                   label.content                  
-   missing    messages   label.post_date                 label.post_date                
-   missing    messages   label.photo                     label.photo                    
-   missing    messages   label.user                      label.user                     
-   missing    messages   label.nick                      label.nick                     
-   missing    messages   title.comment_delete            title.comment_delete           
-   missing    messages   message.access_denied           message.access_denied          
-   missing    messages   title.albums_edit               title.albums_edit              
-   missing    messages   photos.photo                    photos.photo                   
-   missing    messages   title.albums_delete             title.albums_delete            
-   missing    messages   label.hello                     label.hello                    
-   missing    messages   message.form_error              message.form_error             
-   missing    messages   title.photos_edit               title.photos_edit              
-   missing    messages   action.users_list               action.users_list              
-   missing    messages   title.comments_and_photos       title.comments_and_photos      
-   missing    messages   label.comment_delete            label.comment_delete           
-   missing    messages   message.comments_not_found      message.comments_not_found     
-   missing    messages   action.add_comment              action.add_comment             
-   missing    messages   title.photos_delete             title.photos_delete            
-   missing    messages   title.users_create              title.users_create             
-   missing    messages   title.users_edit                title.users_edit               
-   missing    messages   title.users_list                title.users_list               
-   missing    messages   action.photos_list              action.photos_list             
-   missing    messages   action.users_create             action.users_create            
-   missing    messages   label.email                     label.email                    
-   missing    messages   label.roles                     label.roles                    
-   missing    messages   title.users_delete              title.users_delete             
- ----------- ---------- ------------------------------- ------------------------------- 
-
- ----------- ---------- ------------------------------- ------------------------------- ------------------------------- 
-  State       Domain     Id                              Message Preview (pl)            Fallback Message Preview (en)  
- ----------- ---------- ------------------------------- ------------------------------- ------------------------------- 
-   missing    messages   message.created_successfully    message.created_successfully    Created successfully           
-   missing    messages   message.albums_contains_tasks   message.albums_contains_tasks   message.albums_contains_tasks  
-   missing    messages   message.deleted_successfully    message.deleted_successfully    message.deleted_successfully   
-   missing    messages   message.edited_successfully     message.edited_successfully     message.edited_successfully    
-   missing    messages   message.user_has_photos         message.user_has_photos         message.user_has_photos        
-   missing    messages   title.comment_create            title.comment_create            title.comment_create           
-   missing    messages   action.add                      action.add                      action.add                     
-   missing    messages   title.comment_list              title.comment_list              title.comment_list             
-   missing    messages   action.back_to_list             action.back_to_list             Go back                        
-   missing    messages   label.id                        label.id                        Id                             
-   missing    messages   label.content                   label.content                   label.content                  
-   missing    messages   label.post_date                 label.post_date                 label.post_date                
-   missing    messages   label.photo                     label.photo                     label.photo                    
-   missing    messages   label.user                      label.user                      label.user                     
-   missing    messages   label.nick                      label.nick                      label.nick                     
-   missing    messages   label.actions                   label.actions                   Actions                        
-   missing    messages   action.delete                   action.delete                   Delete                         
-   missing    messages   message.empty_list              message.empty_list              List is empty.                 
-   missing    messages   title.comment_delete            title.comment_delete            title.comment_delete           
-   missing    messages   message.access_denied           message.access_denied           message.access_denied          
-   missing    messages   action.login                    action.login                    Login                          
-   missing    messages   title.albums_create             title.albums_create             Create a new album             
-   missing    messages   action.save                     action.save                     Save                           
-   missing    messages   title.albums_edit               title.albums_edit               title.albums_edit              
-   missing    messages   title.albums_list               title.albums_list               Album list                     
-   missing    messages   action.albums_create            action.albums_create            Create a new album             
-   missing    messages   label.title                     label.title                     Title                          
-   missing    messages   label.description               label.description               Description                    
-   missing    messages   label.created_at                label.created_at                Created at                     
-   missing    messages   action.show                     action.show                     Show                           
-   missing    messages   action.edit                     action.edit                     Edit                           
-   missing    messages   title.albums_details            title.albums_details            Album details                  
-   missing    messages   label.albums_and_photos         label.albums_and_photos         Photos in this album           
-   missing    messages   photos.photo                    photos.photo                    photos.photo                   
-   missing    messages   title.albums_delete             title.albums_delete             title.albums_delete            
-   missing    messages   label.hello                     label.hello                     label.hello                    
-   missing    messages   action.logout                   action.logout                   Logout                         
-   missing    messages   message.form_error              message.form_error              message.form_error             
-   missing    messages   title.photos_create             title.photos_create             Add a new photo                
-   missing    messages   title.photos_edit               title.photos_edit               title.photos_edit              
-   missing    messages   title.photos_list               title.photos_list               Photo list                     
-   missing    messages   action.albums_list              action.albums_list              Album list                     
-   missing    messages   action.photos_create            action.photos_create            Add a new photo                
-   missing    messages   action.users_list               action.users_list               action.users_list              
-   missing    messages   action.comments_list            action.comments_list            Comment list                   
-   missing    messages   label.photo_file                label.photo_file                Photo                          
-   missing    messages   label.upload_date               label.upload_date               Uploaded at                    
-   missing    messages   label.album                     label.album                     Album                          
-   missing    messages   title.photos_details            title.photos_details            Photo details                  
-   missing    messages   label.author                    label.author                    Author                         
-   missing    messages   title.comments_and_photos       title.comments_and_photos       title.comments_and_photos      
-   missing    messages   label.comment_delete            label.comment_delete            label.comment_delete           
-   missing    messages   message.comments_not_found      message.comments_not_found      message.comments_not_found     
-   missing    messages   action.add_comment              action.add_comment              action.add_comment             
-   missing    messages   title.photos_delete             title.photos_delete             title.photos_delete            
-   missing    messages   title.users_create              title.users_create              title.users_create             
-   missing    messages   title.users_edit                title.users_edit                title.users_edit               
-   missing    messages   title.users_list                title.users_list                title.users_list               
-   missing    messages   action.photos_list              action.photos_list              action.photos_list             
-   missing    messages   action.users_create             action.users_create             action.users_create            
-   missing    messages   label.email                     label.email                     label.email                    
-   missing    messages   label.roles                     label.roles                     label.roles                    
-   missing    messages   title.users_delete              title.users_delete              title.users_delete             
- ----------- ---------- ------------------------------- ------------------------------- ------------------------------- 
-
-[notice] Migrating up to DoctrineMigrations\Version20240623092730
-[notice] finished in 843.6ms, used 22M memory, 1 migrations executed, 11 sql queries
-
- [OK] Successfully migrated to version: DoctrineMigrations\Version20240623092730                                        
+Found 0 of 43 files that can be fixed in 0.731 seconds, 20.00 MB memory used
+ ------- -------- ---- ---------------------- 
+  State   Domain   Id   Message Preview (en)  
+ ------- -------- ---- ---------------------- 
+
+ ----------- ---------- ------------------------------- ------------------------------- ----------------------------------------- 
+  State       Domain     Id                              Message Preview (pl)            Fallback Message Preview (en)            
+ ----------- ---------- ------------------------------- ------------------------------- ----------------------------------------- 
+   missing    messages   message.created_successfully    message.created_successfully    Created successfully                     
+   missing    messages   message.edited_successfully     message.edited_successfully     Edited successfully                      
+   missing    messages   message.albums_contains_tasks   message.albums_contains_tasks   Album contains tasks                     
+   missing    messages   message.deleted_successfully    message.deleted_successfully    Deleted successfully                     
+   missing    messages   message.user_has_photos         message.user_has_photos         User has photos                          
+   missing    messages   title.comment_create            title.comment_create            Create comment                           
+   missing    messages   action.add                      action.add                      Add                                      
+   missing    messages   title.comment_list              title.comment_list              Comment list                             
+   missing    messages   action.back_to_list             action.back_to_list             Go back                                  
+   missing    messages   label.id                        label.id                        Id                                       
+   missing    messages   label.content                   label.content                   Content                                  
+   missing    messages   label.post_date                 label.post_date                 Post date                                
+   missing    messages   label.photo                     label.photo                     Photo                                    
+   missing    messages   label.user                      label.user                      User                                     
+   missing    messages   label.nick                      label.nick                      Nickname                                 
+   missing    messages   label.actions                   label.actions                   Actions                                  
+   missing    messages   action.delete                   action.delete                   Delete                                   
+   missing    messages   message.empty_list              message.empty_list              List is empty.                           
+   missing    messages   title.comment_delete            title.comment_delete            Delete comment                           
+   missing    messages   message.access_denied           message.access_denied           Access denied                            
+   missing    messages   action.login                    action.login                    Login                                    
+   missing    messages   label.email                     label.email                     Email                                    
+   missing    messages   label.password                  label.password                  Password                                 
+   missing    messages   title.albums_create             title.albums_create             Create a new album                       
+   missing    messages   action.save                     action.save                     Save                                     
+   missing    messages   title.albums_edit               title.albums_edit               Edit album                               
+   missing    messages   title.albums_list               title.albums_list               Album list                               
+   missing    messages   action.albums_create            action.albums_create            Create a new album                       
+   missing    messages   label.title                     label.title                     Title                                    
+   missing    messages   label.description               label.description               Description                              
+   missing    messages   label.created_at                label.created_at                Created at                               
+   missing    messages   action.show                     action.show                     Show                                     
+   missing    messages   action.edit                     action.edit                     Edit                                     
+   missing    messages   title.albums_details            title.albums_details            Album details                            
+   missing    messages   label.albums_and_photos         label.albums_and_photos         Photos in this album                     
+   missing    messages   photos.photo                    photos.photo                    Photo                                    
+   missing    messages   title.albums_delete             title.albums_delete             Delete album                             
+   missing    messages   label.hello                     label.hello                     Hello                                    
+   missing    messages   action.logout                   action.logout                   Logout                                   
+   missing    messages   message.form_error              message.form_error              Form error                               
+   missing    messages   title.photos_create             title.photos_create             Add a new photo                          
+   missing    messages   title.photos_edit               title.photos_edit               Edit photo                               
+   missing    messages   title.photos_list               title.photos_list               Photo list                               
+   missing    messages   action.albums_list              action.albums_list              Album list                               
+   missing    messages   action.users_list               action.users_list               User list                                
+   missing    messages   action.comments_list            action.comments_list            Comment list                             
+   missing    messages   action.photos_create            action.photos_create            Add a new photo                          
+   missing    messages   label.photo_file                label.photo_file                Photo                                    
+   missing    messages   label.upload_date               label.upload_date               Uploaded at                              
+   missing    messages   label.album                     label.album                     Album                                    
+   missing    messages   title.photos_details            title.photos_details            Photo details                            
+   missing    messages   label.author                    label.author                    Author                                   
+   missing    messages   title.comments_and_photos       title.comments_and_photos       Comments for this photo                  
+   missing    messages   label.comment_delete            label.comment_delete            Delete comment                           
+   missing    messages   message.comments_not_found      message.comments_not_found      There is no comments for this photo yet  
+   missing    messages   action.add_comment              action.add_comment              Add comment                              
+   missing    messages   title.photos_delete             title.photos_delete             Delete photo                             
+   missing    messages   title.users_create              title.users_create              Create user                              
+   missing    messages   title.users_edit                title.users_edit                Edit user                                
+   missing    messages   title.users_list                title.users_list                User list                                
+   missing    messages   action.photos_list              action.photos_list              Photos list                              
+   missing    messages   action.users_create             action.users_create             Create user                              
+   missing    messages   label.roles                     label.roles                     Roles                                    
+   missing    messages   title.users_delete              title.users_delete              Delete user                              
+ ----------- ---------- ------------------------------- ------------------------------- ----------------------------------------- 
+
+[notice] Migrating up to DoctrineMigrations\Version20240625170113
+[notice] finished in 1022.5ms, used 22M memory, 1 migrations executed, 11 sql queries
+
+ [OK] Successfully migrated to version: DoctrineMigrations\Version20240625170113                                        
 
 
 

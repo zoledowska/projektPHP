@@ -130,9 +130,9 @@
         <source>action.comments_list</source>
         <target>Lista komentarzy</target>
       </trans-unit>
-      <trans-unit id="message.albums_contains_tasks">
-        <source>message.albums_contains_tasks</source>
-        <target>Album zawiera zadania</target>
+      <trans-unit id="message.albums_contains_photos">
+        <source>message.albums_contains_photos</source>
+        <target>Album zawiera zdjęcia</target>
       </trans-unit>
       <trans-unit id="message.deleted_successfully">
         <source>message.deleted_successfully</source>
@@ -176,7 +176,7 @@
       </trans-unit>
       <trans-unit id="label.nick">
         <source>label.nick</source>
-        <target>Pseudonim</target>
+        <target>Nazwa użytkownika</target>
       </trans-unit>
       <trans-unit id="title.comment_delete">
         <source>title.comment_delete</source>
@@ -221,6 +221,10 @@
       <trans-unit id="label.comment_delete">
         <source>label.comment_delete</source>
         <target>Usuń komentarz</target>
+      </trans-unit>
+      <trans-unit id="label.password">
+          <source>label.password</source>
+          <target>Hasło</target>
       </trans-unit>
     </body>
   </file>

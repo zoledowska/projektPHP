@@ -9,10 +9,10 @@ use App\Entity\PhotoFile;
 use App\Repository\PhotoFileRepository;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Security\Core\Photos\PhotosServiceInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Class PhotoFile service.
+ * Class PhotoFileService.
  */
 class PhotoFileService implements PhotoFileServiceInterface
 {
@@ -40,19 +40,16 @@ class PhotoFileService implements PhotoFileServiceInterface
     /**
      * Update photoFile.
      *
-     * @param UploadedFile $uploadedFile Uploaded file
-     * @param PhotoFile    $photoFile    PhotoFile entity
-     * @param Photos       $photos       Photos entity
+     * @param UploadedFile                     $uploadedFile Uploaded file
+     * @param PhotoFile                        $photoFile    PhotoFile entity
+     * @param UserInterface|\App\Entity\Photos $photos       User or Photos entity
      */
-    public function update(UploadedFile $uploadedFile, PhotoFile $photoFile, Photos|\App\Service\PhotosServiceInterface $photos): void
+    public function update(UploadedFile $uploadedFile, PhotoFile $photoFile, UserInterface|\App\Entity\Photos|PhotosServiceInterface $photos): void
     {
         $filename = $photoFile->getFilename();
 
         if (null !== $filename) {
-            $this->filesystem->remove(
-                $this->targetDirectory.'/'.$filename
-            );
-
+            $this->filesystem->remove($this->targetDirectory.'/'.$filename);
             $this->create($uploadedFile, $photoFile, $photos);
         }
     }
@@ -60,15 +57,13 @@ class PhotoFileService implements PhotoFileServiceInterface
     /**
      * Create photoFile.
      *
-     * @param UploadedFile           $uploadedFile Uploaded file
-     * @param PhotoFile              $photoFile    PhotoFile entity
-     * @param PhotosServiceInterface $photos       Photos interface
+     * @param UploadedFile                              $uploadedFile Uploaded file
+     * @param PhotoFile                                 $photoFile    PhotoFile entity
+     * @param PhotosServiceInterface|\App\Entity\Photos $photos       Photos interface or Photos entity
      */
     public function create(UploadedFile $uploadedFile, PhotoFile $photoFile, PhotosServiceInterface|\App\Entity\Photos $photos): void
     {
         $photoFileFilename = $this->fileUploadService->upload($uploadedFile);
-
-        //        $photoFile->setPhotos($photos);
         $photoFile->setFilename($photoFileFilename);
         $this->photoFileRepository->save($photoFile);
     }

@@ -52,11 +52,6 @@ class UsersRepository extends ServiceEntityRepository
             ->select('user');
     }
 
-    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('user');
-    }
-
     /**
      * Save entity.
      *
@@ -79,11 +74,17 @@ class UsersRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
-    /*
+    /**
      * Get or create new query builder.
      *
      * @param QueryBuilder|null $queryBuilder Query builder
      *
      * @return QueryBuilder Query builder
      */
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('user');
+    }
 }
+
+// Ensure there is a newline at the end of the file

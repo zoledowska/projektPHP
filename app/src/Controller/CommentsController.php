@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * Comments controller.
  */
@@ -40,7 +41,7 @@ class CommentsController extends AbstractController
     /**
      * Constructor.
      *
-     * @param CommentsServiceInterface $commentsService  CommentsServiceInteraface
+     * @param CommentsServiceInterface $commentsService  CommentsServiceInterface
      * @param TranslatorInterface      $translator       Translator
      * @param PhotosRepository         $photosRepository Photos Repository
      */
@@ -54,7 +55,7 @@ class CommentsController extends AbstractController
      * Index action.
      *
      * @param Request            $request            HTTP Request
-     * @param CommentsRepository $commentsRepository comments repository
+     * @param CommentsRepository $commentsRepository Comments repository
      * @param PaginatorInterface $paginator          Paginator
      *
      * @return Response HTTP response
@@ -79,12 +80,7 @@ class CommentsController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route(
-        '/{id}',
-        name: 'comments_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET',
-    )]
+    #[Route('/{id}', name: 'comments_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     public function show(CommentsRepository $commentsRepository, int $id): Response
     {
         $comments = $commentsRepository->find($id);
@@ -118,9 +114,7 @@ class CommentsController extends AbstractController
             $comments,
             ['action' => $this->generateUrl('comments_create', ['id' => $photos->getId()]), 'current_user' => $user, 'current_photos' => $photos]
         );
-        // Blad
         $form->handleRequest($request);
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->commentsService->save($comments);
@@ -144,7 +138,7 @@ class CommentsController extends AbstractController
      *
      * @return Response Response
      */
-    #[Route('/delete/{id}', name: 'comments_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|POST')]
+    #[Route('/delete/{id}', name: 'comments_delete', requirements: ['id' => '[1-9]\d*'], methods: ['GET', 'POST'])]
     public function delete(Request $request, Comments $comments): Response
     {
         $form = $this->createForm(
@@ -177,3 +171,5 @@ class CommentsController extends AbstractController
         );
     }
 }
+
+// Ensure there is a newline at the end of the file

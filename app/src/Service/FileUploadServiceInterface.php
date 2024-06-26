@@ -28,3 +28,5 @@ interface FileUploadServiceInterface
      */
     public function getTargetDirectory(): string;
 }
+
+// End of FileUploadServiceInterface.php file

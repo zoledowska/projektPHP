@@ -1,6 +1,7 @@
 <?php
-
-// src/Service/PhotosServiceInterface.php
+/**
+ * Photos service Interface.
+ */
 
 namespace App\Service;
 
@@ -8,6 +9,11 @@ use App\Entity\Photos;
 use App\Entity\Albums;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
+/**
+ * Interface PhotosServiceInterface.
+ *
+ * Interface defining methods for managing photos.
+ */
 interface PhotosServiceInterface
 {
     /**

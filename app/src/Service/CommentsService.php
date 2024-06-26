@@ -18,6 +18,7 @@ use Knp\Component\Pager\PaginatorInterface;
 class CommentsService implements CommentsServiceInterface
 {
     private const PAGINATOR_ITEMS_PER_PAGE = 10;
+
     /**
      * Comments repository.
      */
@@ -57,7 +58,7 @@ class CommentsService implements CommentsServiceInterface
     }
 
     /**
-     * Paginated list by users.
+     * Paginated list by photos.
      *
      * @param int    $page   Page
      * @param Photos $photos Photos
@@ -67,28 +68,24 @@ class CommentsService implements CommentsServiceInterface
     public function getPaginatedListByPhotos(int $page, Photos $photos): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->commentsRepository->findBy(
-                ['photo' => $photos]
-            ),
+            $this->commentsRepository->findBy(['photo' => $photos]),
             $page,
             CommentsRepository::PAGINATOR_ITEMS_PER_PAGE
         );
     }
 
     /**
-     * Paginated list by users.
+     * Paginated list by user.
      *
      * @param int   $page Page
-     * @param Users $user Users
+     * @param Users $user User
      *
      * @return PaginationInterface Paginator interface
      */
     public function getPaginatedListByUser(int $page, Users $user): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->commentsRepository->findBy(
-                ['Users' => $user]
-            ),
+            $this->commentsRepository->findBy(['user' => $user]),
             $page,
             CommentsRepository::PAGINATOR_ITEMS_PER_PAGE
         );
@@ -99,7 +96,7 @@ class CommentsService implements CommentsServiceInterface
      *
      * @param Comments $comments Comments
      *
-     * @return Photos Photos
+     * @return Photos|null Photos
      */
     public function getPhotos(Comments $comments): ?Photos
     {
@@ -122,7 +119,7 @@ class CommentsService implements CommentsServiceInterface
     /**
      * Delete entity.
      *
-     * @param Comments $comments Photos entity
+     * @param Comments $comments Comments entity
      */
     public function delete(Comments $comments): void
     {

@@ -22,14 +22,19 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/photoFile')]
 class PhotoFileController extends AbstractController
 {
+    private PhotoFileServiceInterface $photoFileService;
+    private TranslatorInterface $translator;
+
     /**
      * Constructor.
      *
      * @param PhotoFileServiceInterface $photoFileService PhotoFile service
      * @param TranslatorInterface       $translator       Translator
      */
-    public function __construct(private readonly PhotoFileServiceInterface $photoFileService, private readonly TranslatorInterface $translator)
+    public function __construct(PhotoFileServiceInterface $photoFileService, TranslatorInterface $translator)
     {
+        $this->photoFileService = $photoFileService;
+        $this->translator = $translator;
     }
 
     /**

@@ -29,25 +29,17 @@ class AlbumsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add(
-            'title',
-            TextType::class,
-            [
-                'label' => 'label.title',
-                'required' => true,
-                'attr' => ['max_length' => 64],
-            ]
-        );
+        $builder->add('title', TextType::class, [
+            'label' => 'label.title',
+            'required' => true,
+            'attr' => ['max_length' => 64],
+        ]);
 
-        $builder->add(
-            'description',
-            TextType::class,
-            [
-                'label' => 'label.description',
-                'required' => true,
-                'attr' => ['max_length' => 64],
-            ]
-        );
+        $builder->add('description', TextType::class, [
+            'label' => 'label.description',
+            'required' => true,
+            'attr' => ['max_length' => 64],
+        ]);
     }
 
     /**
@@ -57,7 +49,9 @@ class AlbumsType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Albums::class]);
+        $resolver->setDefaults([
+            'data_class' => Albums::class,
+        ]);
     }
 
     /**

@@ -10,6 +10,8 @@ use App\Repository\UsersRepository;
 use App\Repository\PhotosRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -30,15 +32,15 @@ class UsersService implements UsersServiceInterface
     private const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     private PhotosRepository $photosRepository;
-
     private UsersRepository $usersRepository;
-
     private PaginatorInterface $paginator;
 
     /**
      * Constructor.
      *
-     * @param PaginatorInterface $paginator Paginator
+     * @param PhotosRepository   $photosRepository Photos repository
+     * @param PaginatorInterface $paginator        Paginator
+     * @param UsersRepository    $usersRepository  Users repository
      */
     public function __construct(PhotosRepository $photosRepository, PaginatorInterface $paginator, UsersRepository $usersRepository)
     {
@@ -52,7 +54,7 @@ class UsersService implements UsersServiceInterface
      *
      * @param int $page Page number
      *
-     * @return PaginationInterface<string, mixed> Paginated list
+     * @return PaginationInterface<PaginationInterface<string, mixed>> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface
     {
@@ -98,13 +100,14 @@ class UsersService implements UsersServiceInterface
         try {
             $result = $this->photosRepository->queryByAuthor($users);
             $count = $result->getQuery()->getSingleScalarResult();
-            return $count == 0;
-        }
-        catch (NoResultException) {
+
+            return 0 === $count;
+        } catch (NoResultException) {
             return true;
-        }
-        catch(NonUniqueResultException) {
+        } catch (NonUniqueResultException) {
             return false;
         }
     }
 }
+
+// End of UsersService.php file
