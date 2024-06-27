@@ -33,10 +33,10 @@
         <button class="btn btn-primary mt-3" type="submit">
             {{ 'action.login'|trans }}
         </button>
-        <button class="btn btn-primary mt-3" type="button">
-        <a href="{{ url('photos_index') }}" title="{{ 'action.back_to_list'|trans }}" class="nav-link">
-            {{ 'action.back_to_list'|trans }}
-        </a>
+        <button class="btn btn-secondary mt-3" type="button">
+            <a href="{{ url('photos_index') }}" title="{{ 'action.back_to_list'|trans }}" class="nav-link">
+                {{ 'action.back_to_list'|trans }}
+            </a>
         </button>
     </form>
 {% endblock %}
