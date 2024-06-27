@@ -1,4 +1,4 @@
-git# Systemy Interakcyjne - projekt: Galeria zdjęć, Katarzyna Żołędowska
+Systemy Interakcyjne - projekt: Galeria zdjęć, Katarzyna Żołędowska
 
 
 ## Requirements
