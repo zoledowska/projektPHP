@@ -15,7 +15,7 @@ git# Systemy Interakcyjne - projekt: Galeria zdjęć, Katarzyna Żołędowska
 * Clone: this repository:
 
 ```bash
-https://github.com/zoledowska/projektPHP
+git clone https://github.com/zoledowska/projektPHP
 ```
 
 * Change database connection details in the .env file
