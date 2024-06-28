@@ -57,8 +57,8 @@ class Albums
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Assert\NotNull(message: 'Creation date cannot be null.')]
-    #[Assert\Type(\DateTime::class)]
-    private ?\DateTime $createdAt = null;
+    #[Assert\Type(\DateTimeImmutable::class)]
+    private ?\DateTimeImmutable $createdAt = null;
 
     /**
      * Initializes a new instance of the Album entity.
@@ -66,7 +66,7 @@ class Albums
     public function __construct()
     {
         $this->photos = new ArrayCollection();
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     /**
@@ -130,9 +130,9 @@ class Albums
     /**
      * Gets the creation date of the album.
      *
-     * @return \DateTime|null the creation date of the album
+     * @return \DateTimeImmutable|null the creation date of the album
      */
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
     }
@@ -140,11 +140,11 @@ class Albums
     /**
      * Sets the creation date of the album.
      *
-     * @param \DateTime $createdAt the creation date to set
+     * @param \DateTimeImmutable $createdAt the creation date to set
      *
      * @return static the current instance for chaining
      */
-    public function setCreatedAt(\DateTime $createdAt): static
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
 

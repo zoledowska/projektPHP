@@ -91,35 +91,15 @@ Search.appendIndex(
             "summary": "Translator.",
             "url": "classes/App-Controller-CommentsController.html#property_translator"
         },                {
-            "fqsen": "\\App\\Controller\\PhotoFileController",
-            "name": "PhotoFileController",
-            "summary": "Class\u0020PhotoFileController.",
-            "url": "classes/App-Controller-PhotoFileController.html"
+            "fqsen": "\\App\\Controller\\IndexController",
+            "name": "IndexController",
+            "summary": "Controller\u0020for\u0020handling\u0020the\u0020root\u0020route.",
+            "url": "classes/App-Controller-IndexController.html"
         },                {
-            "fqsen": "\\App\\Controller\\PhotoFileController\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Constructor.",
-            "url": "classes/App-Controller-PhotoFileController.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Controller\\PhotoFileController\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Create\u0020action.",
-            "url": "classes/App-Controller-PhotoFileController.html#method_create"
-        },                {
-            "fqsen": "\\App\\Controller\\PhotoFileController\u003A\u003Aedit\u0028\u0029",
-            "name": "edit",
-            "summary": "Edit\u0020action.",
-            "url": "classes/App-Controller-PhotoFileController.html#method_edit"
-        },                {
-            "fqsen": "\\App\\Controller\\PhotoFileController\u003A\u003A\u0024photoFileService",
-            "name": "photoFileService",
-            "summary": "",
-            "url": "classes/App-Controller-PhotoFileController.html#property_photoFileService"
-        },                {
-            "fqsen": "\\App\\Controller\\PhotoFileController\u003A\u003A\u0024translator",
-            "name": "translator",
-            "summary": "",
-            "url": "classes/App-Controller-PhotoFileController.html#property_translator"
+            "fqsen": "\\App\\Controller\\IndexController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "Redirects\u0020the\u0020root\u0020URL\u0020to\u0020the\u0020photos\u0020index\u0020page.",
+            "url": "classes/App-Controller-IndexController.html#method_index"
         },                {
             "fqsen": "\\App\\Controller\\PhotosController",
             "name": "PhotosController",
@@ -571,51 +551,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Entity-Enum-UserRole.html#enumcase_ROLE_ADMIN"
         },                {
-            "fqsen": "\\App\\Entity\\PhotoFile",
-            "name": "PhotoFile",
-            "summary": "Represents\u0020a\u0020PhotoFile\u0020entity.",
-            "url": "classes/App-Entity-PhotoFile.html"
-        },                {
-            "fqsen": "\\App\\Entity\\PhotoFile\u003A\u003AgetId\u0028\u0029",
-            "name": "getId",
-            "summary": "Gets\u0020the\u0020ID\u0020of\u0020the\u0020PhotoFile.",
-            "url": "classes/App-Entity-PhotoFile.html#method_getId"
-        },                {
-            "fqsen": "\\App\\Entity\\PhotoFile\u003A\u003AgetPhoto\u0028\u0029",
-            "name": "getPhoto",
-            "summary": "Gets\u0020the\u0020associated\u0020photo\u0020entity.",
-            "url": "classes/App-Entity-PhotoFile.html#method_getPhoto"
-        },                {
-            "fqsen": "\\App\\Entity\\PhotoFile\u003A\u003AsetPhoto\u0028\u0029",
-            "name": "setPhoto",
-            "summary": "Sets\u0020the\u0020associated\u0020photo\u0020entity.",
-            "url": "classes/App-Entity-PhotoFile.html#method_setPhoto"
-        },                {
-            "fqsen": "\\App\\Entity\\PhotoFile\u003A\u003AgetFileName\u0028\u0029",
-            "name": "getFileName",
-            "summary": "Gets\u0020the\u0020file\u0020name\u0020of\u0020the\u0020photo.",
-            "url": "classes/App-Entity-PhotoFile.html#method_getFileName"
-        },                {
-            "fqsen": "\\App\\Entity\\PhotoFile\u003A\u003AsetFileName\u0028\u0029",
-            "name": "setFileName",
-            "summary": "Sets\u0020the\u0020file\u0020name\u0020of\u0020the\u0020photo.",
-            "url": "classes/App-Entity-PhotoFile.html#method_setFileName"
-        },                {
-            "fqsen": "\\App\\Entity\\PhotoFile\u003A\u003A\u0024id",
-            "name": "id",
-            "summary": "",
-            "url": "classes/App-Entity-PhotoFile.html#property_id"
-        },                {
-            "fqsen": "\\App\\Entity\\PhotoFile\u003A\u003A\u0024photo",
-            "name": "photo",
-            "summary": "",
-            "url": "classes/App-Entity-PhotoFile.html#property_photo"
-        },                {
-            "fqsen": "\\App\\Entity\\PhotoFile\u003A\u003A\u0024fileName",
-            "name": "fileName",
-            "summary": "",
-            "url": "classes/App-Entity-PhotoFile.html#property_fileName"
-        },                {
             "fqsen": "\\App\\Entity\\Photos",
             "name": "Photos",
             "summary": "Represents\u0020a\u0020Photo\u0020entity.",
@@ -681,16 +616,6 @@ Search.appendIndex(
             "summary": "Sets\u0020the\u0020author\u0020who\u0020uploaded\u0020the\u0020photo.",
             "url": "classes/App-Entity-Photos.html#method_setAuthor"
         },                {
-            "fqsen": "\\App\\Entity\\Photos\u003A\u003AgetPhotoFile\u0028\u0029",
-            "name": "getPhotoFile",
-            "summary": "Gets\u0020the\u0020file\u0020associated\u0020with\u0020the\u0020photo.",
-            "url": "classes/App-Entity-Photos.html#method_getPhotoFile"
-        },                {
-            "fqsen": "\\App\\Entity\\Photos\u003A\u003AsetPhotoFile\u0028\u0029",
-            "name": "setPhotoFile",
-            "summary": "Sets\u0020the\u0020file\u0020associated\u0020with\u0020the\u0020photo.",
-            "url": "classes/App-Entity-Photos.html#method_setPhotoFile"
-        },                {
             "fqsen": "\\App\\Entity\\Photos\u003A\u003AgetPhotoFileName\u0028\u0029",
             "name": "getPhotoFileName",
             "summary": "Gets\u0020the\u0020file\u0020name\u0020of\u0020the\u0020photo.",
@@ -745,11 +670,6 @@ Search.appendIndex(
             "name": "author",
             "summary": "The\u0020author\u0020who\u0020uploaded\u0020the\u0020photo.",
             "url": "classes/App-Entity-Photos.html#property_author"
-        },                {
-            "fqsen": "\\App\\Entity\\Photos\u003A\u003A\u0024photoFile",
-            "name": "photoFile",
-            "summary": "The\u0020file\u0020associated\u0020with\u0020the\u0020photo.",
-            "url": "classes/App-Entity-Photos.html#property_photoFile"
         },                {
             "fqsen": "\\App\\Entity\\Photos\u003A\u003A\u0024photoFileName",
             "name": "photoFileName",
@@ -896,26 +816,6 @@ Search.appendIndex(
             "summary": "Returns\u0020the\u0020prefix\u0020of\u0020the\u0020template\u0020block\u0020name\u0020for\u0020this\u0020type.",
             "url": "classes/App-Form-Type-CommentsType.html#method_getBlockPrefix"
         },                {
-            "fqsen": "\\App\\Form\\Type\\PhotoFileType",
-            "name": "PhotoFileType",
-            "summary": "Class\u0020PhotoFileType.",
-            "url": "classes/App-Form-Type-PhotoFileType.html"
-        },                {
-            "fqsen": "\\App\\Form\\Type\\PhotoFileType\u003A\u003AbuildForm\u0028\u0029",
-            "name": "buildForm",
-            "summary": "Builds\u0020the\u0020form.",
-            "url": "classes/App-Form-Type-PhotoFileType.html#method_buildForm"
-        },                {
-            "fqsen": "\\App\\Form\\Type\\PhotoFileType\u003A\u003AconfigureOptions\u0028\u0029",
-            "name": "configureOptions",
-            "summary": "Configures\u0020the\u0020options\u0020for\u0020this\u0020type.",
-            "url": "classes/App-Form-Type-PhotoFileType.html#method_configureOptions"
-        },                {
-            "fqsen": "\\App\\Form\\Type\\PhotoFileType\u003A\u003AgetBlockPrefix\u0028\u0029",
-            "name": "getBlockPrefix",
-            "summary": "Returns\u0020the\u0020prefix\u0020of\u0020the\u0020template\u0020block\u0020name\u0020for\u0020this\u0020type.",
-            "url": "classes/App-Form-Type-PhotoFileType.html#method_getBlockPrefix"
-        },                {
             "fqsen": "\\App\\Form\\Type\\PhotosType",
             "name": "PhotosType",
             "summary": "Class\u0020PhotosType.",
@@ -1035,21 +935,6 @@ Search.appendIndex(
             "name": "PAGINATOR_ITEMS_PER_PAGE",
             "summary": "Items\u0020per\u0020page.",
             "url": "classes/App-Repository-CommentsRepository.html#constant_PAGINATOR_ITEMS_PER_PAGE"
-        },                {
-            "fqsen": "\\App\\Repository\\PhotoFileRepository",
-            "name": "PhotoFileRepository",
-            "summary": "",
-            "url": "classes/App-Repository-PhotoFileRepository.html"
-        },                {
-            "fqsen": "\\App\\Repository\\PhotoFileRepository\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Constructor.",
-            "url": "classes/App-Repository-PhotoFileRepository.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Repository\\PhotoFileRepository\u003A\u003Asave\u0028\u0029",
-            "name": "save",
-            "summary": "Save\u0020entity.",
-            "url": "classes/App-Repository-PhotoFileRepository.html#method_save"
         },                {
             "fqsen": "\\App\\Repository\\PhotosRepository",
             "name": "PhotosRepository",
@@ -1370,61 +1255,6 @@ Search.appendIndex(
             "name": "getTargetDirectory",
             "summary": "Getter\u0020for\u0020target\u0020directory.",
             "url": "classes/App-Service-FileUploadServiceInterface.html#method_getTargetDirectory"
-        },                {
-            "fqsen": "\\App\\Service\\PhotoFileService",
-            "name": "PhotoFileService",
-            "summary": "Class\u0020PhotoFileService.",
-            "url": "classes/App-Service-PhotoFileService.html"
-        },                {
-            "fqsen": "\\App\\Service\\PhotoFileService\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Constructor.",
-            "url": "classes/App-Service-PhotoFileService.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Service\\PhotoFileService\u003A\u003Aupdate\u0028\u0029",
-            "name": "update",
-            "summary": "Update\u0020photoFile.",
-            "url": "classes/App-Service-PhotoFileService.html#method_update"
-        },                {
-            "fqsen": "\\App\\Service\\PhotoFileService\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Create\u0020photoFile.",
-            "url": "classes/App-Service-PhotoFileService.html#method_create"
-        },                {
-            "fqsen": "\\App\\Service\\PhotoFileService\u003A\u003A\u0024targetDirectory",
-            "name": "targetDirectory",
-            "summary": "",
-            "url": "classes/App-Service-PhotoFileService.html#property_targetDirectory"
-        },                {
-            "fqsen": "\\App\\Service\\PhotoFileService\u003A\u003A\u0024photoFileRepository",
-            "name": "photoFileRepository",
-            "summary": "",
-            "url": "classes/App-Service-PhotoFileService.html#property_photoFileRepository"
-        },                {
-            "fqsen": "\\App\\Service\\PhotoFileService\u003A\u003A\u0024fileUploadService",
-            "name": "fileUploadService",
-            "summary": "",
-            "url": "classes/App-Service-PhotoFileService.html#property_fileUploadService"
-        },                {
-            "fqsen": "\\App\\Service\\PhotoFileService\u003A\u003A\u0024filesystem",
-            "name": "filesystem",
-            "summary": "",
-            "url": "classes/App-Service-PhotoFileService.html#property_filesystem"
-        },                {
-            "fqsen": "\\App\\Service\\PhotoFileServiceInterface",
-            "name": "PhotoFileServiceInterface",
-            "summary": "Interface\u0020PhotoFileServiceInterface.",
-            "url": "classes/App-Service-PhotoFileServiceInterface.html"
-        },                {
-            "fqsen": "\\App\\Service\\PhotoFileServiceInterface\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Create\u0020photoFile.",
-            "url": "classes/App-Service-PhotoFileServiceInterface.html#method_create"
-        },                {
-            "fqsen": "\\App\\Service\\PhotoFileServiceInterface\u003A\u003Aupdate\u0028\u0029",
-            "name": "update",
-            "summary": "Update\u0020photoFile.",
-            "url": "classes/App-Service-PhotoFileServiceInterface.html#method_update"
         },                {
             "fqsen": "\\App\\Service\\PhotosService",
             "name": "PhotosService",

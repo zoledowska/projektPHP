@@ -44,7 +44,7 @@
         "symfony/validator": "5.4.*",
         "symfony/web-link": "5.4.*",
         "symfony/yaml": "5.4.*",
-        "twig/extra-bundle": "^3.6",
+        "twig/extra-bundle": "^3.10",
         "twig/intl-extra": "^3.6",
         "twig/markdown-extra": "^3.6",
         "twig/twig": "^2.12|^3.0"

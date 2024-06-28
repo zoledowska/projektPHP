@@ -37,7 +37,7 @@
                     <td>{{ albums.id }}</td>
                     <td>{{ albums.title }}</td>
                     <td>{{ albums.description }}</td>
-                    <td>{{ albums.CreatedAt|format_date('long') }}</td>
+                    <td>{{ albums.CreatedAt|format_datetime('long') }}</td>
                     <td>
                             <a href="{{ url('albums_show', {id: albums.id}) }}" title="{{ 'action.show'|trans }}" class="btn btn-outline-secondary">
                                 {{ 'action.show'|trans }}

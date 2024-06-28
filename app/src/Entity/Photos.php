@@ -54,11 +54,11 @@ class Photos
     /**
      * The date when the photo was uploaded.
      */
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     #[Gedmo\Timestampable(on: 'create')]
     #[Assert\NotNull(message: 'Upload date cannot be null.')]
-    #[Assert\Type(\DateTimeInterface::class)]
-    private ?\DateTimeInterface $uploadDate = null;
+    #[Assert\Type(\DateTimeImmutable::class)]
+    private ?\DateTimeImmutable $uploadDate = null;
 
     /**
      * The album to which the photo belongs.
@@ -75,13 +75,6 @@ class Photos
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotNull(message: 'Author cannot be null.')]
     private ?Users $author = null;
-
-    /**
-     * The file associated with the photo.
-     */
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[Assert\Valid]
-    private ?PhotoFile $photoFile = null;
 
     /**
      * The file name of the photo.
@@ -172,9 +165,9 @@ class Photos
     /**
      * Gets the upload date of the photo.
      *
-     * @return \DateTimeInterface|null the upload date of the photo
+     * @return \DateTimeImmutable|null the upload date of the photo
      */
-    public function getUploadDate(): ?\DateTimeInterface
+    public function getUploadDate(): ?\DateTimeImmutable
     {
         return $this->uploadDate;
     }
@@ -182,11 +175,11 @@ class Photos
     /**
      * Sets the upload date of the photo.
      *
-     * @param \DateTimeInterface $uploadDate the upload date to set
+     * @param \DateTimeImmutable $uploadDate the upload date to set
      *
      * @return static the current instance for chaining
      */
-    public function setUploadDate(\DateTimeInterface $uploadDate): static
+    public function setUploadDate(\DateTimeImmutable $uploadDate): static
     {
         $this->uploadDate = $uploadDate;
 
@@ -237,30 +230,6 @@ class Photos
     public function setAuthor(?Users $author): static
     {
         $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Gets the file associated with the photo.
-     *
-     * @return PhotoFile|null the photo file
-     */
-    public function getPhotoFile(): ?PhotoFile
-    {
-        return $this->photoFile;
-    }
-
-    /**
-     * Sets the file associated with the photo.
-     *
-     * @param PhotoFile|null $photoFile the photo file to set
-     *
-     * @return static the current instance for chaining
-     */
-    public function setPhotoFile(?PhotoFile $photoFile): static
-    {
-        $this->photoFile = $photoFile;
 
         return $this;
     }

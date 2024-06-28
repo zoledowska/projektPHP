@@ -211,13 +211,6 @@
 <dd>The unique identifier for the Photo entity.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/App-Entity-Photos.html#property_photoFile">$photoFile</a>
-    <span>
-                        &nbsp;: <a href="classes/App-Entity-PhotoFile.html"><abbr title="\App\Entity\PhotoFile">PhotoFile</abbr></a>|null            </span>
-</dt>
-<dd>The file associated with the photo.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/App-Entity-Photos.html#property_photoFileName">$photoFileName</a>
     <span>
                         &nbsp;: string|null            </span>
@@ -234,7 +227,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/App-Entity-Photos.html#property_uploadDate">$uploadDate</a>
     <span>
-                        &nbsp;: <abbr title="\DateTimeInterface">DateTimeInterface</abbr>|null            </span>
+                        &nbsp;: <abbr title="\DateTimeImmutable">DateTimeImmutable</abbr>|null            </span>
 </dt>
 <dd>The date when the photo was uploaded.</dd>
 
@@ -296,13 +289,6 @@
 <dd>Gets the ID of the Photo.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-Entity-Photos.html#method_getPhotoFile">getPhotoFile()</a>
-    <span>
-                                &nbsp;: <a href="classes/App-Entity-PhotoFile.html"><abbr title="\App\Entity\PhotoFile">PhotoFile</abbr></a>|null    </span>
-</dt>
-<dd>Gets the file associated with the photo.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Entity-Photos.html#method_getPhotoFileName">getPhotoFileName()</a>
     <span>
                                 &nbsp;: string|null    </span>
@@ -319,7 +305,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Entity-Photos.html#method_getUploadDate">getUploadDate()</a>
     <span>
-                                &nbsp;: <abbr title="\DateTimeInterface">DateTimeInterface</abbr>|null    </span>
+                                &nbsp;: <abbr title="\DateTimeImmutable">DateTimeImmutable</abbr>|null    </span>
 </dt>
 <dd>Gets the upload date of the photo.</dd>
 
@@ -350,13 +336,6 @@
                                 &nbsp;: static    </span>
 </dt>
 <dd>Sets the description of the photo.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-Entity-Photos.html#method_setPhotoFile">setPhotoFile()</a>
-    <span>
-                                &nbsp;: static    </span>
-</dt>
-<dd>Sets the file associated with the photo.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Entity-Photos.html#method_setPhotoFileName">setPhotoFileName()</a>
@@ -478,7 +457,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">102</span>
+    <span class="phpdocumentor-element-found-in__line">95</span>
 
     </aside>
 
@@ -570,40 +549,6 @@
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_photoFile">
-        $photoFile
-        <a href="classes/App-Entity-Photos.html#property_photoFile" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">82</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">The file associated with the photo.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type"><a href="classes/App-Entity-PhotoFile.html"><abbr title="\App\Entity\PhotoFile">PhotoFile</abbr></a>|null</span>
-    <span class="phpdocumentor-signature__name">$photoFile</span>
-     = <span class="phpdocumentor-signature__default-value">null</span></code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -private
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="property_photoFileName">
         $photoFileName
         <a href="classes/App-Entity-Photos.html#property_photoFileName" class="headerlink"><i class="fas fa-link"></i></a>
@@ -614,7 +559,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">89</span>
+    <span class="phpdocumentor-element-found-in__line">82</span>
 
     </aside>
 
@@ -690,7 +635,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type"><abbr title="\DateTimeInterface">DateTimeInterface</abbr>|null</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\DateTimeImmutable">DateTimeImmutable</abbr>|null</span>
     <span class="phpdocumentor-signature__name">$uploadDate</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
@@ -721,7 +666,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">109</span>
+    <span class="phpdocumentor-element-found-in__line">102</span>
 
     </aside>
 
@@ -753,7 +698,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">309</span>
+    <span class="phpdocumentor-element-found-in__line">278</span>
 
     </aside>
 
@@ -805,7 +750,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">201</span>
+    <span class="phpdocumentor-element-found-in__line">194</span>
 
     </aside>
 
@@ -845,7 +790,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">225</span>
+    <span class="phpdocumentor-element-found-in__line">218</span>
 
     </aside>
 
@@ -885,7 +830,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">297</span>
+    <span class="phpdocumentor-element-found-in__line">266</span>
 
     </aside>
 
@@ -925,7 +870,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">153</span>
+    <span class="phpdocumentor-element-found-in__line">146</span>
 
     </aside>
 
@@ -965,7 +910,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">119</span>
+    <span class="phpdocumentor-element-found-in__line">112</span>
 
     </aside>
 
@@ -997,46 +942,6 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getPhotoFile">
-        getPhotoFile()
-        <a href="classes/App-Entity-Photos.html#method_getPhotoFile" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">249</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Gets the file associated with the photo.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getPhotoFile</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Entity-PhotoFile.html"><abbr title="\App\Entity\PhotoFile">PhotoFile</abbr></a>|null</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><a href="classes/App-Entity-PhotoFile.html"><abbr title="\App\Entity\PhotoFile">PhotoFile</abbr></a>|null</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>the photo file</p>
-</section>
-
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_getPhotoFileName">
         getPhotoFileName()
         <a href="classes/App-Entity-Photos.html#method_getPhotoFileName" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1045,7 +950,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">273</span>
+    <span class="phpdocumentor-element-found-in__line">242</span>
 
     </aside>
 
@@ -1085,7 +990,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">129</span>
+    <span class="phpdocumentor-element-found-in__line">122</span>
 
     </aside>
 
@@ -1125,7 +1030,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">177</span>
+    <span class="phpdocumentor-element-found-in__line">170</span>
 
     </aside>
 
@@ -1133,7 +1038,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getUploadDate</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\DateTimeInterface">DateTimeInterface</abbr>|null</span></code>
+                    <span class="phpdocumentor-signature__name">getUploadDate</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\DateTimeImmutable">DateTimeImmutable</abbr>|null</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1143,7 +1048,7 @@
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><abbr title="\DateTimeInterface">DateTimeInterface</abbr>|null</span>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\DateTimeImmutable">DateTimeImmutable</abbr>|null</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>the upload date of the photo</p>
 </section>
@@ -1165,7 +1070,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">326</span>
+    <span class="phpdocumentor-element-found-in__line">295</span>
 
     </aside>
 
@@ -1217,7 +1122,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">213</span>
+    <span class="phpdocumentor-element-found-in__line">206</span>
 
     </aside>
 
@@ -1269,7 +1174,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">237</span>
+    <span class="phpdocumentor-element-found-in__line">230</span>
 
     </aside>
 
@@ -1321,7 +1226,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">165</span>
+    <span class="phpdocumentor-element-found-in__line">158</span>
 
     </aside>
 
@@ -1365,58 +1270,6 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_setPhotoFile">
-        setPhotoFile()
-        <a href="classes/App-Entity-Photos.html#method_setPhotoFile" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">261</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Sets the file associated with the photo.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">setPhotoFile</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Entity-PhotoFile.html"><abbr title="\App\Entity\PhotoFile">PhotoFile</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$photoFile</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$photoFile</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Entity-PhotoFile.html"><abbr title="\App\Entity\PhotoFile">PhotoFile</abbr></a>|null</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>the photo file to set</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">static</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>the current instance for chaining</p>
-</section>
-
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_setPhotoFileName">
         setPhotoFileName()
         <a href="classes/App-Entity-Photos.html#method_setPhotoFileName" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1425,7 +1278,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">285</span>
+    <span class="phpdocumentor-element-found-in__line">254</span>
 
     </aside>
 
@@ -1477,7 +1330,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">141</span>
+    <span class="phpdocumentor-element-found-in__line">134</span>
 
     </aside>
 
@@ -1529,7 +1382,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Entity/Photos.php"><a href="files/src-entity-photos.html"><abbr title="src/Entity/Photos.php">Photos.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">189</span>
+    <span class="phpdocumentor-element-found-in__line">182</span>
 
     </aside>
 
@@ -1537,7 +1390,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">setUploadDate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\DateTimeInterface">DateTimeInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$uploadDate</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+                    <span class="phpdocumentor-signature__name">setUploadDate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\DateTimeImmutable">DateTimeImmutable</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$uploadDate</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1546,7 +1399,7 @@
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$uploadDate</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DateTimeInterface">DateTimeInterface</abbr></span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DateTimeImmutable">DateTimeImmutable</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>the upload date to set</p>
@@ -1685,7 +1538,6 @@
                                                     <li><a href="classes/App-Entity-Photos.html#property_comments">$comments<a href="classes/App-Entity-Photos.html"></li>
                                                     <li><a href="classes/App-Entity-Photos.html#property_description">$description<a href="classes/App-Entity-Photos.html"></li>
                                                     <li><a href="classes/App-Entity-Photos.html#property_id">$id<a href="classes/App-Entity-Photos.html"></li>
-                                                    <li><a href="classes/App-Entity-Photos.html#property_photoFile">$photoFile<a href="classes/App-Entity-Photos.html"></li>
                                                     <li><a href="classes/App-Entity-Photos.html#property_photoFileName">$photoFileName<a href="classes/App-Entity-Photos.html"></li>
                                                     <li><a href="classes/App-Entity-Photos.html#property_title">$title<a href="classes/App-Entity-Photos.html"></li>
                                                     <li><a href="classes/App-Entity-Photos.html#property_uploadDate">$uploadDate<a href="classes/App-Entity-Photos.html"></li>
@@ -1702,7 +1554,6 @@
                                             <li><a href="classes/App-Entity-Photos.html#method_getComments">getComments()</a></li>
                                             <li><a href="classes/App-Entity-Photos.html#method_getDescription">getDescription()</a></li>
                                             <li><a href="classes/App-Entity-Photos.html#method_getId">getId()</a></li>
-                                            <li><a href="classes/App-Entity-Photos.html#method_getPhotoFile">getPhotoFile()</a></li>
                                             <li><a href="classes/App-Entity-Photos.html#method_getPhotoFileName">getPhotoFileName()</a></li>
                                             <li><a href="classes/App-Entity-Photos.html#method_getTitle">getTitle()</a></li>
                                             <li><a href="classes/App-Entity-Photos.html#method_getUploadDate">getUploadDate()</a></li>
@@ -1710,7 +1561,6 @@
                                             <li><a href="classes/App-Entity-Photos.html#method_setAlbum">setAlbum()</a></li>
                                             <li><a href="classes/App-Entity-Photos.html#method_setAuthor">setAuthor()</a></li>
                                             <li><a href="classes/App-Entity-Photos.html#method_setDescription">setDescription()</a></li>
-                                            <li><a href="classes/App-Entity-Photos.html#method_setPhotoFile">setPhotoFile()</a></li>
                                             <li><a href="classes/App-Entity-Photos.html#method_setPhotoFileName">setPhotoFileName()</a></li>
                                             <li><a href="classes/App-Entity-Photos.html#method_setTitle">setTitle()</a></li>
                                             <li><a href="classes/App-Entity-Photos.html#method_setUploadDate">setUploadDate()</a></li>
