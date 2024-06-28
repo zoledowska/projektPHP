@@ -26,7 +26,7 @@ class AlbumsFixtures extends AbstractBaseFixtures
             $albums = new Albums();
             $albums->setTitle($this->faker->unique()->word);
             $albums->setDescription($this->faker->sentence);
-            $albums->setCreatedAt(new \DateTime());
+            $albums->setCreatedAt(\DateTimeImmutable::createFromMutable($this->faker->dateTimeBetween('-100 days', '-1 days')));
 
             return $albums;
         });

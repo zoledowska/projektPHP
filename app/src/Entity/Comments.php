@@ -56,9 +56,9 @@ class Comments
      * The date when the comment was posted.
      */
     #[Assert\NotNull]
-    #[Assert\Type(\DateTimeInterface::class)]
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $postDate = null;
+    #[Assert\Type(\DateTimeImmutable::class)]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    private ?\DateTimeImmutable $postDate = null;
 
     /**
      * The associated photo entity.
@@ -153,9 +153,9 @@ class Comments
     /**
      * Gets the date when the comment was posted.
      *
-     * @return \DateTimeInterface|null the post date of the comment
+     * @return \DateTimeImmutable|null the post date of the comment
      */
-    public function getPostDate(): ?\DateTimeInterface
+    public function getPostDate(): ?\DateTimeImmutable
     {
         return $this->postDate;
     }
@@ -163,11 +163,11 @@ class Comments
     /**
      * Sets the date when the comment was posted.
      *
-     * @param \DateTimeInterface $postDate the post date to set
+     * @param \DateTimeImmutable $postDate the post date to set
      *
      * @return static the current instance for chaining
      */
-    public function setPostDate(\DateTimeInterface $postDate): static
+    public function setPostDate(\DateTimeImmutable $postDate): static
     {
         $this->postDate = $postDate;
 

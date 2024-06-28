@@ -107,7 +107,7 @@ class CommentsController extends AbstractController
         $comments->setEmail($user->getEmail());
         $comments->setNick($user->getNick());
         $comments->setPhoto($photos);
-        $comments->setPostDate(new \DateTime('now'));
+        $comments->setPostDate(new \DateTimeImmutable('now'));
 
         $form = $this->createForm(
             CommentsType::class,

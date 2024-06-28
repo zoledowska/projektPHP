@@ -125,7 +125,7 @@ class PhotosController extends AbstractController
         $users = $this->getUser();
         $photos = new Photos();
         $photos->setAuthor($users);
-        $photos->setUploadDate(new \DateTime('now'));
+        $photos->setUploadDate(new \DateTimeImmutable('now'));
 
         $form = $this->createForm(PhotosType::class, $photos);
         $form->handleRequest($request);

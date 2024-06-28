@@ -19,7 +19,7 @@
             <dt>{{ 'label.photo_file'|trans }}</dt>
             <dd>{{ photos.photoFileName}}</dd>
             <dt>{{ 'label.upload_date'|trans }}</dt>
-            <dd>{{ photos.uploadDate|date('Y/m/d') }}</dd>
+            <dd>{{ photos.uploadDate|format_datetime('long') }}</dd>
         </dl>
 
         {% if photos.photoFileName is defined and photos.photoFileName|length %}
@@ -28,7 +28,6 @@
 
     <h3 class="mt-6">{{ 'title.comments_and_photos'|trans({'%id%': photos.id|default('')}) }}</h3>
 
-        {% dump %}
     {% if comments is defined and comments.items|length %}
 
         <table class="table table-striped">

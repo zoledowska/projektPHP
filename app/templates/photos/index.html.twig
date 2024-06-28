@@ -52,7 +52,7 @@
                     <td>
                         <img style="width:30%; object-fit:contain" class="nav-profile-img" src="{{ asset(photoFile_directory~photos.photoFileName) }}">
                     </td>
-                    <td>{{ photos.uploadDate|format_date('long') }}</td>
+                    <td>{{ photos.uploadDate|format_datetime('long') }}</td>
                     <td>
                         <a href="{{ url('albums_index', {'filters.albums_id' : photos.album.id}) }}" title="{{ photos.album.title }}">
                             {{ photos.album.title }}
