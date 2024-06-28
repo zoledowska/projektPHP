@@ -160,7 +160,7 @@
       </trans-unit>
       <trans-unit id="label.content">
         <source>label.content</source>
-        <target>Zawartość</target>
+        <target>Treść</target>
       </trans-unit>
       <trans-unit id="label.post_date">
         <source>label.post_date</source>
