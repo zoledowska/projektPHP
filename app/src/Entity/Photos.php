@@ -87,7 +87,6 @@ class Photos
     )]
     private ?string $photoFileName = null;
 
-
     /**
      * Initializes a new instance of the Photo entity.
      */

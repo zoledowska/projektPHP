@@ -176,21 +176,6 @@ Search.appendIndex(
             "summary": "Logout\u0020action.",
             "url": "classes/App-Controller-SecurityController.html#method_logout"
         },                {
-            "fqsen": "\\App\\Controller\\UploadController",
-            "name": "UploadController",
-            "summary": "Class\u0020UploadController.",
-            "url": "classes/App-Controller-UploadController.html"
-        },                {
-            "fqsen": "\\App\\Controller\\UploadController\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Constructor.",
-            "url": "classes/App-Controller-UploadController.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Controller\\UploadController\u003A\u003A\u0024manager",
-            "name": "manager",
-            "summary": "",
-            "url": "classes/App-Controller-UploadController.html#property_manager"
-        },                {
             "fqsen": "\\App\\Controller\\UsersController",
             "name": "UsersController",
             "summary": "Class\u0020UsersController.",
@@ -675,11 +660,6 @@ Search.appendIndex(
             "name": "photoFileName",
             "summary": "The\u0020file\u0020name\u0020of\u0020the\u0020photo.",
             "url": "classes/App-Entity-Photos.html#property_photoFileName"
-        },                {
-            "fqsen": "\\App\\Entity\\Photos\u003A\u003A\u0024comments",
-            "name": "comments",
-            "summary": "The\u0020collection\u0020of\u0020comments\u0020associated\u0020with\u0020the\u0020photo.",
-            "url": "classes/App-Entity-Photos.html#property_comments"
         },                {
             "fqsen": "\\App\\Entity\\Users",
             "name": "Users",
@@ -1210,51 +1190,6 @@ Search.appendIndex(
             "name": "getPaginatedListByUser",
             "summary": "Get\u0020paginated\u0020list\u0020by\u0020user.",
             "url": "classes/App-Service-CommentsServiceInterface.html#method_getPaginatedListByUser"
-        },                {
-            "fqsen": "\\App\\Service\\FileUploadService",
-            "name": "FileUploadService",
-            "summary": "Class\u0020FileUploadService.",
-            "url": "classes/App-Service-FileUploadService.html"
-        },                {
-            "fqsen": "\\App\\Service\\FileUploadService\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Constructor.",
-            "url": "classes/App-Service-FileUploadService.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Service\\FileUploadService\u003A\u003Aupload\u0028\u0029",
-            "name": "upload",
-            "summary": "Upload\u0020file.",
-            "url": "classes/App-Service-FileUploadService.html#method_upload"
-        },                {
-            "fqsen": "\\App\\Service\\FileUploadService\u003A\u003AgetTargetDirectory\u0028\u0029",
-            "name": "getTargetDirectory",
-            "summary": "Getter\u0020for\u0020target\u0020directory.",
-            "url": "classes/App-Service-FileUploadService.html#method_getTargetDirectory"
-        },                {
-            "fqsen": "\\App\\Service\\FileUploadService\u003A\u003A\u0024targetDirectory",
-            "name": "targetDirectory",
-            "summary": "",
-            "url": "classes/App-Service-FileUploadService.html#property_targetDirectory"
-        },                {
-            "fqsen": "\\App\\Service\\FileUploadService\u003A\u003A\u0024slugger",
-            "name": "slugger",
-            "summary": "",
-            "url": "classes/App-Service-FileUploadService.html#property_slugger"
-        },                {
-            "fqsen": "\\App\\Service\\FileUploadServiceInterface",
-            "name": "FileUploadServiceInterface",
-            "summary": "Interface\u0020FileUploadService.",
-            "url": "classes/App-Service-FileUploadServiceInterface.html"
-        },                {
-            "fqsen": "\\App\\Service\\FileUploadServiceInterface\u003A\u003Aupload\u0028\u0029",
-            "name": "upload",
-            "summary": "Upload\u0020file.",
-            "url": "classes/App-Service-FileUploadServiceInterface.html#method_upload"
-        },                {
-            "fqsen": "\\App\\Service\\FileUploadServiceInterface\u003A\u003AgetTargetDirectory\u0028\u0029",
-            "name": "getTargetDirectory",
-            "summary": "Getter\u0020for\u0020target\u0020directory.",
-            "url": "classes/App-Service-FileUploadServiceInterface.html#method_getTargetDirectory"
         },                {
             "fqsen": "\\App\\Service\\PhotosService",
             "name": "PhotosService",
