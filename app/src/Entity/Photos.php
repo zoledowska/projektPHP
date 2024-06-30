@@ -71,7 +71,7 @@ class Photos
     /**
      * The author who uploaded the photo.
      */
-    #[ORM\ManyToOne(targetEntity: Users::class, fetch: 'EXTRA_LAZY')]
+    #[ORM\ManyToOne(targetEntity: Users::class)]
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotNull(message: 'Author cannot be null.')]
     private ?Users $author = null;
@@ -87,14 +87,6 @@ class Photos
     )]
     private ?string $photoFileName = null;
 
-    /**
-     * The collection of comments associated with the photo.
-     *
-     * @var Collection<int, Comments>
-     */
-    #[ORM\OneToMany(mappedBy: 'photo', targetEntity: Comments::class, fetch: 'EAGER', orphanRemoval: true)]
-    #[Assert\Valid]
-    private Collection $comments;
 
     /**
      * Initializes a new instance of the Photo entity.

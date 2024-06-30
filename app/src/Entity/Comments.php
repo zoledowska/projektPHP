@@ -64,8 +64,7 @@ class Comments
      * The associated photo entity.
      */
     #[Assert\NotNull]
-    #[ORM\ManyToOne(targetEntity: Photos::class, inversedBy: 'comments')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne]
     private ?Photos $photo = null;
 
     /**

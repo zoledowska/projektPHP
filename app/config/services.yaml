@@ -11,6 +11,7 @@ services:
         bind:
             $photoFileDirectory: '%photoFile_directory%'
             $rootDir: '%kernel.project_dir%'
+            $photosService: '@App\Service\PhotosService' # Bind PhotosService to the interface
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -30,9 +31,9 @@ services:
 #        arguments:
 #            $targetDirectory: '%photoFile_directory%'
 
-    App\Service\FileUploadService:
-        arguments:
-            $targetDirectory: '%photoFile_directory%'
+#    App\Service\FileUploadService:
+#        arguments:
+#            $targetDirectory: '%photoFile_directory%'
 
 parameters:
     photoFile_directory: '%kernel.project_dir%/public/uploads/photoFile'
